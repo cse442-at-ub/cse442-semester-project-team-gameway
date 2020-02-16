@@ -1,0 +1,41 @@
+html, body {
+    width: 100%;
+}
+
+.room-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.room-list {
+    display: inline-block;
+    height: 310px;
+    overflow:auto;
+}
+
+table {
+    margin: 10px auto;
+}
+
+table, td, th {
+    border: 1px solid black;
+    border-collapse:collapse;
+    font-size: 24px;
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    text-align: left;
+}
+
+tr:nth-child(even){
+    background-color: #bababa
+}
+
+.room {
+    width: 600px;
+}
