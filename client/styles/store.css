@@ -1,36 +1,247 @@
-body{
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500');
+
+* {
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
+}
+
+body {
+   background-color: #21244e;
+}
+
+li, a, button, span{
+    font-family: "Montserat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #EDF0F1;
+    text-decoration: none;
 }
 
 .main-nav {
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    height: 80px;
-    position: fixed;
-    top: 0;
-    background: #FAFAFA;
-    opacity: 100;
+    align-content: center;
+    align-items: center;
+    padding: 30px 5%;
+    background-color: transparent;
 }
 
-.main-nav ul{
-    display: flex;
-    list-style-type: none;
-    padding: 0;
+.main-nav-links {
+    list-style: none;
 }
 
-.main-nav li{
-    float: left;
+.logo {
+    cursor: pointer;
+    height: 35px;
+    width: 35px;
+}
+
+.main-nav-links li {
     display: inline-block;
-    padding: 10px;
+    padding: 0 20px;
 }
 
-.currency{
-    display: flex;
-    margin-right: 25px;
+.main-nav-links li a {
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
 }
 
-.currency div{
+.main-nav-links li a:hover {
+    color: #5e679b;
+}
+
+.current a{
+    color: #5e679b;
+}
+
+.main-nav-currency {
+    list-style: none;
     display: flex;
-    padding: 10px;
+    align-content: center;
+}
+
+.main-nav-currency img {
+    height: 20px;
+}
+
+.main-nav-currency li {
+    display: flex;
+    align-content: center;
+    padding: 0 20px;
+}
+
+.main-nav-currency li img {
+    margin-right: 10px;
+}
+
+.main-nav-setting-links {
+    list-style: none;
+}
+
+.main-nav-setting-links li {
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.main-nav-setting-links li a {
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+}
+
+.main-nav-setting-links li a:hover {
+    color: #5e679b;
+}
+
+hr {
+    display: block;
+    border-color: #2b75ba;
+}
+
+.store {
+    width: 100%;
+}
+
+.store-nav {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding: 15px 5% 15px 5%;
+}
+
+.store-nav-links {
+    list-style: none;
+}
+
+.store-nav-links li {
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.store-nav-links li a {
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+}
+
+.store-nav-links li a:hover {
+    color: #5e679b;
+}
+
+.carousel-store {
+    max-width: 90%;
+    position: relative;
+    margin: auto;
+}
+
+.carousel-store-slides img{
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-store-prev, .carousel-store-next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: all 0.3s ease 0s;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.carousel-store-next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.slide-counter {
+    display: flex;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #EDF0F1;
+    border-radius: 50%;
+    display: block;
+    transition: background-color 0.6s ease;
+}
+
+.dot:hover {
+    background-color: #5e679b;
+}
+
+.category {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: auto;
+    padding: 20px 0 0 15px;
+}
+
+.category span {
+    font-size: 20px;
+    font-weight: bold;
+    color: #EDF0F1;
+}
+
+.product {
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: auto;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    width: 20%;
+    padding: 0 15px 30px 15px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.product-image img {
+    max-width: 100%;
+    border: 2px solid #2b75ba;
+}
+
+.product-info {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    bottom: 35px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.product-info span{
+    display: flex;
+    font-size: 1.2vw;
+    font-weight: bold;
+    color: #EDF0F1;
+}
+
+.product-image:hover  img{
+    opacity: 0.7;
 }
