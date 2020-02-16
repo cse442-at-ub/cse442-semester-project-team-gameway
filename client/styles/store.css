@@ -13,28 +13,28 @@ body {
 li, a, button, span{
     font-family: "Montserat", sans-serif;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 20px;
     color: #EDF0F1;
     text-decoration: none;
 }
 
 .main-nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-content: center;
     align-items: center;
     padding: 30px 5%;
     background-color: transparent;
 }
 
-.main-nav-links {
-    list-style: none;
-}
-
 .logo {
     cursor: pointer;
     height: 35px;
     width: 35px;
+}
+
+.main-nav-links {
+    list-style: none;
 }
 
 .main-nav-links li {
@@ -59,6 +59,7 @@ li, a, button, span{
     list-style: none;
     display: flex;
     align-content: center;
+    margin-left: auto;
 }
 
 .main-nav-currency img {
@@ -77,6 +78,7 @@ li, a, button, span{
 
 .main-nav-setting-links {
     list-style: none;
+    margin-left: auto;
 }
 
 .main-nav-setting-links li {
@@ -190,7 +192,7 @@ hr {
 }
 
 .category span {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
     color: #EDF0F1;
 }
@@ -243,5 +245,6 @@ hr {
 }
 
 .product-image:hover  img{
-    opacity: 0.7;
+    opacity: 0.6;
+    transition: all 0.5s ease 0s;
 }
