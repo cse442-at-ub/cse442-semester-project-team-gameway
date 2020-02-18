@@ -2,40 +2,139 @@ html, body {
     width: 100%;
 }
 
-.room-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body {
+    padding-top: 3rem;
+    background: #6790ab !important;
 }
 
-.room-list {
-    display: inline-block;
-    height: 310px;
-    overflow:auto;
+/* Basic Styling */
+
+table, td, a {
+    color: #000;
+    font: normal normal 20px Verdana, Geneva, Arial, Helvetica, sans-serif;
 }
 
-table {
-    margin: 10px auto;
-}
-
-table, td, th {
-    border: 1px solid black;
-    border-collapse:collapse;
-    font-size: 24px;
-}
-
-th {
+h1 {
+    font: normal normal 18px sans-serif;
+    margin: 0 0 5px 0;
     text-align: center;
 }
 
-td {
-    text-align: left;
+h2 {
+    font: normal normal 16px Verdana, Geneva, Arial, Helvetica, sans-serif;
+    margin: 0 0 5px 0;
 }
 
-tr:nth-child(even){
-    background-color: #bababa
+h3 {
+    font: normal normal 13px Verdana, Geneva, Arial, Helvetica, sans-serif;
+    color: #008000;
+    margin: 0 0 15px 0;
 }
 
-.room {
-    width: 600px;
+tr {
+    font-size: 20px;
+}
+
+/* Scrolling Game List */
+.table-fixed tbody {
+    height: 440px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.table-fixed thead {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.table-fixed thead,
+.table-fixed tbody,
+.table-fixed tr,
+.table-fixed td,
+.table-fixed th {
+    display: block;
+}
+
+.table-fixed tbody td,
+.table-fixed tbody th,
+.table-fixed thead > tr > th {
+    float: left;
+    position: relative;
+}
+
+.lock {
+    height: 20px;
+    position: relative;
+    top: -2px;
+}
+
+.center {
+    text-align: center;
+}
+
+/* CUSTOM SCROLL BAR */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #004675;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #008deb;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #004675;
+}
+
+/* FRIEND LIST */
+
+
+/* NAVIGATION BAR */
+.nav a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+.nav a:hover {
+    color: #333333;
+    text-decoration: none;
+}
+
+.nav ul{
+    list-style-type: none;
+    text-align: center;
+    margin:0 auto;
+}
+
+.nav li {
+    display: inline;
+}
+
+.nav .current {
+    color: white;
 }

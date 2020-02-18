@@ -4,113 +4,78 @@
     <head>
         <title>Rooms</title>
         <link rel="stylesheet" href="css/room-list.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     </head>
 
     <body>
-        <a href="index.html">Home</a>
-        <h1>Room List</h1>
+        <h1 class="title">Game Rooms</h1>
 
-        <div class="room-div">
-            <table class="room-list">
-                <tr>
-                    <th class="room">Room Name</th>
-                    <th>Game Mode</th>
-                    <th>Players</th>
-                    <th></th>
-                </tr>
-
-                <tr>
-                    <td>Preston's Room</td>
-                    <td>Party</td>
-                    <td>3/4</td>
-                    <td>
-                        <button>Join</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Joe's Room</td>
-                    <td>Co-op</td>
-                    <td>1/4</td>
-                    <td>
-                        <button>Join</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>WWW</td>
-                    <td>Teams</td>
-                    <td>6/10</td>
-                    <td>
-                        <button>Join</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>WWW</td>
-                    <td>Teams</td>
-                    <td>6/10</td>
-                    <td>
-                        <button>Join</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>WWW</td>
-                    <td>Teams</td>
-                    <td>6/10</td>
-                    <td>
-                        <button>Join</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>WWW</td>
-                    <td>Teams</td>
-                    <td>6/10</td>
-                    <td>
-                        <button>Join</button>
-                    </td>
-                </tr>
-
-                <tr class="odd">
-                    <td>WWW</td>
-                    <td>Teams</td>
-                    <td>6/10</td>
-                    <td>
-                        <button>Join</button>
-                    </td>
-                </tr>
-
-                <tr class="odd">
-                    <td>WWW</td>
-                    <td>Teams</td>
-                    <td>6/10</td>
-                    <td>
-                        <button>Join</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>WWW</td>
-                    <td>Teams</td>
-                    <td>6/10</td>
-                    <td>
-                        <button>Join</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>WWW</td>
-                    <td>Teams</td>
-                    <td>6/10</td>
-                    <td>
-                        <button>Join</button>
-                    </td>
-                </tr>
-            </table>
+        <!-- Navigation -->
+        <div class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="room-list.html" class="current">Games</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="patches.html">Patches</a></li>
+                <li><a href="store.html">Store</a></li>
+            </ul>
         </div>
 
+        <!-- Game List -->
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-8 mx-auto bg-white rounded shadow">
+
+                    <!-- Fixed header table-->
+                    <div class="table-responsive">
+                        <table class="table table-fixed">
+                            <thead>
+                            <tr>
+                                <th scope="col" class="col-6">Room Name</th>
+                                <th scope="col" class="col-2 center">Game</th>
+                                <th scope="col" class="col-2 center">Players</th>
+                                <th scope="col" class="col-2 center">Action</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="col-6">Preston's Room</th>
+                                    <td class="col-2 party center">Party</td>
+                                    <td class="col-2 center">3/4</td>
+                                    <td class="col-2 center"><button>Join</button></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="col-6">Joe's Room<img alt="Lock" class="lock" src="img/lock.png"></th>
+                                    <td class="col-2 co-op center">Co-op</td>
+                                    <td class="col-2 center">1/4</td>
+                                    <td class="col-2 center"><button>Join</button></td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" class="col-6">Friends Only<img alt="Lock" class="lock" src="img/lock.png"></th>
+                                    <td class="col-2 teams center">Teams</td>
+                                    <td class="col-2 center">6/10</td>
+                                    <td class="col-2 center"><button>Join</button></td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div><!-- End -->
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Friends List -->
+        <div class="friends-list">
+
+        </div>
+
+        <!-- Javascript -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </body>
 
 </html>
