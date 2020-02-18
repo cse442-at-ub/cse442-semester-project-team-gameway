@@ -110,6 +110,27 @@ tr {
     background: #004675;
 }
 
+.party {
+    color: green;
+}
+
+.co-op {
+    color: darkorange;
+}
+
+.teams {
+    color: darkred;
+}
+
+.search {
+    display: block;
+    text-align: center;
+    line-height: 150%;
+    font-size: .85em;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
 /* FRIEND LIST */
 
 
