@@ -160,6 +160,8 @@ h3 {
 .friends {
     font-size: 18px;
     overflow-y: scroll;
+    height: 62%;
+    border-bottom: black 1px solid;
 }
 
 .friends ul {
