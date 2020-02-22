@@ -1,0 +1,72 @@
+html body {
+    margin: 0;
+    padding: 0;
+    background-color: #65acee;
+}
+
+.fas {
+    margin-left: 5px;
+}
+
+.sidebar {
+    position: fixed;
+    background-color: #285075;
+    width: 20%;
+    height: 100%;
+    right: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.side-top-bar {
+    position: fixed;
+    right: 1%;
+}
+
+.side-top-bar a {
+    color: white;
+    text-decoration: none;
+}
+
+.side-header {
+    padding-left: 30%;
+    margin-top: 2rem;
+}
+
+.side-header h1{
+    color: white;
+    font-size: 24px;
+    margin: 0;
+}
+
+.side-header h2{
+    color: white;
+    margin: 0;
+}
+
+.social {
+    margin-top: 1rem;
+    border-bottom: #adbcca solid 3px;
+    padding-bottom: 1rem;
+    padding-left: 20%;
+    color: white;
+    right: 1rem;
+
+}
+
+.social-buttons {
+    display: inline-block;
+    position: absolute;
+    right: 1rem;
+}
+
+.add-friend {
+    width: 80%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 10%);
+}
+
+.friends img {
+    width: 15%;
+}
