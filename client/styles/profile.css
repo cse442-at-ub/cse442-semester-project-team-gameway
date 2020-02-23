@@ -1,0 +1,282 @@
+/* CSS Document */
+
+/*****************************************
+
+    *Author			Sandy Liu
+
+ *****************************************/
+/*
+	TABLE OF CONTENTS
+	---------------------------
+	 01. Body
+	 02. Background Image & Overlay Color
+	 03. Main Navigation
+	 04. Slide-show
+	 05. Store Navigation
+	 06. Store Pages
+	 07. Product Card
+	 08. Footer
+
+ **  *************************************** **/
+
+/* == 01. Body == */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Raleway', sans-serif;
+    color: #8897cd;
+}
+
+/* == 02. Background Image & Overlay Color == */
+@keyframes bgscroll {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -1220px 0;
+    }
+}
+
+@-webkit-keyframes bgscroll {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -1220px 0;
+    }
+}
+
+.page-bg {
+    position: fixed;
+    z-index: -9999;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    background: url(../assets/images/background.png) repeat;
+    animation: bgscroll 40s infinite linear;
+    -webkit-animation: bgscroll 40s infinite linear;
+}
+
+.overlay-bg {
+    position: fixed;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(2, 2, 35, 0.5);
+}
+
+/* == 03. Main Navigation == */
+.main-nav {
+    display: flex;
+    flex-direction: row;
+    position: static;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: #354368;
+}
+
+.main-nav ul {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 50%;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav li {
+    display: flex;
+    flex-basis: 100%;
+    list-style: none;
+    position: relative;
+}
+
+.main-nav li a {
+    display: flex;
+    flex-basis: 100%;
+    text-align: center;
+    color: #8897cd;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    z-index: 0;
+    padding: 0 10px;
+    width: 100%;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.main-nav li a:hover {
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.current {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.current span {
+    color: #ffffff;
+}
+
+.nav-button {
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nav-button i {
+    padding-bottom: 10px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 24px;
+    color: #778cff;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-left: auto;
+    padding: 10px;
+}
+
+.avatar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 15px;
+}
+
+.avatar a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    color: #8897cd;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.avatar a:hover {
+    color: white;
+}
+
+.avatar img {
+    width: 50px;
+    height: 50px;
+    border: 3px solid transparent;
+    border-radius: 80px;
+    background-image: linear-gradient(white, white), linear-gradient(to right, #739af3, #ab75c1);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+.avatar span {
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.currency {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-left: 1px solid rgba(136, 151, 205, 0.4);;
+    padding: 0 15px;
+}
+
+.currency i {
+    padding-right: 10px;
+}
+
+.cash {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+}
+
+.coins {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+}
+
+.settings {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-left: 1px solid rgba(136, 151, 205, 0.4);;
+    padding: 0 15px;
+}
+
+.settings i {
+    text-decoration: none;
+    text-align: center;
+    font-size: 24px;
+    color: #778cff;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.settings i:hover {
+    color: #ffffff;
+}
+
+.setting-button {
+    margin: 0 10px;
+}
+
+/* == 04. Profile Container == */
+.profile-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: "left-side right-top right-top"
+                         "left-side right-middle right-middle"
+                         "left-side right-bottom right-bottom";
+    grid-auto-rows: minmax(100px, auto);
+    grid-gap: 10px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.left-side{
+    grid-area: left-side;
+
+}
+
+.right-top{
+    grid-area: right-top;
+}
+
+.right-middle{
+    grid-area: right-middle;
+}
+.right-bottom{
+    grid-area: right-bottom;
+}
+
+/* == 08. Footer == */
+.footer-container {
+    padding-top: 30px;
+}
