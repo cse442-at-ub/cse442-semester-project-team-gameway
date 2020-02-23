@@ -354,6 +354,7 @@ body {
 }
 
 .store-nav li a {
+    cursor: pointer;
     text-decoration: none;
     color: #8897cd;
     font-size: 20px;
