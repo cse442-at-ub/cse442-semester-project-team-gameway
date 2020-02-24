@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--BEGIN META-->
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta content="Sandy Liu" name="author">
+    <meta charset="UTF-8">
+    <!--END META-->
+
+    <!--BEGIN TITLE-->
+    <title>Gameway | Store</title>
+    <!--END TITLE-->
+
+    <!--BEGIN CSS FILES-->
+    <link href="styles/store.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Raleway:600,400,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <!--END CSS FILES-->
+</head>
+<body>
+    <!--BEGIN PAGE BACKGROUND-->
+    <div class="page-bg"></div>
+    <div class="overlay-bg"></div>
+    <!--END PAGE BACKGROUND-->
+
+    <!--BEGIN MAIN NAVIGATION-->
+    <nav class="main-nav">
+        <ul>
+            <li class="home">
+                <a href="#">
+                    <div class="nav-button">
+                        <i class="fas fa-home"></i>
+                        <span>HOME</span>
+                    </div>
+                </a>
+            </li>
+            <li class="games">
+                <a href="#">
+                    <div class="nav-button">
+                        <i class="fas fa-gamepad"></i>
+                        <span>GAMES</span>
+                    </div>
+                </a>
+            </li>
+            <li class="store">
+                <a class="current" href="#">
+                    <div class="nav-button">
+                        <i class="fas fa-gifts"></i>
+                        <span>STORE</span>
+                    </div>
+                </a>
+            </li>
+            <li class="leaderboard">
+                <a href="#">
+                    <div class="nav-button">
+                        <i class="fas fa-trophy"></i>
+                        <span>LEADERBOARD</span>
+                    </div>
+                </a>
+            </li>
+            <li class="patches">
+                <a href="#">
+                    <div class="nav-button">
+                        <i class="fas fa-sticky-note"></i>
+                        <span>PATCHES</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <div class="user-info">
+            <div class="avatar">
+                <a href="#">
+                    <img alt="avatar1" src="assets/images/avatar2.png">
+                    <span>Sandy Liu</span>
+                </a>
+            </div>
+            <div class="currency">
+                <div class="cash">
+                    <i class="fas fa-money-bill"></i>
+                    <span>2147483647</span>
+                </div>
+                <div class="coins">
+                    <i class="fas fa-coins"></i>
+                    <span>2147483647</span>
+                </div>
+            </div>
+            <div class="settings">
+                <a href="#">
+                    <div class="setting-button">
+                        <i class="fas fa-volume-mute"></i>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="setting-button">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="setting-button">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!--END MAIN NAVIGATION-->
+
+    <!--BEGIN SLIDE SHOW-->
+    <div class="slide-show">
+        <div class="slide-image">
+            <a href="#">
+                <img alt="image1" src="assets/images/sample-image1.png">
+            </a>
+            <a class="slide-prev"><i class="fas fa-angle-left"></i></a>
+            <a class="slide-next"><i class="fas fa-angle-right"></i></a>
+        </div>
+        <div class="slide-counter">
+            <span class="dot"><i class="fas fa-circle"></i></span>
+            <span class="dot"><i class="fas fa-circle"></i></span>
+            <span class="dot"><i class="fas fa-circle"></i></span>
+        </div>
+    </div>
+    <!--END SLIDE SHOW-->
+
+    <!--START STORE NAVIGATION-->
+    <nav class="store-nav">
+        <ul>
+            <li>
+                <a class="featured active">
+                    <span>Featured</span>
+                </a>
+            </li>
+            <li>
+                <a class="characters">
+                    <span>Characters</span>
+                </a>
+            </li>
+            <li>
+                <a class="icons">
+                    <span>Icons</span>
+                </a>
+            </li>
+            <li>
+                <a class="crates">
+                    <span>Crates</span>
+                </a>
+            </li>
+            <li>
+                <a class="purchase">
+                    <span>Purchase <i class="fas fa-money-bill"></i></span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!--END STORE NAVIGATION-->
+
+    <hr>
+
+    <!--BEGIN FEATURED PAGE-->
+    <div id="featured-page">
+        <div class="featured-container">
+            <div class="section-title">
+                <span>FEATURED ITEMS</span>
+            </div>
+            <div class="product-container">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar1" src="assets/images/avatar1.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar1" src="assets/images/avatar1.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar1" src="assets/images/avatar1.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar1" src="assets/images/avatar1.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar1" src="assets/images/avatar1.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar1" src="assets/images/avatar1.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar1" src="assets/images/avatar1.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar1" src="assets/images/avatar1.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar1" src="assets/images/avatar1.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar1" src="assets/images/avatar1.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END FEATURED PAGE-->
+
+    <!--BEGIN CHARACTERS PAGE-->
+    <div id="characters-page">
+        <div class="characters-container">
+            <div class="section-title">
+                <span>CHARACTERS</span>
+            </div>
+            <div class="product-container">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar2" src="assets/images/avatar2.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar2" src="assets/images/avatar2.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar2" src="assets/images/avatar2.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar2" src="assets/images/avatar2.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar2" src="assets/images/avatar2.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar2" src="assets/images/avatar2.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar2" src="assets/images/avatar2.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar2" src="assets/images/avatar2.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar2" src="assets/images/avatar2.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar2" src="assets/images/avatar2.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END CHARACTERS PAGE-->
+
+    <!--BEGIN ICONS PAGE-->
+    <div id="icons-page">
+        <div class="icons-container">
+            <div class="section-title">
+                <span>ICONS</span>
+            </div>
+            <div class="product-container">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar3" src="assets/images/avatar3.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar3" src="assets/images/avatar3.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar3" src="assets/images/avatar3.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar3" src="assets/images/avatar3.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar3" src="assets/images/avatar3.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar3" src="assets/images/avatar3.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar3" src="assets/images/avatar3.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar3" src="assets/images/avatar3.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar3" src="assets/images/avatar3.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar3" src="assets/images/avatar3.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END ICONS PAGE-->
+
+    <!--BEGIN CRATES PAGE-->
+    <div id="crates-page">
+        <div class="crates-container">
+            <div class="section-title">
+                <span>CRATES</span>
+            </div>
+            <div class="product-container">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar4" src="assets/images/avatar4.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar4" src="assets/images/avatar4.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar4" src="assets/images/avatar4.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar4" src="assets/images/avatar4.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar4" src="assets/images/avatar4.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar4" src="assets/images/avatar4.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar4" src="assets/images/avatar4.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar4" src="assets/images/avatar4.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar4" src="assets/images/avatar4.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar4" src="assets/images/avatar4.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END CRATES PAGE-->
+
+    <!--BEGIN PURCHASE PAGE-->
+    <div id="purchase-page">
+        <div class="purchase-container">
+            <div class="section-title">
+                <span>PURCHASE CASH</span>
+            </div>
+            <div class="product-container">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar5" src="assets/images/avatar5.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar5" src="assets/images/avatar5.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar5" src="assets/images/avatar5.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar5" src="assets/images/avatar5.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar5" src="assets/images/avatar5.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar5" src="assets/images/avatar5.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar5" src="assets/images/avatar5.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar5" src="assets/images/avatar5.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar5" src="assets/images/avatar5.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img alt="avatar5" src="assets/images/avatar5.png">
+                        <div class="product-image-overlay"></div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-name">ASHE</span>
+                        <button class="product-cost" data-hover="PURCHASE">
+                            <div>1000 WC</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END CHARACTERS PAGE-->
+
+    <!--BEGIN FOOTER-->
+    <div class="footer-container"></div>
+    <!--END FOOTER-->
+    <!--BEGIN SCRIPTS-->
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/e584d861f4.js"></script>
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="js/store-pages.js" type="text/javascript"></script>
+    <!--END SCRIPTS-->
+</body>
+</html>
