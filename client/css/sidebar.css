@@ -276,12 +276,13 @@ html body {
     top: 0;
     right: 0;
     height: 15%;
-    background-color: red;
+    background-color: darkblue;
     padding: 0;
 }
 
 .chat-header p {
     font-size: 20px;
+    color: white;
 }
 
 .chat-messages {
@@ -323,4 +324,16 @@ html body {
     position: absolute;
     background-color: greenyellow;
     width: 70%;
+}
+
+#chatClose {
+    top: 2%;
+    right: 2%;
+    position: absolute;
+    z-index: 99999;
+    color: gray;
+}
+
+#chatClose:hover {
+    color: darkgray;
 }

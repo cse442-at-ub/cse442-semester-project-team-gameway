@@ -1,6 +1,7 @@
 $(document).ready(function()
 {
     $("#chatBox").hide();
+
     $("#chatLink").click(function()
     {
         $("#chatBox").fadeToggle(300);
@@ -9,6 +10,12 @@ $(document).ready(function()
 
     //Document Click hiding the popup
     $(document).click(function()
+    {
+        $("#chatBox").hide();
+    });
+
+    //Minimize
+    $("#chatClose").click(function()
     {
         $("#chatBox").hide();
     });
