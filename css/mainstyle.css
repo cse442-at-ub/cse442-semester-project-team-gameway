@@ -1,0 +1,223 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*==============================================================
+1 COLORS & OPACITY
+2 BASIC SETUP
+3 NAVIGATION
+4 DEFAULT CONTENT
+5 HOMEPAGE
+6 add more..
+-- enforce the 4 line gap between each section --
+==============================================================*/
+
+
+
+
+/* ===== 1 COLORS & OPACITY ===== */
+:root {
+    --content0: #FFFFFF;    /*Primary: Default text/icon color*/
+    --content1: #65ACEE;    /*Secondary: Sub-menus, social buttons, status*/
+
+    --bg0: #1F2B4D;         /*Default background*/
+    --bg1: #04315A;         /*Navbar and shop/all other buttons*/
+    --bg2: #224B71;         /*Social bar*/
+
+    --ok: #6EC927;          /*Available, Good, Ok, Proceed, Healthy*/
+    --oklt: #C5FF97;        /*light version, for glow effects*/
+    --focus: #5127C9;       /*Focused, Do Not Disturb, Muted, Silenced*/
+    --focuslt: #9997FF;     /*light version, for glow effects*/
+    --urgent: #C31616;      /*Urgency, Busy, Attention*/
+    --urgentlt: #FF6969;    /*light version, for glow effects*/
+    --warn: #C99227;        /*Caution, Processing, Maintenance, In-Progress*/
+    --warnlt: #FFC187;      /*light version, for glow effects*/
+
+    --op0: 60%;                /*Opacity: inactive for primary elements*/
+    --op0: 30%;                /*Opacity: inactive for secondary elements*/
+}
+
+
+
+
+/* ===== 2 BASIC SETUP ===== */
+* {
+    font-family: 'Raleway', 'Arial', 'San-Serif'; 
+    text-decoration: none;
+    
+    margin: 0px;
+    padding: 0px;
+    
+    box-sizing: border-box;
+    
+    list-style: none;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+}
+*::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--content0);
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+    text-align: left;
+    
+    background: var(--bg0);
+    height: 100vh;
+}
+
+body {
+    display: grid;
+    grid-template: repeat(12, 1fr) / repeat(12, 1fr);
+    width:100%;
+    height: 100%;
+}
+
+h1, h2, h3, h4 { font-weight: 700; }
+h1 { font-size: 72px; opacity: var(--op0); }
+h2 { font-size: 36px; }
+h3 { font-size: 24px; }
+h4 { font-size: 18px; }
+
+a:visited, a:link { color: var(--content0); text-decoration: none; }
+a:visited:hover, a:link:hover, .btn00:hover, .btn01:hover { border: solid 2px var(--content0); }
+.btn00, .btn01 { 
+	background-color: var(--bg1); 
+	color: var(--content0); 
+    border: solid 2px var(--bg1);
+    display: block;
+    
+	margin: auto; 
+	padding: 10px;
+	cursor: pointer;
+	width: 125px;
+    text-align: center;
+    
+}
+.btn01 { 
+    border-radius: 20px;
+    padding: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+
+/* ===== 3 NAVIGATION ===== */
+nav {
+    grid-column: 1 / 11;
+
+    background-color: var(--bg1);
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+}
+
+.submenu {
+    grid-column: 1 / -1;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    
+    color: var(--content1); 
+}
+.submenu > h3 { 
+    width: fit-content;
+    font-weight: 500;
+    border-bottom: 2px solid var(--content1);
+    cursor: pointer; 
+    margin: auto;
+}
+.submenu > h3:hover {
+    font-weight: 700;
+    border-bottom: 5px solid var(--content1);
+}
+
+.social {
+    grid-column: 11 / -1;
+    grid-row: 1/-1; 
+
+    background-color: var(--bg2);
+}
+
+
+
+
+/* ===== 4 DEFAULT CONTENT ===== */
+main {
+    grid-column: 1 / 11;
+    grid-row: 2 / -1;
+
+    display: grid;
+    grid-template: 60px auto / repeat(5, 1fr);
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+}
+main > div {
+    grid-column: 1 / -1;
+
+    display: grid;
+    gap: 50px 50px;
+
+    padding: 0px 50px 50px 50px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+
+
+
+/* ===== 5 HOMEPAGE ===== */
+.overview {
+    grid-template: repeat(3, 1fr) / repeat(4, 1fr);
+}
+main > div > article {
+    grid-column: span 3;
+    grid-row: span 2;
+
+    overflow: hidden;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border: 1px solid var(--content1);
+}
+main > div > article > a, main > div > article > p{
+    padding: 50px;
+}
+.item {
+    grid-column: span 1;
+    
+    overflow: hidden;
+    
+    border: 1px solid var(--content1);
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/* ===== 6 ITEMS ===== */
+.item img, article img {
+    width: 100%;
+    height: 100%;
+    z-index: -999;
+
+    object-fit: cover;
+    display: block;
+    position: relative;
+}
+
+
+
+
+/* ===== 7 CATEGORY ===== */
+
