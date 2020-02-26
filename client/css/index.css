@@ -5,7 +5,7 @@
 }
 
 html {
-    background: url(Login-Register/moraine-lake.jpeg) no-repeat center center fixed;
+    background: url(../img/moraine-lake.jpeg) no-repeat center center fixed;
     /*background-image: linear-gradient(rgba(0, 0, 0, 0.73), rgba(0, 0, 0, 0.75)), url("Login-Register/moraine-lake.jpeg");*/
     -webkit-background-size: cover;
     -moz-background-size: cover;

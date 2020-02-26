@@ -13,16 +13,235 @@
     <!--END TITLE-->
 
     <!--BEGIN CSS FILES-->
-    <link href="styles/store.css" rel="stylesheet" type="text/css">
+    <link href="css/store.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Raleway:600,400,300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+
     <!--END CSS FILES-->
+
+    <link rel="stylesheet" href="css/sidebar.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/07b8d94df6.js" crossorigin="anonymous"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/chatbox.js"></script>
 </head>
 <body>
+
     <!--BEGIN PAGE BACKGROUND-->
     <div class="page-bg"></div>
     <div class="overlay-bg"></div>
     <!--END PAGE BACKGROUND-->
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="side-top-bar">
+            <a href="settings.html"><i class="fas fa-cog"></i></a>
+            <a href="index.html"><i class="fas fa-sign-out-alt"></i></a>
+        </div>
+
+        <div class="side-header">
+            <h1>LONG USERNAME</h1>
+            <h2>at homepage</h2>
+        </div>
+
+        <div class="social">
+            <span>Social</span>
+            <div class="social-buttons">
+                <ul id="nav">
+                    <li id="notification_li">
+                        <a href="#" id="notificationLink"><i class="fas fa-bell"></i></a>
+                        <div id="notificationContainer">
+                            <div id="notificationTitle">Notifications</div>
+                            <div id="notificationsBody" class="notifications">
+                                <div>
+                                    <ul>
+                                        <li>
+                                            <img src="img/spider.jpg" alt="profile-picture">
+                                            <p><b class="user-name">Preston</b> has invited you to a <b class="party">party</b> game</p>
+                                            <div class="options">
+                                                <div class="option-button"><button class="accept">Accept</button></div>
+                                                <div class="option-button"><button class="decline">Decline</button></div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <img src="img/spider.jpg" alt="profile-picture">
+                                            <p><b class="user-name">Jack</b> has invited you to a <b class="co-op">co-op</b> game</p>
+                                            <div class="options">
+                                                <div class="option-button"><button class="accept">Accept</button></div>
+                                                <div class="option-button"><button class="decline">Decline</button></div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <img src="img/spider.jpg" alt="profile-picture">
+                                            <p><b class="user-name">Sandy</b> has sent you a friend request</p>
+                                            <div class="options">
+                                                <div class="option-button"><button class="accept">Accept</button></div>
+                                                <div class="option-button"><button class="decline">Decline</button></div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <img src="img/spider.jpg" alt="profile-picture">
+                                            <p><b class="user-name">Jeff</b> has sent you a friend request</p>
+                                            <div class="options">
+                                                <div class="option-button"><button class="accept">Accept</button></div>
+                                                <div class="option-button"><button class="decline">Decline</button></div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <img src="img/spider.jpg" alt="profile-picture">
+                                            <p><b class="user-name">Steve</b> has sent you a friend request</p>
+                                            <div class="options">
+                                                <div class="option-button"><button class="accept">Accept</button></div>
+                                                <div class="option-button"><button class="decline">Decline</button></div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a><i class="fas fa-user-plus"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="search">
+            <label>
+                <input type="text" placeholder="Search...">
+                <button type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </label>
+        </div>
+
+        <ul class="friends">
+            <li>
+                <img src="img/spider.jpg" alt="profile-picture">
+                <h1>Preston</h1>
+                <h2>in lobby</h2>
+            </li>
+
+            <li>
+                <img src="img/spider.jpg" alt="profile-picture">
+                <h1>Jack</h1>
+                <h2>in game</h2>
+            </li>
+
+            <li>
+                <img src="img/spider.jpg" alt="profile-picture">
+                <h1>Steve</h1>
+                <h2>in game</h2>
+            </li>
+
+
+            <li>
+                <img src="img/spider.jpg" alt="profile-picture">
+                <h1>Jack</h1>
+                <h2>in game</h2>
+            </li>
+
+            <li>
+                <img src="img/spider.jpg" alt="profile-picture">
+                <h1>Jack</h1>
+                <h2>in game</h2>
+            </li>
+
+            <li>
+                <img src="img/spider.jpg" alt="profile-picture">
+                <h1>Jack</h1>
+                <h2>in game</h2>
+            </li>
+
+
+            <li>
+                <img src="img/spider.jpg" alt="profile-picture">
+                <h1>Jack</h1>
+                <h2>in game</h2>
+            </li>
+        </ul>
+
+        <div class="friend-footer">
+            <a href="#" id="chatLink" class="chat-button"><i class="fas fa-comment-alt"></i></a>
+        </div>
+    </div>
+
+    <div id="chatBox">
+        <a href="#" id="chatClose"><i class="far fa-window-minimize"></i></a>
+        <div class="chat-friends">
+            <ul>
+                <li>Preston</li>
+                <li>Jack</li>
+                <li>Steve</li>
+            </ul>
+        </div>
+        <div class="chat-header">
+            <p id="messenger">Preston</p>
+        </div>
+        <div class="chat-messages">
+            <ul>
+                <li class="received">
+                    <span class="date">2/24/2020 9:33pm</span>
+                    <br>
+                    <b>Preston</b>
+                    <p>Yo what's up man</p>
+                </li>
+
+                <li class="sent">
+                    <span class="date">2/24/2020 9:35pm</span>
+                    <br>
+                    <b>LONG USERNAME</b>
+                    <p>hello preston</p>
+                </li>
+
+                <li class="sent">
+                    <span class="date">2/24/2020 9:35pm</span>
+                    <br>
+                    <b>LONG USERNAME</b>
+                    <p>hello preston</p>
+                </li>
+
+                <li class="sent">
+                    <span class="date">2/24/2020 9:35pm</span>
+                    <br>
+                    <b>LONG USERNAME</b>
+                    <p>hello preston</p>
+                </li>
+
+                <li class="sent">
+                    <span class="date">2/24/2020 9:35pm</span>
+                    <br>
+                    <b>LONG USERNAME</b>
+                    <p>hello preston</p>
+                </li>
+                <li class="sent">
+                    <span class="date">2/24/2020 9:35pm</span>
+                    <br>
+                    <b>LONG USERNAME</b>
+                    <p>hello preston</p>
+                </li>
+
+                <li class="sent">
+                    <span class="date">2/24/2020 9:35pm</span>
+                    <br>
+                    <b>LONG USERNAME</b>
+                    <p>hello preston</p>
+                </li>
+            </ul>
+        </div>
+        <div class="chat-input">
+            <label>
+                <input type="text" placeholder="Message...">
+            </label>
+            <button type="submit">Send</button>
+        </div>
+    </div>
 
     <!--BEGIN MAIN NAVIGATION-->
     <nav class="main-nav">
@@ -71,7 +290,7 @@
         <div class="user-info">
             <div class="avatar">
                 <a href="#">
-                    <img alt="avatar1" src="assets/images/avatar2.png">
+                    <img alt="avatar1" src="img/avatar2.png">
                     <span>Sandy Liu</span>
                 </a>
             </div>
@@ -110,7 +329,7 @@
     <div class="slide-show">
         <div class="slide-image">
             <a href="#">
-                <img alt="image1" src="assets/images/sample-image1.png">
+                <img alt="image1" src="img/sample-image1.png">
             </a>
             <a class="slide-prev"><i class="fas fa-angle-left"></i></a>
             <a class="slide-next"><i class="fas fa-angle-right"></i></a>
@@ -166,7 +385,7 @@
             <div class="product-container">
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar1" src="assets/images/avatar1.png">
+                        <img alt="avatar1" src="img/avatar1.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -178,7 +397,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar1" src="assets/images/avatar1.png">
+                        <img alt="avatar1" src="img/avatar1.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -190,7 +409,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar1" src="assets/images/avatar1.png">
+                        <img alt="avatar1" src="img/avatar1.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -202,7 +421,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar1" src="assets/images/avatar1.png">
+                        <img alt="avatar1" src="img/avatar1.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -214,7 +433,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar1" src="assets/images/avatar1.png">
+                        <img alt="avatar1" src="img/avatar1.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -226,7 +445,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar1" src="assets/images/avatar1.png">
+                        <img alt="avatar1" src="img/avatar1.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -238,7 +457,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar1" src="assets/images/avatar1.png">
+                        <img alt="avatar1" src="img/avatar1.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -250,7 +469,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar1" src="assets/images/avatar1.png">
+                        <img alt="avatar1" src="img/avatar1.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -262,7 +481,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar1" src="assets/images/avatar1.png">
+                        <img alt="avatar1" src="img/avatar1.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -274,7 +493,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar1" src="assets/images/avatar1.png">
+                        <img alt="avatar1" src="img/avatar1.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -298,7 +517,7 @@
             <div class="product-container">
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar2" src="assets/images/avatar2.png">
+                        <img alt="avatar2" src="img/avatar2.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -310,7 +529,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar2" src="assets/images/avatar2.png">
+                        <img alt="avatar2" src="img/avatar2.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -322,7 +541,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar2" src="assets/images/avatar2.png">
+                        <img alt="avatar2" src="img/avatar2.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -334,7 +553,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar2" src="assets/images/avatar2.png">
+                        <img alt="avatar2" src="img/avatar2.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -346,7 +565,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar2" src="assets/images/avatar2.png">
+                        <img alt="avatar2" src="img/avatar2.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -358,7 +577,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar2" src="assets/images/avatar2.png">
+                        <img alt="avatar2" src="img/avatar2.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -370,7 +589,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar2" src="assets/images/avatar2.png">
+                        <img alt="avatar2" src="img/avatar2.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -382,7 +601,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar2" src="assets/images/avatar2.png">
+                        <img alt="avatar2" src="img/avatar2.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -394,7 +613,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar2" src="assets/images/avatar2.png">
+                        <img alt="avatar2" src="img/avatar2.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -406,7 +625,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar2" src="assets/images/avatar2.png">
+                        <img alt="avatar2" src="img/avatar2.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -430,7 +649,7 @@
             <div class="product-container">
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar3" src="assets/images/avatar3.png">
+                        <img alt="avatar3" src="img/avatar3.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -442,7 +661,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar3" src="assets/images/avatar3.png">
+                        <img alt="avatar3" src="img/avatar3.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -454,7 +673,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar3" src="assets/images/avatar3.png">
+                        <img alt="avatar3" src="img/avatar3.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -466,7 +685,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar3" src="assets/images/avatar3.png">
+                        <img alt="avatar3" src="img/avatar3.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -478,7 +697,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar3" src="assets/images/avatar3.png">
+                        <img alt="avatar3" src="img/avatar3.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -490,7 +709,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar3" src="assets/images/avatar3.png">
+                        <img alt="avatar3" src="img/avatar3.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -502,7 +721,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar3" src="assets/images/avatar3.png">
+                        <img alt="avatar3" src="img/avatar3.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -514,7 +733,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar3" src="assets/images/avatar3.png">
+                        <img alt="avatar3" src="img/avatar3.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -526,7 +745,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar3" src="assets/images/avatar3.png">
+                        <img alt="avatar3" src="img/avatar3.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -538,7 +757,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar3" src="assets/images/avatar3.png">
+                        <img alt="avatar3" src="img/avatar3.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -562,7 +781,7 @@
             <div class="product-container">
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar4" src="assets/images/avatar4.png">
+                        <img alt="avatar4" src="img/avatar4.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -574,7 +793,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar4" src="assets/images/avatar4.png">
+                        <img alt="avatar4" src="img/avatar4.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -586,7 +805,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar4" src="assets/images/avatar4.png">
+                        <img alt="avatar4" src="img/avatar4.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -598,7 +817,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar4" src="assets/images/avatar4.png">
+                        <img alt="avatar4" src="img/avatar4.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -610,7 +829,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar4" src="assets/images/avatar4.png">
+                        <img alt="avatar4" src="img/avatar4.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -622,7 +841,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar4" src="assets/images/avatar4.png">
+                        <img alt="avatar4" src="img/avatar4.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -634,7 +853,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar4" src="assets/images/avatar4.png">
+                        <img alt="avatar4" src="img/avatar4.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -646,7 +865,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar4" src="assets/images/avatar4.png">
+                        <img alt="avatar4" src="img/avatar4.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -658,7 +877,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar4" src="assets/images/avatar4.png">
+                        <img alt="avatar4" src="img/avatar4.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -670,7 +889,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar4" src="assets/images/avatar4.png">
+                        <img alt="avatar4" src="img/avatar4.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -694,7 +913,7 @@
             <div class="product-container">
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar5" src="assets/images/avatar5.png">
+                        <img alt="avatar5" src="img/avatar5.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -706,7 +925,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar5" src="assets/images/avatar5.png">
+                        <img alt="avatar5" src="img/avatar5.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -718,7 +937,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar5" src="assets/images/avatar5.png">
+                        <img alt="avatar5" src="img/avatar5.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -730,7 +949,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar5" src="assets/images/avatar5.png">
+                        <img alt="avatar5" src="img/avatar5.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -742,7 +961,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar5" src="assets/images/avatar5.png">
+                        <img alt="avatar5" src="img/avatar5.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -754,7 +973,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar5" src="assets/images/avatar5.png">
+                        <img alt="avatar5" src="img/avatar5.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -766,7 +985,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar5" src="assets/images/avatar5.png">
+                        <img alt="avatar5" src="img/avatar5.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -778,7 +997,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar5" src="assets/images/avatar5.png">
+                        <img alt="avatar5" src="img/avatar5.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -790,7 +1009,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar5" src="assets/images/avatar5.png">
+                        <img alt="avatar5" src="img/avatar5.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
@@ -802,7 +1021,7 @@
                 </div>
                 <div class="product-card">
                     <div class="product-image">
-                        <img alt="avatar5" src="assets/images/avatar5.png">
+                        <img alt="avatar5" src="img/avatar5.png">
                         <div class="product-image-overlay"></div>
                     </div>
                     <div class="product-info">
