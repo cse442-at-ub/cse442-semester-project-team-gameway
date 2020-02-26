@@ -5,10 +5,13 @@
 1 COLORS & OPACITY
 2 BASIC SETUP
 3 NAVIGATION
-4 DEFAULT CONTENT
-5 HOMEPAGE
-6 add more..
+4 SOCIAL
+5 DEFAULT CONTENT
+6 HOMEPAGE
+7 LATTICE
+8 add more..
 -- enforce the 4 line gap between each section --
+-- enforce CSS header styling                  --
 ==============================================================*/
 
 
@@ -32,8 +35,8 @@
     --warn: #C99227;        /*Caution, Processing, Maintenance, In-Progress*/
     --warnlt: #FFC187;      /*light version, for glow effects*/
 
-    --op0: 60%;                /*Opacity: inactive for primary elements*/
-    --op0: 30%;                /*Opacity: inactive for secondary elements*/
+    --op6: 60%;                /*Opacity: inactive for primary elements*/
+    --op3: 30%;                /*Opacity: inactive for secondary elements*/
 }
 
 
@@ -76,12 +79,18 @@ body {
     height: 100%;
 }
 
-h1, h2, h3, h4 { font-weight: 700; }
+.hidden {
+    display: none;
+}
+
+/* --- 2.1 headers --- */
+h1, h2, h3, h4 { font-weight: 700; text-transform: uppercase; }
 h1 { font-size: 72px; opacity: var(--op0); }
 h2 { font-size: 36px; }
 h3 { font-size: 24px; }
 h4 { font-size: 18px; }
 
+/* --- 2.2 buttons --- */
 a:visited, a:link { color: var(--content0); text-decoration: none; }
 a:visited:hover, a:link:hover, .btn00:hover, .btn01:hover { border: solid 2px var(--content0); }
 .btn00, .btn01 { 
@@ -90,26 +99,24 @@ a:visited:hover, a:link:hover, .btn00:hover, .btn01:hover { border: solid 2px va
     border: solid 2px var(--bg1);
     display: block;
     
-	margin: auto; 
-	padding: 10px;
+    margin: auto;
+	padding: 5px 10px;
 	cursor: pointer;
-	width: 125px;
+	width: fit-content;
     text-align: center;
-    
 }
 .btn01 { 
-    border-radius: 20px;
+	background-color: var(--content1); 
+    border: 0px;
+    border-radius: 999px;
     padding: 5px;
-}
-
-.hidden {
-    display: none;
 }
 
 
 
 
 /* ===== 3 NAVIGATION ===== */
+/* --- 3.1 main navbar --- */
 nav {
     grid-column: 1 / 11;
 
@@ -118,7 +125,16 @@ nav {
     display: flex;
     flex-direction: row;
 }
+nav > a {
+    opacity: var(--op6);
+    padding: 35px;
+    cursor: pointer;
+}
+nav > a:hover, nav > a:first-of-type {
+    opacity: 100%;
+}
 
+/* --- 3.2 submenu navbar --- */
 .submenu {
     grid-column: 1 / -1;
 
@@ -139,17 +155,58 @@ nav {
     border-bottom: 5px solid var(--content1);
 }
 
+
+
+
+/* ===== 4 SOCIAL ===== */
 .social {
     grid-column: 11 / -1;
     grid-row: 1/-1; 
 
     background-color: var(--bg2);
+    display: grid;
+    grid-template-rows: repeat(10, 1fr);
+    width: 100%;
+    height: 100%;
+}
+
+/* --- 4.1 personal profile --- */
+.social-me {
+    grid-row: span 2;
+
+    display: grid;
+}
+
+/* --- 4.2 search bar --- */
+.social-search {
+    grid-row: span 1;
+}
+
+/* --- 4.3 friends list --- */
+.social-friend {
+    grid-row: span 7;
+
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+/* --- 4.4 individual friend --- */
+.social-friend > div {
+    width: 100%;
+}
+.social-friend > div .icon {
+    margin: 10px;
+    padding: 4px;
+    border: 1px solid var(--ok);
+    background-color: var(--oklt);
 }
 
 
 
 
-/* ===== 4 DEFAULT CONTENT ===== */
+/* ===== 5 DEFAULT CONTENT ===== */
 main {
     grid-column: 1 / 11;
     grid-row: 2 / -1;
@@ -174,50 +231,103 @@ main > div {
 
 
 
-/* ===== 5 HOMEPAGE ===== */
+/* ===== 6 HOMEPAGE ===== */
+
+/* --- 6.1 overview section --- */
 .overview {
-    grid-template: repeat(3, 1fr) / repeat(4, 1fr);
+    grid-template: repeat(auto-fit, minmax(40%, 1fr)) / repeat(4, 1fr);
+    grid-auto-rows: 40%;
 }
-main > div > article {
+.overview > article {
     grid-column: span 3;
     grid-row: span 2;
+}
 
+/* --- 6.2 patch notes section --- */
+.patchnotes {
+    grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+    grid-auto-rows: unset;
+}
+.patchnotes > article {
+    grid-column: span 3;
+    grid-row: span 2;
+    justify-content: flex-start;
+}.patchnotes > article:hover { border: 1px solid var(--content1); }
+.patchlog-dtls { 
+    grid-column: span 3;
+    grid-row: 3 / -1;
+
+    overflow: scroll;
+}
+.patchlog-dtls > *{ padding: 15px 0px; }
+.patchlog-hstry {
+    grid-column: 4 / -1;
+    grid-row: 1 / -1;
+
+    overflow: scroll;
+}
+.patchlog-hstry .item {
+    margin: 30px 0px;
+    height: 300px;
+    text-align: left;
+}
+
+/* ===== 7 LATTICE ===== */
+/* ---/ 7.1a item container /--- */
+article, .item {
     overflow: hidden;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
     border: 1px solid var(--content1);
+    
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
-main > div > article > a, main > div > article > p{
-    padding: 50px;
-}
-.item {
+article p { width: 80%; }
+.item { 
     grid-column: span 1;
     
-    overflow: hidden;
-    
-    border: 1px solid var(--content1);
     text-align: center;
     width: 100%;
     height: 100%;
 }
+article:hover, .item:hover {
+    border: 1px solid var(--content0);
+}
+.item:last-of-type { margin-bottom: 50px; }
 
-
-
-/* ===== 6 ITEMS ===== */
-.item img, article img {
+/* ---/ 7.1b item contents /--- */
+.stack-top, .stack-bot > * {
+    position: absolute;
+    align-self: flex-end;
+    z-index: 99;
+}
+.stack-top { padding: 20px; }
+.stack-top > *:first-child { padding-bottom: 5px; }
+.stack-bot > * {
     width: 100%;
     height: 100%;
-    z-index: -999;
+    left: 0px;
 
     object-fit: cover;
-    display: block;
-    position: relative;
+    z-index: -99;
+}
+
+/* --- 7.2 toolbar --- */
+.toolbar {
+    top: 0px;
+    right: 0px;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.toolbar > a {
+    padding: 5px 10px;
+    opacity: var(--op3);
 }
 
 
 
 
-/* ===== 7 CATEGORY ===== */
+/* ===== 8 CATEGORY ===== */
 
