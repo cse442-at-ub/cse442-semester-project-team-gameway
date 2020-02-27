@@ -4,15 +4,16 @@
 /*==============================================================
 01 COLORS & OPACITY
 02 BASIC SETUP
-03 NAVIGATION
-04 SOCIAL
-05 DEFAULT CONTENT
-06 HOME
-07 PROFILE
-08 RANK
-09 STORE
-10 LATTICE
-11 add more..
+03 LOGIN/REGISTER
+04 NAVIGATION
+05 SOCIAL
+06 DEFAULT CONTENT
+07 HOME
+08 PROFILE
+09 RANK
+10 STORE
+11 LATTICE
+12 add more..
 -- enforce the 4 line gap between each section --
 -- enforce CSS header styling                  --
 ==============================================================*/
@@ -118,7 +119,234 @@ a:visited, a:link { color: var(--content0); text-decoration: none; }
 
 
 
-/* ===== 03 NAVIGATION ===== */
+/* ===== 03 LOGIN/REGISTER ===== */
+.right-bg {
+    position: fixed;
+    z-index: 0;
+    width: 50%;
+    left: 50%;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    background: var(--bg2);
+    box-shadow: -10px 0 15px rgba(0, 0, 0, 0.15);
+}
+
+.entry-page-content {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+}
+
+.entry-page-content-left {
+    position: fixed;
+    width: 50%;
+    left: 0;
+    bottom: 0;
+    right: 50%;
+    top: 0;
+}
+
+.entry-page-content-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 50%;
+    left: 50%;
+    bottom: 0;
+    right: 0;
+    top: 0;
+}
+
+.entry-switcher {
+    display: flex;
+    justify-content: center;
+    width: auto;
+    margin-top: 125px;
+    position: relative;
+    background-color: var(--bg1);
+    border-radius: 150px;
+}
+
+.toggle {
+    cursor: pointer;
+    padding: 10px 30px;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--content0);
+}
+
+#entry-switcher-button {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: var(--content1);
+    border-radius: 150px;
+    transition: .6s;
+}
+
+.entry-form-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+#signin-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    width: 70%;
+    margin: 0 15%;
+}
+
+#signin-form label {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--content0);
+}
+
+.signin-field {
+    width: 100%;
+    height: 30px;
+    border: none;
+    outline: none;
+    margin: 15px 0 30px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.51);
+}
+
+.signin-field, textarea {
+    background-color: transparent;
+}
+
+.signin-field, signin-field::placeholder {
+    font-size: 18px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    color: var(--content0);
+    line-height: 3;
+}
+
+.signin-field::placeholder {
+    color: var(--content0);
+    opacity: 50%;
+}
+
+.signin-forgot-password {
+    font-size: 18px;
+    color: var(--content0);
+    padding-bottom: 30px;
+}
+
+.signin-submit {
+    height: 30px;
+    padding: 0 15px;
+    border-radius: 150px;
+    border-style: none;
+    outline: none;
+    cursor: pointer;
+    color: var(--content0);
+    font-size: 18px;
+    font-weight: 300;
+    background-color: var(--content1);
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+#signup-form {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 70%;
+    margin: 0 15%;
+}
+
+#signup-form label {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--content0);
+}
+
+.signup-field {
+    width: 100%;
+    height: 30px;
+    border: none;
+    outline: none;
+    margin: 15px 0 30px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.51);
+}
+
+.signup-field, textarea {
+    background-color: transparent;
+}
+
+.signup-field, signup-field::placeholder {
+    font-size: 18px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    color: var(--content0);
+    line-height: 3;
+}
+
+.signup-field::placeholder {
+    color: var(--content0);
+    opacity: 50%;
+}
+
+.signup-agreement-container {
+    font-size: 18px;
+    color: var(--content0);
+    padding-bottom: 30px;
+}
+
+#signup-form .signup-agreement-container label, a{
+    font-size: 18px;
+    color: var(--content0);
+}
+
+.signup-submit {
+    height: 30px;
+    padding: 0 15px;
+    border-radius: 150px;
+    border-style: none;
+    outline: none;
+    cursor: pointer;
+    color: var(--content0);
+    font-size: 18px;
+    font-weight: 300;
+    background-color: var(--content1);
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+#signin-form {
+    left: 0;
+}
+
+#signup-form {
+    left: 100%;
+}
+
+
+
+/* ===== 04 NAVIGATION ===== */
 nav, .submenu {
     grid-column: 1 / 11;
 
@@ -130,7 +358,7 @@ nav > a, .submenu > a {
     cursor: pointer;
     padding: 10px 35px;
 }
-/* --- 3.1 main navbar --- */
+/* --- 4.1 main navbar --- */
 nav {
     background-color: var(--bg1);
     height: 100px;
@@ -178,7 +406,7 @@ nav > a:hover, nav > a:first-of-type {
     text-align: center;
 }
 
-/* --- 3.2 submenu navbar --- */
+/* --- 4.2 submenu navbar --- */
 .submenu {
     grid-column: 1 / -1;
     color: var(--content1);
@@ -198,7 +426,7 @@ nav > a:hover, nav > a:first-of-type {
 
 
 
-/* ===== 04 SOCIAL ===== */
+/* ===== 05 SOCIAL ===== */
 .social {
     grid-column: 11 / -1;
     grid-row: 1/-1;
@@ -210,19 +438,19 @@ nav > a:hover, nav > a:first-of-type {
     height: 100%;
 }
 
-/* --- 4.1 personal profile --- */
+/* --- 5.1 personal profile --- */
 .social-me {
     grid-row: span 2;
 
     display: grid;
 }
 
-/* --- 4.2 search bar --- */
+/* --- 5.2 search bar --- */
 .social-search {
     grid-row: span 1;
 }
 
-/* --- 4.3 friends list --- */
+/* --- 5.3 friends list --- */
 .social-friend {
     grid-row: span 7;
 
@@ -232,7 +460,7 @@ nav > a:hover, nav > a:first-of-type {
     overflow-x: hidden;
 }
 
-/* --- 4.4 individual friend --- */
+/* --- 5.4 individual friend --- */
 .social-friend > div {
     width: 100%;
 }
@@ -246,7 +474,7 @@ nav > a:hover, nav > a:first-of-type {
 
 
 
-/* ===== 05 DEFAULT CONTENT ===== */
+/* ===== 06 DEFAULT CONTENT ===== */
 main {
     grid-column: 1 / 11;
     grid-row: 2 / -1;
@@ -271,9 +499,9 @@ main > div {
 
 
 
-/* ===== 06 HOME ===== */
+/* ===== 07 HOME ===== */
 
-/* --- 6.1 overview section --- */
+/* --- 7.1 overview section --- */
 .overview, .store{
     grid-template: repeat(auto-fit, minmax(40%, 1fr)) / repeat(4, 1fr);
     grid-auto-rows: 40%;
@@ -283,7 +511,7 @@ main > div {
     grid-row: span 2;
 }
 
-/* --- 6.2 patch notes section --- */
+/* --- 7.2 patch notes section --- */
 .patchnotes {
     grid-template: repeat(4, 1fr) / repeat(4, 1fr);
     grid-auto-rows: unset;
@@ -315,7 +543,7 @@ main > div {
 
 
 
-/* ===== 07 PROFILE ===== */
+/* ===== 08 PROFILE ===== */
 .profile-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -459,12 +687,12 @@ main > div {
 
 
 
-/* ===== 08 RANK ===== */
+/* ===== 09 RANK ===== */
 
 
 
 
-/* ===== 09 STORE ===== */
+/* ===== 10 STORE ===== */
 .store {
     /*border-top: 2px solid var(--content0);*/
     grid-template: repeat(auto-fit, minmax(400px, 1fr)) / repeat(5, 1fr);
@@ -475,14 +703,14 @@ main > div {
     grid-template-rows: max-content;
 }
 
-/* --- 9.1 header --- */
+/* --- 10.1 header --- */
 .slide-show {
     grid-column: 1 / -1;
     grid-row: span 1;
     position: relative;
 }
 
-/* ---/ 9.2a banner /--- */
+/* ---/ 10.2a banner /--- */
 .slide-image {
     position: relative;
     padding: 0 20%;
@@ -496,7 +724,7 @@ main > div {
     opacity: 0.9;
 }
 
-/* ---/ 9.2b banner controls /--- */
+/* ---/ 10.2b banner controls /--- */
 .slide-prev {
     cursor: pointer;
     position: absolute;
@@ -547,8 +775,8 @@ main > div {
 
 
 
-/* ===== 10 LATTICE ===== */
-/* ---/ 10.1a item container /--- */
+/* ===== 11 LATTICE ===== */
+/* ---/ 11.1a item container /--- */
 article, .item {
     overflow: hidden;
     border: 1px solid var(--content1);
@@ -570,7 +798,7 @@ article:hover, .item:hover {
 }
 .item:last-of-type { margin-bottom: 50px; }
 
-/* ---/ 10.1b item contents /--- */
+/* ---/ 11.1b item contents /--- */
 .stack-top, .stack-bot > * {
     position: absolute;
     align-self: flex-end;
@@ -587,7 +815,7 @@ article:hover, .item:hover {
     z-index: -99;
 }
 
-/* --- 10.2 toolbar --- */
+/* --- 11.2 toolbar --- */
 .toolbar {
     top: 0px;
     right: 0px;
@@ -604,5 +832,5 @@ article:hover, .item:hover {
 
 
 
-/* ===== 11 CATEGORY ===== */
+/* ===== 12 CATEGORY ===== */
 
