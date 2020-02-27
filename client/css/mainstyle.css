@@ -689,6 +689,94 @@ main > div {
 
 /* ===== 09 RANK ===== */
 
+.header {
+    width: 100%;
+    padding: 20px;
+    background: #234C72;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.leaderboard-title {
+    padding: 0 40px;
+    color: #B4EDFF;
+}
+.search-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40px;
+}
+.search-player {
+    width: 405px;
+    height: 36px;
+    left: 610px;
+    top: 190px;
+    border-radius: 50px;
+    outline-width: 0;
+    border-color: transparent;
+}
+
+.categories  {
+    display: flex;
+    padding: 20px;
+    border-bottom: 2px solid #B4EDFF;
+}
+
+.categories h3 {
+    flex-basis: 25%;
+    text-align: center;
+    color: #B4EDFF;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.player-stats {
+    display: flex;
+    padding: 15px 20px;
+    border-bottom: 2px solid rgba(180, 237, 255, 0.51);
+}
+
+.player-stats div {
+    flex-basis: 25%;
+    text-align: center;
+}
+
+
+.button-section{
+    display: flex;
+    justify-content: center;
+}
+
+.load-more-btn {
+    margin-top: 100px;
+    color: #B4EDFF !important;
+    text-transform: uppercase;
+    background: #234C72;
+    padding: 20px;
+    border: 4px solid #B4EDFF !important;
+    border-radius: 150px;
+    display: inline-block;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
+.load-more-btn:focus {
+    outline:0;
+}
+
+.load-more-btn:hover {
+
+    color: #FFFFFF !important;
+    border-color: #FFFFFF !important;
+    transition: all 0.3s ease 0s;
+}
+
 
 
 
@@ -833,4 +921,3 @@ article:hover, .item:hover {
 
 
 /* ===== 12 CATEGORY ===== */
-
