@@ -2,14 +2,18 @@
 /* CSS Document */
 
 /*==============================================================
-1 COLORS & OPACITY
-2 BASIC SETUP
-3 NAVIGATION
-4 SOCIAL
-5 DEFAULT CONTENT
-6 HOMEPAGE
-7 LATTICE
-8 add more..
+01 COLORS & OPACITY
+02 BASIC SETUP
+03 LOGIN/REGISTER
+04 NAVIGATION
+05 SOCIAL
+06 DEFAULT CONTENT
+07 HOME
+08 PROFILE
+09 RANK
+10 STORE
+11 LATTICE
+12 add more..
 -- enforce the 4 line gap between each section --
 -- enforce CSS header styling                  --
 ==============================================================*/
@@ -17,7 +21,7 @@
 
 
 
-/* ===== 1 COLORS & OPACITY ===== */
+/* ===== 01 COLORS & OPACITY ===== */
 :root {
     --content0: #FFFFFF;    /*Primary: Default text/icon color*/
     --content1: #65ACEE;    /*Secondary: Sub-menus, social buttons, status*/
@@ -42,16 +46,16 @@
 
 
 
-/* ===== 2 BASIC SETUP ===== */
+/* ===== 02 BASIC SETUP ===== */
 * {
-    font-family: 'Raleway', 'Arial', 'San-Serif'; 
+    font-family: 'Raleway', 'Arial', 'San-Serif';
     text-decoration: none;
-    
+
     margin: 0px;
     padding: 0px;
-    
+
     box-sizing: border-box;
-    
+
     list-style: none;
     scroll-behavior: smooth;
     -ms-overflow-style: none;
@@ -67,7 +71,7 @@ html {
     text-decoration: none;
     text-rendering: optimizeLegibility;
     text-align: left;
-    
+
     background: var(--bg0);
     height: 100vh;
 }
@@ -85,28 +89,28 @@ body {
 
 /* --- 2.1 headers --- */
 h1, h2, h3, h4 { font-weight: 700; text-transform: uppercase; }
-h1 { font-size: 72px; opacity: var(--op0); }
-h2 { font-size: 36px; }
+h1 { font-size: 36px; }
+h2 { font-size: 72px; }
 h3 { font-size: 24px; }
 h4 { font-size: 18px; }
 
 /* --- 2.2 buttons --- */
 a:visited, a:link { color: var(--content0); text-decoration: none; }
-a:visited:hover, a:link:hover, .btn00:hover, .btn01:hover { border: solid 2px var(--content0); }
-.btn00, .btn01 { 
-	background-color: var(--bg1); 
-	color: var(--content0); 
+.btn00:hover, .btn01:hover { border: solid 2px var(--content0); }
+.btn00, .btn01 {
+    background-color: var(--bg1);
+    color: var(--content0);
     border: solid 2px var(--bg1);
     display: block;
-    
+
     margin: auto;
-	padding: 5px 10px;
-	cursor: pointer;
-	width: fit-content;
+    padding: 5px 10px;
+    cursor: pointer;
+    width: fit-content;
     text-align: center;
 }
-.btn01 { 
-	background-color: var(--content1); 
+.btn01 {
+    background-color: var(--content1);
     border: 0px;
     border-radius: 999px;
     padding: 5px;
@@ -115,39 +119,303 @@ a:visited:hover, a:link:hover, .btn00:hover, .btn01:hover { border: solid 2px va
 
 
 
-/* ===== 3 NAVIGATION ===== */
-/* --- 3.1 main navbar --- */
-nav {
+/* ===== 03 LOGIN/REGISTER ===== */
+.right-bg {
+    position: fixed;
+    z-index: 0;
+    width: 50%;
+    left: 50%;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    background: var(--bg2);
+    box-shadow: -10px 0 15px rgba(0, 0, 0, 0.15);
+}
+
+.entry-page-content {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+}
+
+.entry-page-content-left {
+    position: fixed;
+    width: 50%;
+    left: 0;
+    bottom: 0;
+    right: 50%;
+    top: 0;
+}
+
+.entry-page-content-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 50%;
+    left: 50%;
+    bottom: 0;
+    right: 0;
+    top: 0;
+}
+
+.entry-switcher {
+    display: flex;
+    justify-content: center;
+    width: auto;
+    margin-top: 125px;
+    position: relative;
+    background-color: var(--bg1);
+    border-radius: 150px;
+}
+
+.toggle {
+    cursor: pointer;
+    padding: 10px 30px;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--content0);
+}
+
+#entry-switcher-button {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: var(--content1);
+    border-radius: 150px;
+    transition: .6s;
+}
+
+.entry-form-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+#signin-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    width: 70%;
+    margin: 0 15%;
+}
+
+#signin-form label {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--content0);
+}
+
+.signin-field {
+    width: 100%;
+    height: 30px;
+    border: none;
+    outline: none;
+    margin: 15px 0 30px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.51);
+}
+
+.signin-field, textarea {
+    background-color: transparent;
+}
+
+.signin-field, signin-field::placeholder {
+    font-size: 18px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    color: var(--content0);
+    line-height: 3;
+}
+
+.signin-field::placeholder {
+    color: var(--content0);
+    opacity: 50%;
+}
+
+.signin-forgot-password {
+    font-size: 18px;
+    color: var(--content0);
+    padding-bottom: 30px;
+}
+
+.signin-submit {
+    height: 30px;
+    padding: 0 15px;
+    border-radius: 150px;
+    border-style: none;
+    outline: none;
+    cursor: pointer;
+    color: var(--content0);
+    font-size: 18px;
+    font-weight: 300;
+    background-color: var(--content1);
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+#signup-form {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 70%;
+    margin: 0 15%;
+}
+
+#signup-form label {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--content0);
+}
+
+.signup-field {
+    width: 100%;
+    height: 30px;
+    border: none;
+    outline: none;
+    margin: 15px 0 30px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.51);
+}
+
+.signup-field, textarea {
+    background-color: transparent;
+}
+
+.signup-field, signup-field::placeholder {
+    font-size: 18px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    color: var(--content0);
+    line-height: 3;
+}
+
+.signup-field::placeholder {
+    color: var(--content0);
+    opacity: 50%;
+}
+
+.signup-agreement-container {
+    font-size: 18px;
+    color: var(--content0);
+    padding-bottom: 30px;
+}
+
+#signup-form .signup-agreement-container label, a{
+    font-size: 18px;
+    color: var(--content0);
+}
+
+.signup-submit {
+    height: 30px;
+    padding: 0 15px;
+    border-radius: 150px;
+    border-style: none;
+    outline: none;
+    cursor: pointer;
+    color: var(--content0);
+    font-size: 18px;
+    font-weight: 300;
+    background-color: var(--content1);
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+#signin-form {
+    left: 0;
+}
+
+#signup-form {
+    left: 100%;
+}
+
+
+
+/* ===== 04 NAVIGATION ===== */
+nav, .submenu {
     grid-column: 1 / 11;
 
-    background-color: var(--bg1);
-    height: 100px;
     display: flex;
     flex-direction: row;
+    align-items: center;
+}
+nav > a, .submenu > a {
+    cursor: pointer;
+    padding: 10px 35px;
+}
+/* --- 4.1 main navbar --- */
+nav {
+    background-color: var(--bg1);
+    height: 100px;
 }
 nav > a {
     opacity: var(--op6);
     padding: 35px;
-    cursor: pointer;
 }
+
 nav > a:hover, nav > a:first-of-type {
     opacity: 100%;
 }
 
-/* --- 3.2 submenu navbar --- */
+.current {
+    background: rgba(0, 0, 0, 0.15);
+    opacity: 100%;
+}
+
+.currency {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 15px 60px 15px auto;
+    align-items: center;
+    text-align: center;
+    border-left: 1px solid rgba(136, 151, 205, 0.4);;
+    padding: 0 15px;
+}
+
+.currency i {
+    padding-right: 10px;
+}
+
+.cash {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+}
+
+.coins {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+}
+
+/* --- 4.2 submenu navbar --- */
 .submenu {
     grid-column: 1 / -1;
-
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    
-    color: var(--content1); 
+    color: var(--content1);
 }
-.submenu > h3 { 
+.submenu > h3 {
     width: fit-content;
     font-weight: 500;
     border-bottom: 2px solid var(--content1);
-    cursor: pointer; 
+    cursor: pointer;
     margin: auto;
 }
 .submenu > h3:hover {
@@ -158,10 +426,10 @@ nav > a:hover, nav > a:first-of-type {
 
 
 
-/* ===== 4 SOCIAL ===== */
+/* ===== 05 SOCIAL ===== */
 .social {
     grid-column: 11 / -1;
-    grid-row: 1/-1; 
+    grid-row: 1/-1;
 
     background-color: var(--bg2);
     display: grid;
@@ -170,19 +438,19 @@ nav > a:hover, nav > a:first-of-type {
     height: 100%;
 }
 
-/* --- 4.1 personal profile --- */
+/* --- 5.1 personal profile --- */
 .social-me {
     grid-row: span 2;
 
     display: grid;
 }
 
-/* --- 4.2 search bar --- */
+/* --- 5.2 search bar --- */
 .social-search {
     grid-row: span 1;
 }
 
-/* --- 4.3 friends list --- */
+/* --- 5.3 friends list --- */
 .social-friend {
     grid-row: span 7;
 
@@ -192,7 +460,7 @@ nav > a:hover, nav > a:first-of-type {
     overflow-x: hidden;
 }
 
-/* --- 4.4 individual friend --- */
+/* --- 5.4 individual friend --- */
 .social-friend > div {
     width: 100%;
 }
@@ -206,7 +474,7 @@ nav > a:hover, nav > a:first-of-type {
 
 
 
-/* ===== 5 DEFAULT CONTENT ===== */
+/* ===== 06 DEFAULT CONTENT ===== */
 main {
     grid-column: 1 / 11;
     grid-row: 2 / -1;
@@ -223,7 +491,7 @@ main > div {
     display: grid;
     gap: 50px 50px;
 
-    padding: 0px 50px 50px 50px;
+    padding: 0 50px 50px 50px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -231,10 +499,10 @@ main > div {
 
 
 
-/* ===== 6 HOMEPAGE ===== */
+/* ===== 07 HOME ===== */
 
-/* --- 6.1 overview section --- */
-.overview {
+/* --- 7.1 overview section --- */
+.overview, .store{
     grid-template: repeat(auto-fit, minmax(40%, 1fr)) / repeat(4, 1fr);
     grid-auto-rows: 40%;
 }
@@ -243,7 +511,7 @@ main > div {
     grid-row: span 2;
 }
 
-/* --- 6.2 patch notes section --- */
+/* --- 7.2 patch notes section --- */
 .patchnotes {
     grid-template: repeat(4, 1fr) / repeat(4, 1fr);
     grid-auto-rows: unset;
@@ -253,7 +521,7 @@ main > div {
     grid-row: span 2;
     justify-content: flex-start;
 }.patchnotes > article:hover { border: 1px solid var(--content1); }
-.patchlog-dtls { 
+.patchlog-dtls {
     grid-column: span 3;
     grid-row: 3 / -1;
 
@@ -272,20 +540,255 @@ main > div {
     text-align: left;
 }
 
-/* ===== 7 LATTICE ===== */
-/* ---/ 7.1a item container /--- */
+
+
+
+/* ===== 08 PROFILE ===== */
+.profile-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-gap: 10px;
+    width: 100%;
+    height: 100%;
+}
+.left-side, .right-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+.left-side {
+    grid-column: span 1;
+    padding: 0 5%;
+}
+.profile-search-container {
+    display: none;
+}
+.user-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.avatar-container {
+    padding: 15px 0;
+}
+.avatar-container img {
+    width: 200px;
+    height: 200px;
+    border: 5px solid #CFFFB8;
+    border-radius: 150px;
+}
+.level {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.xp-bar {
+    position: relative;
+    width: 250px;
+    height: 15px;
+    background: #264D74;
+    border: 3px solid #B4EDFF;
+    box-sizing: border-box;
+    margin: 5px 0;
+}
+.xp-progress-bar {
+    position: absolute;
+    width: 169px;
+    height: 9px;
+    background: #4E9CEA;
+}
+.status-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 30px;
+}
+.current-rank {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+}
+.current-rank img {
+    width: 200px;
+    height: 200px;
+}
+.right-side {
+    grid-column: span 2;
+    padding: 0 5%;
+}
+.right-top, .right-middle {
+    display: flex;
+    flex-direction: row;
+}
+.right-top {
+    width: 100%;
+    justify-content: space-evenly;
+}
+.right-top div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.right-middle {
+    width: 100%;
+    justify-content: space-evenly;
+    padding-top: 30px;
+}
+.achievements {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.achievement-images {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 15px;
+}
+.achievement-images img {
+    width: 75px;
+    height: 75px;
+}
+.right-bottom {
+    width: 100%;
+    padding-top: 30px;
+}
+.match-history {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*margin: 0 5%;*/
+}
+.match-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.match {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--content1);
+}
+
+
+
+
+/* ===== 09 RANK ===== */
+
+
+
+
+/* ===== 10 STORE ===== */
+.store {
+    /*border-top: 2px solid var(--content0);*/
+    grid-template: repeat(auto-fit, minmax(400px, 1fr)) / repeat(5, 1fr);
+    grid-auto-rows: 400px;
+}
+.variant2 {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: max-content;
+}
+
+/* --- 10.1 header --- */
+.slide-show {
+    grid-column: 1 / -1;
+    grid-row: span 1;
+    position: relative;
+}
+
+/* ---/ 10.2a banner /--- */
+.slide-image {
+    position: relative;
+    padding: 0 20%;
+}
+.slide-image img {
+    position: relative;
+    box-shadow: 0 12px 6px -6px rgba(0, 0, 0, 0.75);
+    width: 100%;
+}
+.slide-image img:hover {
+    opacity: 0.9;
+}
+
+/* ---/ 10.2b banner controls /--- */
+.slide-prev {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    padding-left: 10px;
+}
+.slide-next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    padding-right: 10px;
+}
+.slide-prev i, .slide-next i {
+    cursor: pointer;
+    color: #778cff;
+    font-weight: bold;
+    font-size: 3vw;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.slide-prev i:hover, .slide-next i:hover {
+    color: #ffffff;
+}
+.slide-counter {
+    display: flex;
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.dot {
+    cursor: pointer;
+    margin: 0 2px;
+    font-size: 0.75vw;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.dot:hover {
+    color: #ffffff;
+}
+
+
+
+
+/* ===== 11 LATTICE ===== */
+/* ---/ 11.1a item container /--- */
 article, .item {
     overflow: hidden;
     border: 1px solid var(--content1);
-    
+
     position: relative;
     display: flex;
     justify-content: center;
 }
 article p { width: 80%; }
-.item { 
+.item {
     grid-column: span 1;
-    
+
     text-align: center;
     width: 100%;
     height: 100%;
@@ -295,7 +798,7 @@ article:hover, .item:hover {
 }
 .item:last-of-type { margin-bottom: 50px; }
 
-/* ---/ 7.1b item contents /--- */
+/* ---/ 11.1b item contents /--- */
 .stack-top, .stack-bot > * {
     position: absolute;
     align-self: flex-end;
@@ -312,7 +815,7 @@ article:hover, .item:hover {
     z-index: -99;
 }
 
-/* --- 7.2 toolbar --- */
+/* --- 11.2 toolbar --- */
 .toolbar {
     top: 0px;
     right: 0px;
@@ -329,5 +832,5 @@ article:hover, .item:hover {
 
 
 
-/* ===== 8 CATEGORY ===== */
+/* ===== 12 CATEGORY ===== */
 
