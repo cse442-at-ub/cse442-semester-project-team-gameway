@@ -1,65 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <!--BEGIN META-->
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta content="Sandy Liu" name="author">
+    <meta charset="UTF-8">
+    <!--END META-->
 
-    <head>
-        <title>Log In or Sign Up</title>
-        <link rel="stylesheet" href="css/index.css">
-    </head>
+    <!--BEGIN TITLE-->
+    <title>Gameway | Login</title>
+    <!--END TITLE-->
 
-    <body>
+    <!--BEGIN CSS FILES-->
+    <link href="css/mainstyle.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Raleway:600,400,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <!--END CSS FILES-->
 
-        <div class="background">
-            <div class="form-section">
+    <!--BEGIN SCRIPTS-->
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/e584d861f4.js"></script>
+    <!--END SCRIPTS-->
+</head>
+<body>
+    <!--BEGIN PAGE BACKGROUND-->
+    <div class="right-bg"></div>
+    <!--END PAGE BACKGROUND-->
 
-                <div class="button-section">
-
-                    <div id="color-btn"></div>
-
-                    <button type="button" class="toggle" onclick="login()">Sign In</button>
-                    <button type="button" class="toggle" onclick="register()">Sign Up</button>
-                </div>
-
-                <form id="login" class="input-section">
-
-                    <input type="text" class="input-field" placeholder="User ID" required>
-                    <input type="password" class="input-field" placeholder="Enter Password" required>
-                    <input type="checkbox" class="checkbox"><span>Remember Password</span>
-                    <button type="submit" class="submit">Sign In</button>
-
+    <!--BEGIN PAGE CONTENT-->
+    <div class="entry-page-content">
+        <div class="entry-page-content-left">
+            TODO
+        </div>
+        <div class="entry-page-content-right">
+            <div class="entry-switcher">
+                <div id="entry-switcher-button"></div>
+                <button type="button" class="toggle" onclick="login()">Sign In</button>
+                <button type="button" class="toggle" onclick="register()">Sign Up</button>
+            </div>
+            <div class="entry-form-container">
+                <form id="signin-form" action="/signin" method="post" enctype="multipart/form-data">
+                    <label for="signin-username">Username</label>
+                    <input class="signin-field" id="signin-username" type="text" name="username" placeholder="Enter your username">
+                    <label for="signin-password">Password</label>
+                    <input class="signin-field" id="signin-password" type="text" name="password" placeholder="Enter your password">
+                    <a class="signin-forgot-password" href="#">Forgot Password</a>
+                    <input class="signin-submit" type="submit" value="SIGN IN">
                 </form>
 
-                <form id="register" class="input-section">
-
-                    <input type="text" class="input-field" placeholder="User ID" required>
-                    <input type="email" class="input-field" placeholder="Email" required>
-                    <input type="password" class="input-field" placeholder="Enter Password" required>
-                    <input type="password" class="input-field" placeholder="Re-enter Password" required>
-                    <input type="checkbox" class="checkbox"><span>I agree to the terms of service.</span>
-                    <button type="submit" class="submit">Sign Up</button>
-
+                <form id="signup-form" action="/signup" method="post">
+                    <label for="signup-username">Username</label>
+                    <input class="signup-field" id="signup-username" type="text" name="username" placeholder="Enter your username">
+                    <label for="signup-email">Email</label>
+                    <input class="signup-field" id="signup-email" type="text" name="email" placeholder="Enter your email">
+                    <label for="signup-password">Password</label>
+                    <input class="signup-field" id="signup-password" type="text" name="password" placeholder="Enter your desired password">
+                    <label for="signup-reenter-password">Re-enter Password</label>
+                    <input class="signup-field" id="signup-reenter-password" type="text" name="reenter-password" placeholder="Re-enter your desired password">
+                    <div class="signup-agreement-container">
+                        <input type="checkbox" id="signup-agree" name="agree" value="agree">
+                        <label for="signup-agree">I Agree to the <a href="#">Terms of Service</a></label>
+                    </div>
+                    <input class="signup-submit" type="submit" value="SIGN UP">
                 </form>
-
             </div>
 
         </div>
+    </div>
+    <!--END PAGE CONTENT-->
 
     <script>
-        var x = document.getElementById("login");
-        var y = document.getElementById("register");
-        var z = document.getElementById("color-btn");
+        var x = document.getElementById("signin-form");
+        var y = document.getElementById("signup-form");
+        var z = document.getElementById("entry-switcher-button");
 
-        function register() {
-            x.style.left = "-450px";
-            y.style.left = "50px";
-            z.style.left = "110px";
-        }
         function login() {
-            x.style.left = "50px";
-            y.style.left = "450px";
+            x.style.left = "0";
+            y.style.left = "100%";
             z.style.left = "0px";
         }
+
+        function register() {
+            x.style.left = "-100%";
+            y.style.left = "0";
+            z.style.left = "50%";
+        }
     </script>
-
 </body>
-
 </html>
