@@ -246,6 +246,17 @@ a:visited, a:link { color: var(--content0); text-decoration: none; }
     opacity: 50%;
 }
 
+.remember-pw-container {
+    font-size: 18px;
+    color: var(--content0);
+    padding-bottom: 30px;
+}
+
+#signin-form .remember-pw-container label, a{
+    font-size: 18px;
+    color: var(--content0);
+}
+
 .signin-forgot-password {
     font-size: 18px;
     color: var(--content0);
