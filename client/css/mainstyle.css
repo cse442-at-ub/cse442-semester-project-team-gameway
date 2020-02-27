@@ -357,6 +357,7 @@ nav, .submenu {
 nav > a, .submenu > a {
     cursor: pointer;
     padding: 10px 35px;
+    height: 100%;
 }
 /* --- 4.1 main navbar --- */
 nav {
@@ -364,8 +365,10 @@ nav {
     height: 100px;
 }
 nav > a {
+    display: flex;
+    align-items: center;
     opacity: var(--op6);
-    padding: 35px;
+    padding: 0 35px;
 }
 
 nav > a:hover, nav > a:first-of-type {
