@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a1010952-b6ee-4750-add0-b663a078c264" name="Default Changelist" comment="" />
+    <list default="true" id="a1010952-b6ee-4750-add0-b663a078c264" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client/js/databse.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,7 +14,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -53,7 +56,7 @@
       <workItem from="1582843862093" duration="267000" />
       <workItem from="1582914449514" duration="355000" />
       <workItem from="1582948647741" duration="198000" />
-      <workItem from="1583510587227" duration="1951000" />
+      <workItem from="1583510587227" duration="2426000" />
     </task>
     <task id="LOCAL-00001" summary="#109 Created Database File">
       <created>1583521713487</created>
@@ -62,7 +65,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583521713487</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Create Develop">
+      <created>1583521856171</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1583521856171</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -83,6 +93,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="#109 Created Database File" />
-    <option name="LAST_COMMIT_MESSAGE" value="#109 Created Database File" />
+    <MESSAGE value="Create Develop" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create Develop" />
   </component>
 </project>
