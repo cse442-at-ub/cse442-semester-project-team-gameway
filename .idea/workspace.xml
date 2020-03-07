@@ -11,7 +11,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -53,7 +53,7 @@
       <workItem from="1582843862093" duration="267000" />
       <workItem from="1582914449514" duration="355000" />
       <workItem from="1582948647741" duration="198000" />
-      <workItem from="1583510587227" duration="1951000" />
+      <workItem from="1583510587227" duration="2609000" />
     </task>
     <task id="LOCAL-00001" summary="#109 Created Database File">
       <created>1583521713487</created>
@@ -62,7 +62,21 @@
       <option name="project" value="LOCAL" />
       <updated>1583521713487</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Create Develop">
+      <created>1583521856171</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1583521856171</updated>
+    </task>
+    <task id="LOCAL-00003" summary="#109 Create database.js file">
+      <created>1583522330956</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1583522330956</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -83,6 +97,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="#109 Created Database File" />
-    <option name="LAST_COMMIT_MESSAGE" value="#109 Created Database File" />
+    <MESSAGE value="Create Develop" />
+    <MESSAGE value="#109 Create database.js file" />
+    <option name="LAST_COMMIT_MESSAGE" value="#109 Create database.js file" />
   </component>
 </project>
