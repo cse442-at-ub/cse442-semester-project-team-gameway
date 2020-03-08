@@ -276,7 +276,7 @@
                         <% for(var gameRoom of results) { %>
                             <tr>
                                 <th scope="row" class="col-6"><%=gameRoom.RoomName%></th>
-                                <td class="col-2 party center"><%=gameRoom.GameMode%></td>
+                                <td class="col-2 <%=gameRoom.GameMode.toLowerCase()%> center"><%=gameRoom.GameMode%></td>
                                 <td class="col-2 center"><%=gameRoom.PlayerCount%>/<%=gameRoom.PlayerCapacity%></td>
                                 <td class="col-2 center">
                                     <form action="game-room.html">
