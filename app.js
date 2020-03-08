@@ -71,7 +71,7 @@ app.get('/_input_user', (req, res) => {
 });
 
 <!--Get All Game Rooms-->
-app.get('/room-list.html', (req, res) => {
+app.get('/room-list', (req, res) => {
     let initial = dbName;
     let sql = "SELECT *  FROM `GameRoom` WHERE `isStarted` = 0 AND `isOver` = 0";
     db.query(initial, (err, result) => {
@@ -92,7 +92,7 @@ app.get('/_create_room', (req, res) => {
     let newRoom = {
         HostID: 0,
         RoomName: '',
-        IsPrivate: 0,
+        IsPrivate: 1,
         Password: '',
         GameMode: '',
         PlayerCount: 0,
