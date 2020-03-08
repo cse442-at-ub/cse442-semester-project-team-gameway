@@ -3,8 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="e28cd179-e0f0-4469-817e-0956152535e5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/game-room.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/game-room.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/rank.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/rank.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/room-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/room-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/store.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/store.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/room-list.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/room-list.ejs" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,6 +51,18 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -57,6 +78,7 @@
       <workItem from="1582948647741" duration="198000" />
       <workItem from="1583510587227" duration="2609000" />
       <workItem from="1583686618087" duration="287000" />
+      <workItem from="1583701480585" duration="4273000" />
     </task>
     <task id="LOCAL-00001" summary="#109 Created Database File">
       <created>1583521713487</created>
@@ -86,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583660879033</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="#80 Create Room User Story Branch">
+      <created>1583702527736</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1583702527736</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,20 +139,15 @@
     <MESSAGE value="Create Develop" />
     <MESSAGE value="#109 Create database.js file" />
     <MESSAGE value="Finish Implementing Displaying Rooms From Database&#10;# If applied, this commit will add code to display room from the database. Also will add EJS as dependency for templating engine.&#10;&#10;# This change is needed so that we can display rooms that are in the database instead of placeholders&#10;&#10;# This address the issue of displaying created rooms in the game list page table&#10;&#10;# Links to any relevant issues: #97" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finish Implementing Displaying Rooms From Database&#10;# If applied, this commit will add code to display room from the database. Also will add EJS as dependency for templating engine.&#10;&#10;# This change is needed so that we can display rooms that are in the database instead of placeholders&#10;&#10;# This address the issue of displaying created rooms in the game list page table&#10;&#10;# Links to any relevant issues: #97" />
+    <MESSAGE value="#80 Create Room User Story Branch" />
+    <option name="LAST_COMMIT_MESSAGE" value="#80 Create Room User Story Branch" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1512" y="434" key="Vcs.Push.Dialog.v2" timestamp="1583660954362">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="1512" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1583660954362" />
-    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog" timestamp="1583642395514">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1583642395514" />
-    <state x="1520" y="478" key="git4idea.merge.GitPullDialog" timestamp="1583686694533">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="1520" y="478" key="git4idea.merge.GitPullDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1583686694533" />
+    <state x="1512" y="434" key="Vcs.Push.Dialog.v2" />
+    <state x="1512" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" />
+    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog" />
+    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" />
+    <state x="1520" y="478" key="git4idea.merge.GitPullDialog" />
+    <state x="1520" y="478" key="git4idea.merge.GitPullDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" />
   </component>
 </project>

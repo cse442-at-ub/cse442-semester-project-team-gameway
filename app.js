@@ -87,17 +87,24 @@ app.get('/room-list', (req, res) => {
 
 <!--Insert New Game Room-->
 app.get('/_create_room', (req, res) => {
+    let roomName = document.getElementById("room-name").value;
+    let isPrivate = document.getElementById("private").value;
+    let password = document.getElementById("password").value;
+    let gameMode = document.getElementById("game-mode").value;
+    let playerCapacity = document.getElementById("player-capacity").value;
+    let currentGame = 'none';
+
     let initial = dbName;
 
     let newRoom = {
         HostID: 0,
-        RoomName: '',
-        IsPrivate: 1,
-        Password: '',
-        GameMode: '',
-        PlayerCount: 0,
-        PlayerCapacity: 0,
-        CurrentGame: '',
+        RoomName: roomName,
+        IsPrivate: isPrivate,
+        Password: password,
+        GameMode: gameMode,
+        PlayerCount: 1,
+        PlayerCapacity: playerCapacity,
+        CurrentGame: currentGame,
         isStarted: 0,
         isOver: 0,
     };
@@ -118,26 +125,23 @@ app.get('/_create_room', (req, res) => {
 <!--End Of Database Functions-->
 
 <!--Start Page Routing-->
-app.get('/home.html', function (req, res) {
-    res.sendFile(__dirname + '/client/home.html');
-});
-app.get('/index.html', function (req, res) {
+app.get('/', function (req, res) {
     res.sendFile(__dirname + '/client/index.html');
 });
-app.get('/profile.html', function (req, res) {
+app.get('/home', function (req, res) {
+    res.sendFile(__dirname + '/client/home.html');
+});
+app.get('/profile', function (req, res) {
     res.sendFile(__dirname + '/client/profile.html');
 });
-app.get('/rank.html', function (req, res) {
+app.get('/rank', function (req, res) {
     res.sendFile(__dirname + '/client/rank.html');
 });
-app.get('/store.html', function (req, res) {
+app.get('/store', function (req, res) {
     res.sendFile(__dirname + '/client/store.html');
 });
 app.get('/css/mainstyle.css', function (req, res) {
     res.sendFile(__dirname + '/client/css/mainstyle.css');
-});
-app.get('/css/queries.css', function (req, res) {
-    res.sendFile(__dirname + '/client/css/queries.css');
 });
 app.get('/css/room-list.css', function (req, res) {
     res.sendFile(__dirname + '/client/css/room-list.css');
@@ -153,9 +157,7 @@ app.get('/js/chatbox.js', function (req, res) {
 });
 <!--End Page Routing-->
 
-<!--Start Of Website-->
-
-<!--Start Website-->
+<!--START WEBSITE-->
 app.listen('3000', () => {
     console.log('Server Started on Port 3000')
 });
