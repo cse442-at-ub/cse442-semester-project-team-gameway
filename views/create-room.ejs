@@ -52,13 +52,12 @@
         <form action="/_create_room" method="post">
             <!-- Naming room -->
             <label for="room-name"></label>
-            <input id="room-name" name="room-name" type="text" placeholder="Enter room title">
+            <input type="text" name="room-name" id="room-name" placeholder="Enter room title">
 
             <br>
             <!-- Setting room size -->
-            <label for="player-count">Amount of Players</label>
-            <select id="player-count" name="player-count">
-                <option value="1">1</option>
+            <label for="player-capacity">Amount of Players</label>
+            <select name="player-capacity" id="player-capacity">
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
@@ -67,7 +66,7 @@
             <br>
             <!-- Selecting game -->
             <label for="game-mode">Select Game Mode</label>
-            <select id="game-mode" name="game-mode">
+            <select name="game-mode" id="game-mode">
                 <option value="party">Party</option>
                 <option value="Co-op">Co-op</option>
                 <option value="game3">game three</option>
@@ -78,12 +77,11 @@
             <!-- Room lock -->
             <label for="private">
                 Private Room?
-                <input id="private" type="checkbox" name="private">
+                <input type="checkbox" name="private" id="private">
             </label>
 
-            <label for="password">
-                <input id="password" name="password" type="text" placeholder="Enter Room Password">
-            </label>
+            <label for="password"></label>
+            <input type="text" name="password" id="password" placeholder="Enter Room Password">
 
             <br>
             <!-- Confirm room creation -->

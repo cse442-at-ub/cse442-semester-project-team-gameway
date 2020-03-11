@@ -5,6 +5,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const { check, validationResult, matchedData } = require('express-validator');
 const dbName = "USE cse442_542_2020_spring_teamc_db; ";
+const jsonParser = bodyParser.json();
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 <!--Database Connection-->
 var db = mysql.createConnection({
@@ -87,24 +89,34 @@ app.get('/room-list', (req, res) => {
     });
 });
 
-<!--Insert New Game Room-->
-app.post('/_create_room', (req, res) => {
-    const data = matchedData(req);
-    console.log('Sanitized:', data);
-
+<!--Create Room Page-->
+app.get('/create', (req, res) => {
     res.render('create-room');
+});
 
-    /*
+<!--Insert New Game Room-->
+app.post('/_create_room', urlencodedParser, (req, res) => {
+    console.log(req.body);
+    let isPrivate;
+
+    if(req.body["private"] === 'on') {
+        isPrivate = 1;
+    }
+    else {
+        isPrivate = 0;
+    }
+
+
     let initial = dbName;
     let newRoom = {
         HostID: 0,
-        RoomName: roomName,
+        RoomName: req.body["room-name"],
         IsPrivate: isPrivate,
-        Password: password,
-        GameMode: gameMode,
+        Password: req.body["password"],
+        GameMode: req.body["game-mode"],
         PlayerCount: 1,
-        PlayerCapacity: playerCapacity,
-        CurrentGame: currentGame,
+        PlayerCapacity: req.body["player-capacity"],
+        CurrentGame: 'none',
         isStarted: 0,
         isOver: 0,
     };
@@ -117,14 +129,14 @@ app.post('/_create_room', (req, res) => {
 
     let query = db.query(sql, newRoom, (err, result) => {
         if(err) throw err;
-        console.log("Game Room Created");
-        res.send("Game Room Added")
-    })*/
+    });
+
+    res.redirect('/game');
 });
 
-<!-- Create Room Page -->
-app.get('/create', (req, res) => {
-    res.render('create-room');
+<!--Game Room Page-->
+app.get('/game', (req, res) => {
+    res.render('game-room');
 });
 
 <!--End Of Database Functions-->
@@ -160,6 +172,9 @@ app.get('/css/room-list.css', function (req, res) {
 app.get('/css/sidebar.css', function (req, res) {
     res.sendFile(__dirname + '/client/css/sidebar.css');
 });
+app.get('/css/game-room.css', function (req, res) {
+    res.sendFile(__dirname + '/client/css/game-room.css');
+});
 app.get('/js/notifications.js', function (req, res) {
     res.sendFile(__dirname + '/client/js/notifications.js');
 });
@@ -173,3 +188,69 @@ app.listen('3000', () => {
     console.log('Server Started on Port 3000')
 });
 <!--End Of Website-->
+
+app.get('/reset_db', (req, res) => {
+    let initial = dbName;
+
+    let sql = "DELETE FROM BlockedUsers";
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    let query = db.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log("Table Deleted");
+    });
+
+    sql = "DELETE FROM ChatMessage";
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    query = db.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log("Table Deleted");
+    });
+
+    sql = "DELETE FROM Friendship";
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    query = db.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log("Table Deleted");
+    });
+
+    sql = "DELETE FROM GameRoom";
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    query = db.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log("Table Deleted");
+    });
+
+    sql = "DELETE FROM User";
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    query = db.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log("Table Deleted");
+    });
+
+    sql = "DELETE FROM UserToRoom";
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    query = db.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log("Table Deleted");
+    });
+
+    res.send("Database Cleared")
+});
