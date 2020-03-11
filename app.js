@@ -2,6 +2,8 @@
 const express = require('express');
 const mysql = require('mysql');
 const app = express();
+const bodyParser = require('body-parser');
+const { check, validationResult, matchedData } = require('express-validator');
 const dbName = "USE cse442_542_2020_spring_teamc_db; ";
 
 <!--Database Connection-->
@@ -86,16 +88,14 @@ app.get('/room-list', (req, res) => {
 });
 
 <!--Insert New Game Room-->
-app.get('/_create_room', (req, res) => {
-    let roomName = document.getElementById("room-name").value;
-    let isPrivate = document.getElementById("private").value;
-    let password = document.getElementById("password").value;
-    let gameMode = document.getElementById("game-mode").value;
-    let playerCapacity = document.getElementById("player-capacity").value;
-    let currentGame = 'none';
+app.post('/_create_room', (req, res) => {
+    const data = matchedData(req);
+    console.log('Sanitized:', data);
 
+    res.render('create-room');
+
+    /*
     let initial = dbName;
-
     let newRoom = {
         HostID: 0,
         RoomName: roomName,
@@ -119,7 +119,12 @@ app.get('/_create_room', (req, res) => {
         if(err) throw err;
         console.log("Game Room Created");
         res.send("Game Room Added")
-    })
+    })*/
+});
+
+<!-- Create Room Page -->
+app.get('/create', (req, res) => {
+    res.render('create-room');
 });
 
 <!--End Of Database Functions-->
@@ -127,6 +132,12 @@ app.get('/_create_room', (req, res) => {
 <!--Start Page Routing-->
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/client/index.html');
+});
+app.get('/favicon.ico', function (req, res) {
+    res.sendFile(__dirname + '/favicon.ico');
+});
+app.get('/app.js', function (req, res) {
+    res.sendFile(__dirname + '/app.js');
 });
 app.get('/home', function (req, res) {
     res.sendFile(__dirname + '/client/home.html');

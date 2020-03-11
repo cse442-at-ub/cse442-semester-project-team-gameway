@@ -1,24 +1,21 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="#">
-    <meta name="keywords" content="#">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="#">
+        <meta name="keywords" content="#">
 
-    <link rel="stylesheet" href="css/mainstyle.css" type="text/css">
-    <link rel="stylesheet" href="css/queries.css" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,500,600,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
-          integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    <script src="../app.js"></script>
-    <script type="module" src="app.js"></script>
+        <link rel="stylesheet" href="css/mainstyle.css" type="text/css">
+        <link rel="stylesheet" href="css/queries.css" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:300,500,600,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+              integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+        <title>Gameway | Create Room</title>
+    </head>
 
-    <title>Gameway | Create Room</title>
-</head>
-
-<body>
+    <body>
     <!--BEGIN MAIN NAVIGATION-->
     <nav class="main-nav">
         <a href="room-list">
@@ -54,9 +51,8 @@
     <main>
         <form action="/_create_room" method="post">
             <!-- Naming room -->
-            <label for="room-name">
-                <input id="room-name" name="room-name" type="text" placeholder="Enter room title">
-            </label>
+            <label for="room-name"></label>
+            <input id="room-name" name="room-name" type="text" placeholder="Enter room title">
 
             <br>
             <!-- Setting room size -->
@@ -96,6 +92,6 @@
             <button id="goBack" onclick="">go back</button>
         </form>
     </main>
-</body>
+    </body>
 
 </html>

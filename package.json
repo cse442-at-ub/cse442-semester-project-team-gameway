@@ -13,8 +13,11 @@
     "express": "^4.17.1",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.2",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "body-parser": "latest"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "express-validator": "^6.4.0"
+  },
   "description": ""
 }
