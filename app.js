@@ -2,7 +2,11 @@
 const express = require('express');
 const mysql = require('mysql');
 const app = express();
+const bodyParser = require('body-parser');
+const { check, validationResult, matchedData } = require('express-validator');
 const dbName = "USE cse442_542_2020_spring_teamc_db; ";
+const jsonParser = bodyParser.json();
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 <!--Database Connection-->
 var db = mysql.createConnection({
@@ -71,7 +75,7 @@ app.get('/_input_user', (req, res) => {
 });
 
 <!--Get All Game Rooms-->
-app.get('/room-list.html', (req, res) => {
+app.get('/room-list', (req, res) => {
     let initial = dbName;
     let sql = "SELECT *  FROM `GameRoom` WHERE `isStarted` = 0 AND `isOver` = 0";
     db.query(initial, (err, result) => {
@@ -85,19 +89,34 @@ app.get('/room-list.html', (req, res) => {
     });
 });
 
-<!--Insert New Game Room-->
-app.get('/_create_room', (req, res) => {
-    let initial = dbName;
+<!--Create Room Page-->
+app.get('/create', (req, res) => {
+    res.render('create-room');
+});
 
+<!--Insert New Game Room-->
+app.post('/_create_room', urlencodedParser, (req, res) => {
+    console.log(req.body);
+    let isPrivate;
+
+    if(req.body["private"] === 'on') {
+        isPrivate = 1;
+    }
+    else {
+        isPrivate = 0;
+    }
+
+
+    let initial = dbName;
     let newRoom = {
         HostID: 0,
-        RoomName: '',
-        IsPrivate: 0,
-        Password: '',
-        GameMode: '',
-        PlayerCount: 0,
-        PlayerCapacity: 0,
-        CurrentGame: '',
+        RoomName: req.body["room-name"],
+        IsPrivate: isPrivate,
+        Password: req.body["password"],
+        GameMode: req.body["game-mode"],
+        PlayerCount: 1,
+        PlayerCapacity: req.body["player-capacity"],
+        CurrentGame: 'none',
         isStarted: 0,
         isOver: 0,
     };
@@ -110,40 +129,51 @@ app.get('/_create_room', (req, res) => {
 
     let query = db.query(sql, newRoom, (err, result) => {
         if(err) throw err;
-        console.log("Game Room Created");
-        res.send("Game Room Added")
-    })
+    });
+
+    res.redirect('/game');
+});
+
+<!--Game Room Page-->
+app.get('/game', (req, res) => {
+    res.render('game-room');
 });
 
 <!--End Of Database Functions-->
 
 <!--Start Page Routing-->
-app.get('/home.html', function (req, res) {
-    res.sendFile(__dirname + '/client/home.html');
-});
-app.get('/index.html', function (req, res) {
+app.get('/', function (req, res) {
     res.sendFile(__dirname + '/client/index.html');
 });
-app.get('/profile.html', function (req, res) {
+app.get('/favicon.ico', function (req, res) {
+    res.sendFile(__dirname + '/favicon.ico');
+});
+app.get('/app.js', function (req, res) {
+    res.sendFile(__dirname + '/app.js');
+});
+app.get('/home', function (req, res) {
+    res.sendFile(__dirname + '/client/home.html');
+});
+app.get('/profile', function (req, res) {
     res.sendFile(__dirname + '/client/profile.html');
 });
-app.get('/rank.html', function (req, res) {
+app.get('/rank', function (req, res) {
     res.sendFile(__dirname + '/client/rank.html');
 });
-app.get('/store.html', function (req, res) {
+app.get('/store', function (req, res) {
     res.sendFile(__dirname + '/client/store.html');
 });
 app.get('/css/mainstyle.css', function (req, res) {
     res.sendFile(__dirname + '/client/css/mainstyle.css');
-});
-app.get('/css/queries.css', function (req, res) {
-    res.sendFile(__dirname + '/client/css/queries.css');
 });
 app.get('/css/room-list.css', function (req, res) {
     res.sendFile(__dirname + '/client/css/room-list.css');
 });
 app.get('/css/sidebar.css', function (req, res) {
     res.sendFile(__dirname + '/client/css/sidebar.css');
+});
+app.get('/css/game-room.css', function (req, res) {
+    res.sendFile(__dirname + '/client/css/game-room.css');
 });
 app.get('/js/notifications.js', function (req, res) {
     res.sendFile(__dirname + '/client/js/notifications.js');
@@ -153,10 +183,74 @@ app.get('/js/chatbox.js', function (req, res) {
 });
 <!--End Page Routing-->
 
-<!--Start Of Website-->
-
-<!--Start Website-->
+<!--START WEBSITE-->
 app.listen('3000', () => {
     console.log('Server Started on Port 3000')
 });
 <!--End Of Website-->
+
+app.get('/reset_db', (req, res) => {
+    let initial = dbName;
+
+    let sql = "DELETE FROM BlockedUsers";
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    let query = db.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log("Table Deleted");
+    });
+
+    sql = "DELETE FROM ChatMessage";
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    query = db.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log("Table Deleted");
+    });
+
+    sql = "DELETE FROM Friendship";
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    query = db.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log("Table Deleted");
+    });
+
+    sql = "DELETE FROM GameRoom";
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    query = db.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log("Table Deleted");
+    });
+
+    sql = "DELETE FROM User";
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    query = db.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log("Table Deleted");
+    });
+
+    sql = "DELETE FROM UserToRoom";
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    query = db.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log("Table Deleted");
+    });
+
+    res.send("Database Cleared")
+});
