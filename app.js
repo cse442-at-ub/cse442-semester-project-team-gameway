@@ -136,7 +136,7 @@ app.post('/_create_room', urlencodedParser, (req, res) => {
 
     query = db.query(sql, hostID, (err, result) => {
         if(err) throw err;
-        var roomID = result[0]['ID'];
+        let roomID = result[0]['ID'];
 
         <!--Hard Coded User-->
         let UserToRoomConnection = {
