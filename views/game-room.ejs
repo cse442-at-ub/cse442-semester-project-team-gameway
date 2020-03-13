@@ -1,73 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <title>Game Room</title>
-    <link rel="stylesheet" href="/css/game-room.css" type="text/css">
-    <link rel="stylesheet" href="/css/sidebar.css" type="text/css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-    <script src="https://kit.fontawesome.com/07b8d94df6.js" crossorigin="anonymous"></script>
-    <script src="js/notifications.js"></script>
-    <script src="js/chatbox.js"></script>
-</head>
+    <head>
+        <title>Game Room</title>
+        <link rel="stylesheet" href="/css/game-room.css" type="text/css">
+        <link rel="stylesheet" href="/css/sidebar.css" type="text/css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+        <script src="https://kit.fontawesome.com/07b8d94df6.js" crossorigin="anonymous"></script>
+        <script src="js/notifications.js"></script>
+        <script src="js/chatbox.js"></script>
+    </head>
 
-<body>
-<h1>Game Room</h1>
+    <body>
+        <h1>Game Room</h1>
 
-<!-- Leave -->
-<a href="room-list">Leave</a>
+        <!-- Leave -->
+        <a href="http://localhost:3000/room-list">Leave</a>
 
-<!-- Player List -->
-<ul class="player-list">
-    <li style="background: deepskyblue;">Preston</li>
-    <li style="background: red;">Joe</li>
-    <li style="background: green;">Max</li>
-    <li style="background: gold;">WWWWWWWWWWWW</li>
-</ul>
+        <!-- Player List -->
+        <ul class="player-list">
+            <% for(var player of players) { %>
+                <li style="background: red"><%=player.Username%></li>
+            <% }%>
+        </ul>
 
-<!-- Game Information -->
-<div class="information">
-    <h1>Game Info</h1>
-    <h2>Game Mode: Party</h2>
-</div>
+        <!-- Game Information -->
+        <div class="information">
+            <% for(var gameRoom of room) { %>
+                <h1>Room Name: <%=gameRoom.RoomName%></h1>
+                <h1>Game Mode: <%=gameRoom.GameMode%></h1>
+                <h1>Current Game: <%=gameRoom.CurrentGame%></h1>
+                <h1>Players: <%=gameRoom.PlayerCount%>/<%=gameRoom.PlayerCapacity%></h1>
+            <% }%>
+        </div>
 
-<!-- Chat Box -->
-<div class="chat-box">
-    <h1>Chat</h1>
+        <!-- Chat Box -->
+        <div class="chat-box">
+            <h1>Chat</h1>
 
-    <ul class="messages" style="padding-left: 2%">
-        <li><b class="msg">Preston: </b>Hello</li>
-        <li><b class="msg">Preston: </b>Anyone there?</li>
-        <li><b class="msg">Max: </b>hi</li>
-        <li><b class="msg">Joe: </b>hey</li>
-        <li><b class="msg">Max: </b>hi</li>
-        <li><b class="msg">Joe: </b>hey</li>
-        <li><b class="msg">Max: </b>hi</li>
-        <li><b class="msg">Joe: </b>hey</li>
-        <li><b class="msg">Max: </b>hi</li>
-        <li><b class="msg">Joe: </b>hey</li>
-        <li><b class="msg">Preston: </b>stop spamming</li>
-        <li><b class="msg">Joe: </b>hey</li>
-        <li><b class="msg">Joe: </b>hey</li>
-        <li><b class="msg">Joe: </b>hey</li>
-        <li><b class="msg">Joe: </b>hey</li>
-        <li><b class="msg">Joe: </b>hey</li>
-        <li><b class="msg">Joe: </b>hey</li>
-        <li><b class="msg">WWWWWWWWWWWW: </b>WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</li>
+            <ul class="messages" style="padding-left: 2%">
+                <li><b class="msg">Preston: </b>Hello</li>
+                <li><b class="msg">Preston: </b>Anyone there?</li>
+                <li><b class="msg">Max: </b>hi</li>
+                <li><b class="msg">Joe: </b>hey</li>
+                <li><b class="msg">Max: </b>hi</li>
+                <li><b class="msg">Joe: </b>hey</li>
+                <li><b class="msg">Max: </b>hi</li>
+                <li><b class="msg">Joe: </b>hey</li>
+                <li><b class="msg">Max: </b>hi</li>
+                <li><b class="msg">Joe: </b>hey</li>
+                <li><b class="msg">Preston: </b>stop spamming</li>
+                <li><b class="msg">Joe: </b>hey</li>
+                <li><b class="msg">Joe: </b>hey</li>
+                <li><b class="msg">Joe: </b>hey</li>
+                <li><b class="msg">Joe: </b>hey</li>
+                <li><b class="msg">Joe: </b>hey</li>
+                <li><b class="msg">Joe: </b>hey</li>
+                <li><b class="msg">WWWWWWWWWWWW: </b>WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</li>
 
-    </ul>
+            </ul>
 
-    <div class="chat-input">
-        <label>
-            <input type="text" placeholder="Message...">
-        </label>
-        <button>Send</button>
-    </div>
+            <div class="chat-input">
+                <label>
+                    <input type="text" placeholder="Message...">
+                </label>
+                <button>Send</button>
+            </div>
 
-</div>
+        </div>
 
-<canvas id="game-window" class="game-window"></canvas>
+        <canvas id="game-window" class="game-window"></canvas>
 
-</body>
+    </body>
 
 </html>
