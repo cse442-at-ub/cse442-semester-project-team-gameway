@@ -12,13 +12,13 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 var db = mysql.createConnection({
     host: "tethys.cse.buffalo.edu",
     user: "plrobert",
-    password: "50227586"
+    password: "50227586",
+    multipleStatements: true
 });
 
 <!--Connecting To Database-->
 db.connect((err) =>{
     if(err) throw err;
-    console.log('Connected to MYSQL Database')
 });
 
 <!--Setting View Engine-->
@@ -35,7 +35,6 @@ app.get('/_get_users', (req, res) => {
 
     db.query(sql, (err, results) => {
         if(err) throw err;
-        console.log(results);
         res.send('Users Fetched...');
     });
 });
@@ -45,9 +44,10 @@ app.get('/_input_user', (req, res) => {
     let initial = dbName;
 
     let newUser = {
-        Username: '',
-        Password: '',
-        Email: '',
+        ID: 10,
+        Username: 'Preston',
+        Password: '123',
+        Email: 'roberts.preston123@gmail.com',
         DateCreated: new Date(),
         AvatarID: 0,
         Coins: 0,
@@ -69,7 +69,6 @@ app.get('/_input_user', (req, res) => {
 
     let query = db.query(sql, newUser, (err, result) => {
         if(err) throw err;
-        console.log("User Created");
         res.send("User Added")
     })
 });
@@ -85,7 +84,6 @@ app.get('/room-list', (req, res) => {
     db.query(sql, (err, results) => {
         if(err) throw err;
         res.render('room-list', {results: results});
-        console.log(results);
     });
 });
 
@@ -96,8 +94,8 @@ app.get('/create', (req, res) => {
 
 <!--Insert New Game Room-->
 app.post('/_create_room', urlencodedParser, (req, res) => {
-    console.log(req.body);
     let isPrivate;
+    let hostID = 0;
 
     if(req.body["private"] === 'on') {
         isPrivate = 1;
@@ -106,10 +104,9 @@ app.post('/_create_room', urlencodedParser, (req, res) => {
         isPrivate = 0;
     }
 
-
     let initial = dbName;
     let newRoom = {
-        HostID: 0,
+        HostID: hostID,
         RoomName: req.body["room-name"],
         IsPrivate: isPrivate,
         Password: req.body["password"],
@@ -131,12 +128,62 @@ app.post('/_create_room', urlencodedParser, (req, res) => {
         if(err) throw err;
     });
 
-    res.redirect('/game');
+    sql = "SELECT * FROM GameRoom WHERE HostID = ? ORDER  BY ID DESC LIMIT 1";
+
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    query = db.query(sql, hostID, (err, result) => {
+        if(err) throw err;
+        var roomID = result[0]['ID'];
+
+        <!--Hard Coded User-->
+        let UserToRoomConnection = {
+            UserID: 10,
+            GameRoomID: roomID,
+            Score: 0
+        };
+
+        sql = "INSERT INTO UserToRoom SET ?";
+
+        db.query(initial, (err, none) => {
+            if(err) throw err;
+        });
+
+        let query = db.query(sql, UserToRoomConnection, (err, none) => {
+            if(err) throw err;
+        });
+
+        res.redirect('/game/' + result[0]['ID']);
+    });
 });
 
 <!--Game Room Page-->
-app.get('/game', (req, res) => {
-    res.render('game-room');
+app.get('/game/:id', (req, res) => {
+    let path = req['path'];
+    let roomID = path.split('/')[2];
+
+    let sql = "SELECT * FROM UserToRoom WHERE GameRoomID = ?";
+
+    db.query(dbName, (err, result) => {
+        if(err) throw err;
+    });
+
+    let query = db.query(sql, roomID, (err, results) => {
+        let players = "";
+        for(let i = 0; i < results.length; i++) {
+            players += ("SELECT * FROM User WHERE ID = " + results[i]['UserID'] + ';');
+        }
+
+        db.query(players, (err, players) => {
+            let myPlayers = players;
+            db.query('SELECT * FROM GameRoom WHERE ID = ?;', roomID, (err, result) => {
+                if (err) throw err;
+                res.render('game-room', {room: result, players: myPlayers});
+            });
+        });
+    });
 });
 
 <!--End Of Database Functions-->
@@ -189,6 +236,7 @@ app.listen('3000', () => {
 });
 <!--End Of Website-->
 
+<!--Reset Database-->
 app.get('/reset_db', (req, res) => {
     let initial = dbName;
 
