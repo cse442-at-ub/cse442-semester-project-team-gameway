@@ -85,7 +85,6 @@ app.get('/room-list', (req, res) => {
     db.query(sql, (err, results) => {
         if(err) throw err;
         res.render('room-list', {results: results});
-        console.log(results);
     });
 });
 
@@ -98,6 +97,7 @@ app.get('/create', (req, res) => {
 app.post('/_create_room', urlencodedParser, (req, res) => {
     console.log(req.body);
     let isPrivate;
+    let hostID = 0;
 
     if(req.body["private"] === 'on') {
         isPrivate = 1;
@@ -106,10 +106,9 @@ app.post('/_create_room', urlencodedParser, (req, res) => {
         isPrivate = 0;
     }
 
-
     let initial = dbName;
     let newRoom = {
-        HostID: 0,
+        HostID: hostID,
         RoomName: req.body["room-name"],
         IsPrivate: isPrivate,
         Password: req.body["password"],
@@ -131,11 +130,20 @@ app.post('/_create_room', urlencodedParser, (req, res) => {
         if(err) throw err;
     });
 
-    res.redirect('/game');
+    sql = "SELECT * FROM GameRoom WHERE HostID = ? ORDER  BY ID DESC LIMIT 1";
+
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    query = db.query(sql, hostID, (err, result) => {
+        if(err) throw err;
+        res.redirect('/game/' + result[0]['ID']);
+    });
 });
 
 <!--Game Room Page-->
-app.get('/game', (req, res) => {
+app.get('/game/:id', (req, res) => {
     res.render('game-room');
 });
 
