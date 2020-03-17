@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e28cd179-e0f0-4469-817e-0956152535e5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/js/room-pass.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/error.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/css/room-list.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/css/room-list.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/room-list.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/room-list.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583905087797</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="# If applied, this commit will...&#10;&#10;#100 #98 #96 #89 This commit implements private room capability&#10;&#10;# Why is this change needed?&#10;This change is needed to address the issue of joining full and private rooms&#10;&#10;# How does it address the issue?&#10;When joining private rooms, users are now prompted to enter the rooms password. If the room is full, then they won't be able to join it.">
+      <created>1584408830649</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1584408830649</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,13 +177,18 @@
     <MESSAGE value="#80 Create Room User Story Branch" />
     <MESSAGE value="#91 Store room created in database, + routes" />
     <MESSAGE value="#91 Edit Form Information, Attempted to print data from form" />
-    <option name="LAST_COMMIT_MESSAGE" value="#91 Edit Form Information, Attempted to print data from form" />
+    <MESSAGE value="# If applied, this commit will...&#10;&#10;#100 #98 #96 #89 This commit implements private room capability&#10;&#10;# Why is this change needed?&#10;This change is needed to address the issue of joining full and private rooms&#10;&#10;# How does it address the issue?&#10;When joining private rooms, users are now prompted to enter the rooms password. If the room is full, then they won't be able to join it." />
+    <option name="LAST_COMMIT_MESSAGE" value="# If applied, this commit will...&#10;&#10;#100 #98 #96 #89 This commit implements private room capability&#10;&#10;# Why is this change needed?&#10;This change is needed to address the issue of joining full and private rooms&#10;&#10;# How does it address the issue?&#10;When joining private rooms, users are now prompted to enter the rooms password. If the room is full, then they won't be able to join it." />
   </component>
   <component name="WindowStateProjectService">
     <state x="1374" y="363" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584406813130">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1374" y="363" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584406813130" />
+    <state x="1520" y="216" key="CommitChangelistDialog2" timestamp="1584408828416">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="1520" y="216" key="CommitChangelistDialog2/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584408828416" />
     <state width="1256" height="382" key="GridCell.Tab.0.bottom" timestamp="1584407227725">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
@@ -229,7 +237,10 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state width="1256" height="473" key="GridCell.Tab.2.right/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407080625" />
-    <state x="1512" y="434" key="Vcs.Push.Dialog.v2" timestamp="1584390288897" />
+    <state x="1512" y="434" key="Vcs.Push.Dialog.v2" timestamp="1584408834328">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="1512" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584408834328" />
     <state x="1512" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1584390288897" />
     <state x="1720" y="618" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584392694530">
       <screen x="0" y="0" width="2560" height="1410" />

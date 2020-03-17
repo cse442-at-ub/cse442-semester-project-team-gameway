@@ -199,8 +199,14 @@ app.get('/game/:id', (req, res) => {
                         res.render('game-room', {room: result, players: myPlayers});
                         roomPass = "";
                     }
-                    else if (!(roomPass === "")) {
-                        res.render('error', {errorMsg: "You have entered the wrong password!"});
+                    else if (roomPass !== roomPassword) {
+                        if(roomPass === "") {
+                            res.close;
+                        }
+                        else {
+                            res.render('error', {errorMsg: "You have entered the wrong password!"});
+                            roomPass = "";
+                        }
                     }
                 }
                 else if(isFull) {
