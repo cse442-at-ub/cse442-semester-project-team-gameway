@@ -2,28 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e28cd179-e0f0-4469-817e-0956152535e5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/views/game-room.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/js/room-pass.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/error.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/HISTORY.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/body-parser/HISTORY.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/body-parser/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/body-parser/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/body-parser/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/lib/read.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/body-parser/lib/read.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/lib/types/json.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/body-parser/lib/types/json.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/lib/types/raw.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/body-parser/lib/types/raw.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/lib/types/text.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/body-parser/lib/types/text.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/lib/types/urlencoded.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/body-parser/lib/types/urlencoded.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/body-parser/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/body-parser/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/create-room.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/create-room.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/css/room-list.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/css/room-list.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/room-list.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/room-list.ejs" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -63,21 +59,25 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="12.12.0" />
+    <property name="javascript.nodejs.core.library.configured.version" value="11.2.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/views" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Desktop\442 Project\views" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="app.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/app.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <item itemvalue="Node.js.app.js" />
       </list>
-    </option>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -177,11 +177,67 @@
     <option name="LAST_COMMIT_MESSAGE" value="#91 Edit Form Information, Attempted to print data from form" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1512" y="434" key="Vcs.Push.Dialog.v2" />
-    <state x="1512" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" />
-    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog" />
-    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" />
-    <state x="1520" y="478" key="git4idea.merge.GitPullDialog" />
-    <state x="1520" y="478" key="git4idea.merge.GitPullDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" />
+    <state x="1374" y="363" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584406813130">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="1374" y="363" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584406813130" />
+    <state width="1256" height="382" key="GridCell.Tab.0.bottom" timestamp="1584407227725">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state width="1256" height="382" key="GridCell.Tab.0.bottom/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407227725" />
+    <state width="1256" height="382" key="GridCell.Tab.0.center" timestamp="1584407227725">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state width="1256" height="382" key="GridCell.Tab.0.center/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407227725" />
+    <state width="1256" height="382" key="GridCell.Tab.0.left" timestamp="1584407227725">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state width="1256" height="382" key="GridCell.Tab.0.left/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407227725" />
+    <state width="1256" height="382" key="GridCell.Tab.0.right" timestamp="1584407227725">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state width="1256" height="382" key="GridCell.Tab.0.right/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407227725" />
+    <state width="1256" height="473" key="GridCell.Tab.1.bottom" timestamp="1584407080625">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state width="1256" height="473" key="GridCell.Tab.1.bottom/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407080625" />
+    <state width="1256" height="473" key="GridCell.Tab.1.center" timestamp="1584407080625">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state width="1256" height="473" key="GridCell.Tab.1.center/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407080625" />
+    <state width="1256" height="473" key="GridCell.Tab.1.left" timestamp="1584407080625">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state width="1256" height="473" key="GridCell.Tab.1.left/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407080625" />
+    <state width="1256" height="473" key="GridCell.Tab.1.right" timestamp="1584407080625">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state width="1256" height="473" key="GridCell.Tab.1.right/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407080625" />
+    <state width="1256" height="473" key="GridCell.Tab.2.bottom" timestamp="1584407080625">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state width="1256" height="473" key="GridCell.Tab.2.bottom/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407080625" />
+    <state width="1256" height="473" key="GridCell.Tab.2.center" timestamp="1584407080625">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state width="1256" height="473" key="GridCell.Tab.2.center/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407080625" />
+    <state width="1256" height="473" key="GridCell.Tab.2.left" timestamp="1584407080625">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state width="1256" height="473" key="GridCell.Tab.2.left/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407080625" />
+    <state width="1256" height="473" key="GridCell.Tab.2.right" timestamp="1584407080625">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state width="1256" height="473" key="GridCell.Tab.2.right/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407080625" />
+    <state x="1512" y="434" key="Vcs.Push.Dialog.v2" timestamp="1584390288897" />
+    <state x="1512" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1584390288897" />
+    <state x="1720" y="618" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584392694530">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="1720" y="618" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584392694530" />
+    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog" timestamp="1584390288897" />
+    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1584390288897" />
+    <state x="1520" y="478" key="git4idea.merge.GitPullDialog" timestamp="1584390288897" />
+    <state x="1520" y="478" key="git4idea.merge.GitPullDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1584390288897" />
   </component>
 </project>
