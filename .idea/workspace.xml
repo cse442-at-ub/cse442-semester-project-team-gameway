@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e28cd179-e0f0-4469-817e-0956152535e5" name="Default Changelist" comment="">
+    <list default="true" id="df2e308a-40a7-4f37-92ae-5c3c37ab4812" name="Default Changelist" comment="Merge">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -55,32 +48,34 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="11.2.0" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.12.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/views" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Desktop\442 Project\views" />
+      <recent name="C:\Users\Preston\Desktop\cse442-semester-project-team-gameway\views" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="app.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/app.js" working-dir="$PROJECT_DIR$">
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
+  <component name="RunDashboard">
+    <option name="ruleStates">
       <list>
-        <item itemvalue="Node.js.app.js" />
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
       </list>
-    </recent_temporary>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e28cd179-e0f0-4469-817e-0956152535e5" name="Default Changelist" comment="" />
+      <changelist id="df2e308a-40a7-4f37-92ae-5c3c37ab4812" name="Default Changelist" comment="Merge" />
       <created>1582843861054</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -93,6 +88,7 @@
       <workItem from="1583701480585" duration="4316000" />
       <workItem from="1583900899317" duration="4198000" />
       <workItem from="1583947786763" duration="3145000" />
+      <workItem from="1584116619914" duration="12271000" />
     </task>
     <task id="LOCAL-00001" summary="#109 Created Database File">
       <created>1583521713487</created>
@@ -143,14 +139,21 @@
       <option name="project" value="LOCAL" />
       <updated>1583905087797</updated>
     </task>
-    <task id="LOCAL-00008" summary="# If applied, this commit will...&#10;&#10;#100 #98 #96 #89 This commit implements private room capability&#10;&#10;# Why is this change needed?&#10;This change is needed to address the issue of joining full and private rooms&#10;&#10;# How does it address the issue?&#10;When joining private rooms, users are now prompted to enter the rooms password. If the room is full, then they won't be able to join it.">
-      <created>1584408830649</created>
+    <task id="LOCAL-00008" summary="#118 Every game room gets a route and users who create a room are redirected to their room">
+      <created>1584121500547</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1584408830649</updated>
+      <updated>1584121500547</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="#119 Game rooms now display information from the database on the page">
+      <created>1584128703435</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1584128703435</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,78 +180,17 @@
     <MESSAGE value="#80 Create Room User Story Branch" />
     <MESSAGE value="#91 Store room created in database, + routes" />
     <MESSAGE value="#91 Edit Form Information, Attempted to print data from form" />
-    <MESSAGE value="# If applied, this commit will...&#10;&#10;#100 #98 #96 #89 This commit implements private room capability&#10;&#10;# Why is this change needed?&#10;This change is needed to address the issue of joining full and private rooms&#10;&#10;# How does it address the issue?&#10;When joining private rooms, users are now prompted to enter the rooms password. If the room is full, then they won't be able to join it." />
-    <option name="LAST_COMMIT_MESSAGE" value="# If applied, this commit will...&#10;&#10;#100 #98 #96 #89 This commit implements private room capability&#10;&#10;# Why is this change needed?&#10;This change is needed to address the issue of joining full and private rooms&#10;&#10;# How does it address the issue?&#10;When joining private rooms, users are now prompted to enter the rooms password. If the room is full, then they won't be able to join it." />
+    <MESSAGE value="#118 Every Game Room Gets a Route" />
+    <MESSAGE value="#118 Every game room gets a route and users who create a room are redirected to their room" />
+    <MESSAGE value="#119 Game rooms now display information from the database on the page" />
+    <option name="LAST_COMMIT_MESSAGE" value="#119 Game rooms now display information from the database on the page" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1374" y="363" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584406813130">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="1374" y="363" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584406813130" />
-    <state x="1520" y="216" key="CommitChangelistDialog2" timestamp="1584408828416">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="1520" y="216" key="CommitChangelistDialog2/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584408828416" />
-    <state width="1256" height="382" key="GridCell.Tab.0.bottom" timestamp="1584407227725">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state width="1256" height="382" key="GridCell.Tab.0.bottom/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407227725" />
-    <state width="1256" height="382" key="GridCell.Tab.0.center" timestamp="1584407227725">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state width="1256" height="382" key="GridCell.Tab.0.center/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407227725" />
-    <state width="1256" height="382" key="GridCell.Tab.0.left" timestamp="1584407227725">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state width="1256" height="382" key="GridCell.Tab.0.left/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407227725" />
-    <state width="1256" height="382" key="GridCell.Tab.0.right" timestamp="1584407227725">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state width="1256" height="382" key="GridCell.Tab.0.right/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407227725" />
-    <state width="1256" height="473" key="GridCell.Tab.1.bottom" timestamp="1584407080625">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state width="1256" height="473" key="GridCell.Tab.1.bottom/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407080625" />
-    <state width="1256" height="473" key="GridCell.Tab.1.center" timestamp="1584407080625">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state width="1256" height="473" key="GridCell.Tab.1.center/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407080625" />
-    <state width="1256" height="473" key="GridCell.Tab.1.left" timestamp="1584407080625">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state width="1256" height="473" key="GridCell.Tab.1.left/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407080625" />
-    <state width="1256" height="473" key="GridCell.Tab.1.right" timestamp="1584407080625">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state width="1256" height="473" key="GridCell.Tab.1.right/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407080625" />
-    <state width="1256" height="473" key="GridCell.Tab.2.bottom" timestamp="1584407080625">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state width="1256" height="473" key="GridCell.Tab.2.bottom/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407080625" />
-    <state width="1256" height="473" key="GridCell.Tab.2.center" timestamp="1584407080625">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state width="1256" height="473" key="GridCell.Tab.2.center/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407080625" />
-    <state width="1256" height="473" key="GridCell.Tab.2.left" timestamp="1584407080625">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state width="1256" height="473" key="GridCell.Tab.2.left/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407080625" />
-    <state width="1256" height="473" key="GridCell.Tab.2.right" timestamp="1584407080625">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state width="1256" height="473" key="GridCell.Tab.2.right/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584407080625" />
-    <state x="1512" y="434" key="Vcs.Push.Dialog.v2" timestamp="1584408834328">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="1512" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584408834328" />
-    <state x="1512" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1584390288897" />
-    <state x="1720" y="618" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584392694530">
-      <screen x="0" y="0" width="2560" height="1410" />
-    </state>
-    <state x="1720" y="618" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1584392694530" />
-    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog" timestamp="1584390288897" />
-    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1584390288897" />
-    <state x="1520" y="478" key="git4idea.merge.GitPullDialog" timestamp="1584390288897" />
-    <state x="1520" y="478" key="git4idea.merge.GitPullDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1584390288897" />
+    <state x="1512" y="434" key="Vcs.Push.Dialog.v2" />
+    <state x="1512" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" />
+    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog" />
+    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" />
+    <state x="1520" y="478" key="git4idea.merge.GitPullDialog" />
+    <state x="1520" y="478" key="git4idea.merge.GitPullDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" />
   </component>
 </project>
