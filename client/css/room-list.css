@@ -159,3 +159,14 @@ h3 {
 .nav .current {
     color: white;
 }
+
+#room-password-popup {
+    width:240px;
+    height:120px;
+    padding:20px;
+    background-color: #285075;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: none;
+}

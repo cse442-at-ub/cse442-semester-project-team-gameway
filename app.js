@@ -7,6 +7,8 @@ const { check, validationResult, matchedData } = require('express-validator');
 const dbName = "USE cse442_542_2020_spring_teamc_db; ";
 const jsonParser = bodyParser.json();
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
+let roomPass = "";
+let roomID = "";
 
 <!--Database Connection-->
 var db = mysql.createConnection({
@@ -154,7 +156,7 @@ app.post('/_create_room', urlencodedParser, (req, res) => {
         let query = db.query(sql, UserToRoomConnection, (err, none) => {
             if(err) throw err;
         });
-
+        roomPass = req.body["password"];
         res.redirect('/game/' + result[0]['ID']);
     });
 });
@@ -162,7 +164,7 @@ app.post('/_create_room', urlencodedParser, (req, res) => {
 <!--Game Room Page-->
 app.get('/game/:id', (req, res) => {
     let path = req['path'];
-    let roomID = path.split('/')[2];
+    roomID = path.split('/')[2];
 
     let sql = "SELECT * FROM UserToRoom WHERE GameRoomID = ?";
 
@@ -180,12 +182,46 @@ app.get('/game/:id', (req, res) => {
             let myPlayers = players;
             db.query('SELECT * FROM GameRoom WHERE ID = ?;', roomID, (err, result) => {
                 if (err) throw err;
-                res.render('game-room', {room: result, players: myPlayers});
+                let isFull = (result[0].PlayerCount === result[0].PlayerCapacity);
+                let isPrivate = result[0].IsPrivate;
+                let roomPassword = result[0].Password;
+                console.log(isFull);
+                console.log(isPrivate);
+                if(!isPrivate && !isFull) {
+                    res.render('game-room', {room: result, players: myPlayers});
+                    console.log(roomPass);
+                }
+                else if(isPrivate && !isFull) {
+                    console.log(roomPass);
+                    console.log(roomPassword);
+                    if(roomPass === roomPassword) {
+                        console.log(roomPass + roomPassword);
+                        res.render('game-room', {room: result, players: myPlayers});
+                        roomPass = "";
+                    }
+                    else if (roomPass !== roomPassword) {
+                        if(roomPass === "") {
+                            res.close;
+                        }
+                        else {
+                            res.render('error', {errorMsg: "You have entered the wrong password!"});
+                            roomPass = "";
+                        }
+                    }
+                }
+                else if(isFull) {
+                    res.render('error', {errorMsg: "The room is full!"});
+                }
             });
         });
     });
 });
 
+app.post('/room-password', urlencodedParser, (req, res) => {
+    let path = req['path'];
+    roomPass = req.body["room-password"];
+    res.redirect('/game/' + roomID);
+});
 <!--End Of Database Functions-->
 
 <!--Start Page Routing-->
@@ -227,6 +263,9 @@ app.get('/js/notifications.js', function (req, res) {
 });
 app.get('/js/chatbox.js', function (req, res) {
     res.sendFile(__dirname + '/client/js/chatbox.js');
+});
+app.get('/js/room-pass.js', function (req, res) {
+    res.sendFile(__dirname + '/client/js/room-pass.js');
 });
 <!--End Page Routing-->
 

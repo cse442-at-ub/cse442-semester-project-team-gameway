@@ -10,6 +10,7 @@
     <script src="https://kit.fontawesome.com/07b8d94df6.js" crossorigin="anonymous"></script>
     <script src="js/notifications.js"></script>
     <script src="js/chatbox.js"></script>
+    <script src="js/room-pass.js"></script>
 </head>
 
 <body>
@@ -278,8 +279,8 @@
                                 <td class="col-2 <%=gameRoom.GameMode.toLowerCase()%> center"><%=gameRoom.GameMode%></td>
                                 <td class="col-2 center"><%=gameRoom.PlayerCount%>/<%=gameRoom.PlayerCapacity%></td>
                                 <td class="col-2 center">
-                                    <form action="/game">
-                                        <input type="submit" value="Join"/>
+                                    <form action="/game/<%=gameRoom.ID%>">
+                                        <input type="submit" value="Join" onclick="passPopup()"/>
                                     </form>
                                 </td>
                             </tr>
@@ -287,7 +288,11 @@
                         </tbody>
                     </table>
                 </div><!-- End -->
-
+                <form id="room-password-popup" action="/room-password" method="post">
+                    <label for="room-password">Enter Password: </label>
+                    <input name="room-password" id="room-password" type="password"/>
+                    <input type="submit" value="Join"/>
+                </form>
             </div>
         </div>
     </div>
