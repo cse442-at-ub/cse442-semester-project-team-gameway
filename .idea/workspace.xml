@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="df2e308a-40a7-4f37-92ae-5c3c37ab4812" name="Default Changelist" comment="Created Multiplayer game&#10;#5&#10;#114&#10;#102&#10;#116&#10;#117">
+    <list default="true" id="6a691e9d-81c5-4caf-828d-257efdc24621" name="Default Changelist" comment="Created Multiplayer game&#10;#5&#10;#114&#10;#102&#10;#116&#10;#117">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/css/game-room.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/css/game-room.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/socket.io/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/socket.io/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/socket.io/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/socket.io/Readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/client.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/namespace.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/namespace.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/parent-namespace.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/parent-namespace.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/socket.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/socket.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/socket.io/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/socket.io/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/game-room.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/game-room.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,9 +176,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Created Multiplayer game&#10;#5&#10;#114&#10;#102&#10;#116&#10;#117" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="205" y="41" key="CommitChangelistDialog2" timestamp="1585254683434">
-      <screen x="0" y="23" width="1440" height="808" />
+    <state x="364" y="31" key="CommitChangelistDialog2" timestamp="1585258669455">
+      <screen x="0" y="0" width="2560" height="1410" />
     </state>
+    <state x="364" y="31" key="CommitChangelistDialog2/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1585258669455" />
     <state x="205" y="41" key="CommitChangelistDialog2/0.23.1440.808@0.23.1440.808" timestamp="1585254683434" />
     <state width="1379" height="191" key="GridCell.Tab.0.bottom" timestamp="1585244961405">
       <screen x="0" y="23" width="1440" height="814" />
@@ -206,7 +197,10 @@
       <screen x="0" y="23" width="1440" height="814" />
     </state>
     <state width="1379" height="191" key="GridCell.Tab.0.right/0.23.1440.814@0.23.1440.814" timestamp="1585244961404" />
-    <state x="1512" y="434" key="Vcs.Push.Dialog.v2" timestamp="1585244924377" />
+    <state x="1512" y="434" key="Vcs.Push.Dialog.v2" timestamp="1585258202152">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="1512" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1585258202152" />
     <state x="1512" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1585244924377" />
     <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog" timestamp="1585244924377" />
     <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1585244924377" />
