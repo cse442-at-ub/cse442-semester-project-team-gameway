@@ -235,11 +235,8 @@ app.post('/room-password', urlencodedParser, (req, res) => {
 
 <!--Start Page Routing-->
 
-// app.get('/', function (req, res) {
-//     res.sendFile(__dirname + '/client/index.html');
-// });
-app.get('/', function(req, res) {
-    res.sendFile(__dirname + '/client/game-room.html');
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/client/index.html');
 });
 app.get('/favicon.ico', function (req, res) {
     res.sendFile(__dirname + '/favicon.ico');
