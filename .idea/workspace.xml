@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="df2e308a-40a7-4f37-92ae-5c3c37ab4812" name="Default Changelist" comment="Created Multiplayer game&#10;#5&#10;#114&#10;#102&#10;#116&#10;#117">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/css/game-room.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/css/game-room.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/socket.io/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/socket.io/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/socket.io/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/socket.io/Readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/namespace.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/namespace.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/parent-namespace.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/parent-namespace.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/socket.io/lib/socket.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/socket.io/lib/socket.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/socket.io/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/socket.io/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/game-room.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/game-room.ejs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="NotSandy &lt;sliu55@buffalo.edu&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1YPUk1CGZITlINEPRTiUuulpCMA" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.12.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/views" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Preston\Desktop\cse442-semester-project-team-gameway\views" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="df2e308a-40a7-4f37-92ae-5c3c37ab4812" name="Default Changelist" comment="Merge" />
+      <created>1582843861054</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582843861054</updated>
+      <workItem from="1582843862093" duration="267000" />
+      <workItem from="1582914449514" duration="355000" />
+      <workItem from="1582948647741" duration="198000" />
+      <workItem from="1583510587227" duration="2609000" />
+      <workItem from="1583686618087" duration="287000" />
+      <workItem from="1583701480585" duration="4316000" />
+      <workItem from="1583900899317" duration="4198000" />
+      <workItem from="1583947786763" duration="3145000" />
+      <workItem from="1584116619914" duration="12271000" />
+    </task>
+    <task id="LOCAL-00001" summary="#109 Created Database File">
+      <created>1583521713487</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1583521713487</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Create Develop">
+      <created>1583521856171</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1583521856171</updated>
+    </task>
+    <task id="LOCAL-00003" summary="#109 Create database.js file">
+      <created>1583522330956</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1583522330956</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Finish Implementing Displaying Rooms From Database&#10;# If applied, this commit will add code to display room from the database. Also will add EJS as dependency for templating engine.&#10;&#10;# This change is needed so that we can display rooms that are in the database instead of placeholders&#10;&#10;# This address the issue of displaying created rooms in the game list page table&#10;&#10;# Links to any relevant issues: #97">
+      <created>1583660879032</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1583660879033</updated>
+    </task>
+    <task id="LOCAL-00005" summary="#80 Create Room User Story Branch">
+      <created>1583702527736</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1583702527736</updated>
+    </task>
+    <task id="LOCAL-00006" summary="#91 Store room created in database, + routes">
+      <created>1583705966175</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1583705966175</updated>
+    </task>
+    <task id="LOCAL-00007" summary="#91 Edit Form Information, Attempted to print data from form">
+      <created>1583905087797</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1583905087797</updated>
+    </task>
+    <task id="LOCAL-00008" summary="#118 Every game room gets a route and users who create a room are redirected to their room">
+      <created>1584121500547</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1584121500547</updated>
+    </task>
+    <task id="LOCAL-00009" summary="#119 Game rooms now display information from the database on the page">
+      <created>1584128703435</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1584128703435</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="#109 Created Database File" />
+    <MESSAGE value="Create Develop" />
+    <MESSAGE value="#109 Create database.js file" />
+    <MESSAGE value="Finish Implementing Displaying Rooms From Database&#10;# If applied, this commit will add code to display room from the database. Also will add EJS as dependency for templating engine.&#10;&#10;# This change is needed so that we can display rooms that are in the database instead of placeholders&#10;&#10;# This address the issue of displaying created rooms in the game list page table&#10;&#10;# Links to any relevant issues: #97" />
+    <MESSAGE value="#80 Create Room User Story Branch" />
+    <MESSAGE value="#91 Store room created in database, + routes" />
+    <MESSAGE value="#91 Edit Form Information, Attempted to print data from form" />
+    <MESSAGE value="#118 Every Game Room Gets a Route" />
+    <MESSAGE value="#118 Every game room gets a route and users who create a room are redirected to their room" />
+    <MESSAGE value="#119 Game rooms now display information from the database on the page" />
+    <MESSAGE value="Created Multiplayer game&#10;#5&#10;#114&#10;#102&#10;#116&#10;#117" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Multiplayer game&#10;#5&#10;#114&#10;#102&#10;#116&#10;#117" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="205" y="41" key="CommitChangelistDialog2" timestamp="1585254683434">
+      <screen x="0" y="23" width="1440" height="808" />
+    </state>
+    <state x="205" y="41" key="CommitChangelistDialog2/0.23.1440.808@0.23.1440.808" timestamp="1585254683434" />
+    <state width="1379" height="191" key="GridCell.Tab.0.bottom" timestamp="1585244961405">
+      <screen x="0" y="23" width="1440" height="814" />
+    </state>
+    <state width="1379" height="191" key="GridCell.Tab.0.bottom/0.23.1440.814@0.23.1440.814" timestamp="1585244961405" />
+    <state width="1379" height="191" key="GridCell.Tab.0.center" timestamp="1585244961403">
+      <screen x="0" y="23" width="1440" height="814" />
+    </state>
+    <state width="1379" height="191" key="GridCell.Tab.0.center/0.23.1440.814@0.23.1440.814" timestamp="1585244961403" />
+    <state width="1379" height="191" key="GridCell.Tab.0.left" timestamp="1585244961402">
+      <screen x="0" y="23" width="1440" height="814" />
+    </state>
+    <state width="1379" height="191" key="GridCell.Tab.0.left/0.23.1440.814@0.23.1440.814" timestamp="1585244961402" />
+    <state width="1379" height="191" key="GridCell.Tab.0.right" timestamp="1585244961404">
+      <screen x="0" y="23" width="1440" height="814" />
+    </state>
+    <state width="1379" height="191" key="GridCell.Tab.0.right/0.23.1440.814@0.23.1440.814" timestamp="1585244961404" />
+    <state x="1512" y="434" key="Vcs.Push.Dialog.v2" timestamp="1585244924377" />
+    <state x="1512" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1585244924377" />
+    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog" timestamp="1585244924377" />
+    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1585244924377" />
+    <state x="1520" y="478" key="git4idea.merge.GitPullDialog" timestamp="1585244924377" />
+    <state x="1520" y="478" key="git4idea.merge.GitPullDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1585244924377" />
+  </component>
+</project>
