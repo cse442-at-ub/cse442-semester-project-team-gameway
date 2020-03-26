@@ -9,6 +9,75 @@ html {
 
 h1 {
     text-align: center;
+    margin: 0;
+}
+
+h2 {
+    display: inline;
+
+}
+
+.start-btn {
+    background-color: #e7e7e7;
+    color: deepskyblue;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.start-btn:focus {
+    outline:0;
+
+}
+
+.start-btn:hover {
+    background-color: darkgray;
+}
+
+.playAgain-btn {
+    background-color: #e7e7e7;
+    color: deepskyblue;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 150px;
+}
+
+.playAgain-btn:focus {
+    outline:0;
+
+}
+
+.playAgain-btn:hover {
+    background-color: darkgray;
+}
+
+#gameOver {
+    display: flex;
+    flex-direction: column;
+    width: 1024px;
+    height: 576px;
+    border: 1px solid #000000;
+    background-color: #4E9CEA;
+
+    position: absolute;
+    width: 1024px;
+    height: 576px;
+    border: 1px solid #000000;
+    top: 80px;
+    left: 150px;
+
+    visibility: hidden;
 }
 
 #gameOver {
@@ -29,10 +98,8 @@ h3 {
     width: 1024px;
     height: 576px;
     border: 1px solid #000000;
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: auto;
-    margin-right: auto;
+    top: 80px;
+    left: 150px;
     display: block;
 }
 
@@ -41,6 +108,7 @@ h3 {
     position: fixed;
     left: -25px;
     height: 50px;
+    width: 12%;
 }
 
 .player-list li {
@@ -48,6 +116,9 @@ h3 {
     font-size: 25px;
     padding-left: 3px;
     border: black 1px solid;
+    width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Information */

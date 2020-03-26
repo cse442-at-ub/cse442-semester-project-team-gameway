@@ -1,102 +1,301 @@
-// //Constants
-// const express = require('express');
-// const mysql = require('mysql');
-// const app = express();
-// const dbName = "USE cse442_542_2020_spring_teamc_db; ";
+<!--Constants-->
+const express = require('express');
+const mysql = require('mysql');
+const app = express();
 //
-//
-//
-// //Database
-//
-// //Database Connection
-// var db = mysql.createConnection({
-//     host: "tethys.cse.buffalo.edu",
-//     user: "plrobert",
-//     password: "50227586"
-// });
-//
-// //Connect to Database
-// db.connect((err) =>{
-//     if(err) throw err;
-//     console.log('Connected to MYSQL Database')
-// });
-//
-//
-// //Database Functions
-// //Get All Users
-// app.get('/_get_users', (req, res) => {
-//     let initial = dbName;
-//     let sql = "SELECT * FROM `User`";
-//     db.query(initial, (err, result) => {
-//         if(err) throw err;
-//     });
-//
-//     db.query(sql, (err, results) => {
-//         if(err) throw err;
-//         console.log(results);
-//         res.send('Users Fetched...');
-//     });
-// });
-//
-// //Insert New User to Database, please actually give the parameters of the username values if you want to test it
-// app.get('/_input_user', (req, res) => {
-//     let initial = dbName;
-//
-//     let newUser = {
-//         Username: '',
-//         Password: '',
-//         Email: '',
-//         DateCreated: new Date(),
-//         AvatarID: 0,
-//         Coins: 0,
-//         Cash: 0,
-//         GamesPlayed: 0,
-//         GamesWon: 0,
-//         Level: 1,
-//         Xp: 0,
-//         Rank: 'None',
-//         RankPoints: 0,
-//         HighestRank: 'None'
-//     };
-//
-//     let sql = "INSERT INTO User SET ?";
-//
-//     db.query(initial, (err, result) => {
-//         if(err) throw err;
-//     });
-//
-//     let query = db.query(sql, newUser, (err, result) => {
-//         if(err) throw err;
-//         console.log("User Created");
-//         res.send("User Added")
-//     })
-// });
-//
-// //End Database
-//
-// //Website
-//
-// //Start Website
-// app.listen('3000', () => {
-//     console.log('Server Started on Port 3000')
-// });
-// //End Website
-
-//Game
-var express = require('express');
-var app = express();
 var serv = require('http').Server(app);
+//
 
-app.get('/',function(req, res) {
+const bodyParser = require('body-parser');
+const { check, validationResult, matchedData } = require('express-validator');
+const dbName = "USE cse442_542_2020_spring_teamc_db; ";
+const jsonParser = bodyParser.json();
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
+let roomPass = "";
+let roomID = "";
+
+<!--START WEBSITE-->
+app.listen('3000', () => {
+    console.log('Server Started on Port 3000')
+});
+<!--End Of Website-->
+
+
+<!--Database Connection-->
+var db = mysql.createConnection({
+    host: "tethys.cse.buffalo.edu",
+    user: "plrobert",
+    password: "50227586",
+    multipleStatements: true
+});
+
+<!--Connecting To Database-->
+db.connect((err) =>{
+    if(err) throw err;
+});
+
+<!--Setting View Engine-->
+app.set('view engine', 'ejs');
+
+<!--Start Of Database Functions-->
+<!--Get All Users-->
+app.get('/_get_users', (req, res) => {
+    let initial = dbName;
+    let sql = "SELECT * FROM `User`";
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    db.query(sql, (err, results) => {
+        if(err) throw err;
+        res.send('Users Fetched...');
+    });
+});
+
+<!--Insert New User-->
+app.get('/_input_user', (req, res) => {
+    let initial = dbName;
+
+    let newUser = {
+        ID: 10,
+        Username: 'Preston',
+        Password: '123',
+        Email: 'roberts.preston123@gmail.com',
+        DateCreated: new Date(),
+        AvatarID: 0,
+        Coins: 0,
+        Cash: 0,
+        GamesPlayed: 0,
+        GamesWon: 0,
+        Level: 1,
+        Xp: 0,
+        Rank: 'None',
+        RankPoints: 0,
+        HighestRank: 'None'
+    };
+
+    let sql = "INSERT INTO User SET ?";
+
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    let query = db.query(sql, newUser, (err, result) => {
+        if(err) throw err;
+        res.send("User Added")
+    })
+});
+
+<!--Get All Game Rooms-->
+app.get('/room-list', (req, res) => {
+    let initial = dbName;
+    let sql = "SELECT *  FROM `GameRoom` WHERE `isStarted` = 0 AND `isOver` = 0";
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    db.query(sql, (err, results) => {
+        if(err) throw err;
+        res.render('room-list', {results: results});
+    });
+});
+
+<!--Create Room Page-->
+app.get('/create', (req, res) => {
+    res.render('create-room');
+});
+
+<!--Insert New Game Room-->
+app.post('/_create_room', urlencodedParser, (req, res) => {
+    let isPrivate;
+    let hostID = 0;
+
+    if(req.body["private"] === 'on') {
+        isPrivate = 1;
+    }
+    else {
+        isPrivate = 0;
+    }
+
+    let initial = dbName;
+    let newRoom = {
+        HostID: hostID,
+        RoomName: req.body["room-name"],
+        IsPrivate: isPrivate,
+        Password: req.body["password"],
+        GameMode: req.body["game-mode"],
+        PlayerCount: 1,
+        PlayerCapacity: req.body["player-capacity"],
+        CurrentGame: 'none',
+        isStarted: 0,
+        isOver: 0,
+    };
+
+    let sql = "INSERT INTO GameRoom SET ?";
+
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    let query = db.query(sql, newRoom, (err, result) => {
+        if(err) throw err;
+    });
+
+    sql = "SELECT * FROM GameRoom WHERE HostID = ? ORDER  BY ID DESC LIMIT 1";
+
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    query = db.query(sql, hostID, (err, result) => {
+        if(err) throw err;
+        let roomID = result[0]['ID'];
+
+        <!--Hard Coded User-->
+        let UserToRoomConnection = {
+            UserID: 10,
+            GameRoomID: roomID,
+            Score: 0
+        };
+
+        sql = "INSERT INTO UserToRoom SET ?";
+
+        db.query(initial, (err, none) => {
+            if(err) throw err;
+        });
+
+        let query = db.query(sql, UserToRoomConnection, (err, none) => {
+            if(err) throw err;
+        });
+        roomPass = req.body["password"];
+        res.redirect('/game/' + result[0]['ID']);
+    });
+});
+
+<!--Game Room Page-->
+app.get('/game/:id', (req, res) => {
+    let path = req['path'];
+    roomID = path.split('/')[2];
+
+    let sql = "SELECT * FROM UserToRoom WHERE GameRoomID = ?";
+
+    db.query(dbName, (err, result) => {
+        if(err) throw err;
+    });
+
+    let query = db.query(sql, roomID, (err, results) => {
+        let players = "";
+        for(let i = 0; i < results.length; i++) {
+            players += ("SELECT * FROM User WHERE ID = " + results[i]['UserID'] + ';');
+        }
+
+        db.query(players, (err, players) => {
+            let myPlayers = players;
+            db.query('SELECT * FROM GameRoom WHERE ID = ?;', roomID, (err, result) => {
+                if (err) throw err;
+                let isFull = (result[0].PlayerCount === result[0].PlayerCapacity);
+                let isPrivate = result[0].IsPrivate;
+                let roomPassword = result[0].Password;
+                console.log(isFull);
+                console.log(isPrivate);
+                if(!isPrivate && !isFull) {
+                    res.render('game-room', {room: result, players: myPlayers});
+                    console.log(roomPass);
+                }
+                else if(isPrivate && !isFull) {
+                    console.log(roomPass);
+                    console.log(roomPassword);
+                    if(roomPass === roomPassword) {
+                        console.log(roomPass + roomPassword);
+                        res.render('game-room', {room: result, players: myPlayers});
+                        roomPass = "";
+                    }
+                    else if (roomPass !== roomPassword) {
+                        if(roomPass === "") {
+                            res.close;
+                        }
+                        else {
+                            res.render('error', {errorMsg: "You have entered the wrong password!"});
+                            roomPass = "";
+                        }
+                    }
+                }
+                else if(isFull) {
+                    res.render('error', {errorMsg: "The room is full!"});
+                }
+            });
+        });
+    });
+});
+
+app.post('/room-password', urlencodedParser, (req, res) => {
+    let path = req['path'];
+    roomPass = req.body["room-password"];
+    res.redirect('/game/' + roomID);
+});
+<!--End Of Database Functions-->
+
+<!--Start Page Routing-->
+
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/client/index.html');
+});
+app.get('/favicon.ico', function (req, res) {
+    res.sendFile(__dirname + '/favicon.ico');
+});
+app.get('/app.js', function (req, res) {
+    res.sendFile(__dirname + '/app.js');
+});
+app.get('/home', function (req, res) {
+    res.sendFile(__dirname + '/client/home.html');
+});
+
+app.post('/home', function (req, res) {
+    res.redirect('/home');
+})
+
+app.get('/profile', function (req, res) {
+    res.sendFile(__dirname + '/client/profile.html');
+});
+app.get('/rank', function (req, res) {
+    res.sendFile(__dirname + '/client/rank.html');
+});
+//
+app.get('/game-room', function (req, res) {
     res.sendFile(__dirname + '/client/game-room.html');
 });
-app.use(express.static(__dirname + '/client'));
+//
+app.get('/store', function (req, res) {
+    res.sendFile(__dirname + '/client/store.html');
+});
+app.get('/css/mainstyle.css', function (req, res) {
+    res.sendFile(__dirname + '/client/css/mainstyle.css');
+});
+app.get('/css/room-list.css', function (req, res) {
+    res.sendFile(__dirname + '/client/css/room-list.css');
+});
+app.get('/css/sidebar.css', function (req, res) {
+    res.sendFile(__dirname + '/client/css/sidebar.css');
+});
+app.get('/css/game-room.css', function (req, res) {
+    res.sendFile(__dirname + '/client/css/game-room.css');
+});
+app.get('/js/notifications.js', function (req, res) {
+    res.sendFile(__dirname + '/client/js/notifications.js');
+});
+app.get('/js/chatbox.js', function (req, res) {
+    res.sendFile(__dirname + '/client/js/chatbox.js');
+});
+app.get('/js/room-pass.js', function (req, res) {
+    res.sendFile(__dirname + '/client/js/room-pass.js');
+});
 
-app.use('/img', express.static(__dirname + '/Images'));
+app.use('img', express.static(__dirname + 'Images'));
 
-serv.listen(2000);
-console.log("Server started.");
+<!--End Page Routing-->
 
+//Game
+var gameEnd = false;
 var SOCKET_LIST = {};
 
 var Entity = function(){
@@ -267,10 +466,17 @@ var Bullet = function(parent,angle){
                     if(shooter){
                         shooter.score += 1;
                     }
+
+                    if (shooter.score == 3){
+                        gameOver(shooter.id);
+                        stopGame();
+                        endGame();
+                    }
+
                     self.toRemove == true;
-                     p.hp = p.hpMax;
-                     p.x = Math.random() * 500;
-                     p.y = Math.random() * 500;
+                    p.hp = p.hpMax;
+                    p.x = Math.random() * 500;
+                    p.y = Math.random() * 500;
 
 
                 }
@@ -335,12 +541,25 @@ io.sockets.on('connection', function(socket){
         Player.onDisconnect(socket);
     });
 
+    socket.on('pauseTheGame',function(){
+        startGame();
+        console.log("Game has started.");
+        console.log(gameEnd);
+    });
+
 });
 
 var initPack = {player:[],bullet:[]};
 var removePack = {player:[],bullet:[]};
 
 setInterval(function(){
+    if(gameEnd == true){
+        for(var i in Player.list){
+            Player.list[i].score = 0;
+        }
+        endGame();
+    }
+
     var pack = {
         player:Player.update(),
         bullet:Bullet.update(),
@@ -359,3 +578,92 @@ setInterval(function(){
 },1000/25);
 
 
+function gameOver(id) {
+    for(var i in SOCKET_LIST) {
+        var socket = SOCKET_LIST[i];
+        socket.emit('gameOver', id);
+    }
+}
+
+function startGame() {
+    gameEnd = false;
+}
+
+function stopGame() {
+    gameEnd = true;
+}
+function endGame() {
+    if(gameEnd == true){
+        setTimeout(function (){},1000/33);
+    }
+    console.log("Game has ended");
+    console.log(gameEnd);
+}
+
+
+<!--Reset Database-->
+app.get('/reset_db', (req, res) => {
+    let initial = dbName;
+
+    let sql = "DELETE FROM BlockedUsers";
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    let query = db.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log("Table Deleted");
+    });
+
+    sql = "DELETE FROM ChatMessage";
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    query = db.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log("Table Deleted");
+    });
+
+    sql = "DELETE FROM Friendship";
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    query = db.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log("Table Deleted");
+    });
+
+    sql = "DELETE FROM GameRoom";
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    query = db.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log("Table Deleted");
+    });
+
+    sql = "DELETE FROM User";
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    query = db.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log("Table Deleted");
+    });
+
+    sql = "DELETE FROM UserToRoom";
+    db.query(initial, (err, result) => {
+        if(err) throw err;
+    });
+
+    query = db.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log("Table Deleted");
+    });
+
+    res.send("Database Cleared")
+});
