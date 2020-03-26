@@ -83,12 +83,14 @@ h2 {
 #gameOver {
     position: absolute;
 
-    top: 300px;
-    left: 855px;
-    width: 200px;
-    height: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
     font-size: 25px;
     visibility: hidden;
+    z-index: 1000;
 }
 h3 {
     display: inline;
@@ -98,9 +100,12 @@ h3 {
     width: 1024px;
     height: 576px;
     border: 1px solid #000000;
-    top: 80px;
-    left: 150px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
     display: block;
+    z-index: 999;
 }
 
 .player-list {

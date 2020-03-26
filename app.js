@@ -2,9 +2,7 @@
 const express = require('express');
 const mysql = require('mysql');
 const app = express();
-//
 var serv = require('http').Server(app);
-//
 
 const bodyParser = require('body-parser');
 const { check, validationResult, matchedData } = require('express-validator');
@@ -15,7 +13,7 @@ let roomPass = "";
 let roomID = "";
 
 <!--START WEBSITE-->
-app.listen('3000', () => {
+serv.listen('3000', () => {
     console.log('Server Started on Port 3000')
 });
 <!--End Of Website-->
@@ -101,7 +99,7 @@ app.get('/room-list', (req, res) => {
 });
 
 <!--Create Room Page-->
-app.get('/create', (req, res) => {
+app.get('/create-room.ejs', (req, res) => {
     res.render('create-room');
 });
 
@@ -237,8 +235,11 @@ app.post('/room-password', urlencodedParser, (req, res) => {
 
 <!--Start Page Routing-->
 
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/client/index.html');
+// app.get('/', function (req, res) {
+//     res.sendFile(__dirname + '/client/index.html');
+// });
+app.get('/', function(req, res) {
+    res.sendFile(__dirname + '/client/game-room.html');
 });
 app.get('/favicon.ico', function (req, res) {
     res.sendFile(__dirname + '/favicon.ico');
@@ -290,7 +291,7 @@ app.get('/js/room-pass.js', function (req, res) {
     res.sendFile(__dirname + '/client/js/room-pass.js');
 });
 
-app.use('img', express.static(__dirname + 'Images'));
+app.use('/img', express.static(__dirname + '/client/img'));
 
 <!--End Page Routing-->
 
