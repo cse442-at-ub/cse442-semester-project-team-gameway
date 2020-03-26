@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="df2e308a-40a7-4f37-92ae-5c3c37ab4812" name="Default Changelist" comment="Merge">
+    <list default="true" id="df2e308a-40a7-4f37-92ae-5c3c37ab4812" name="Default Changelist" comment="Created Multiplayer game&#10;#5&#10;#114&#10;#102&#10;#116&#10;#117">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/css/game-room.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/css/game-room.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/game-room.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/game-room.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/socket.io/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/socket.io/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ws/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/ws/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/ws/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/ws/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,18 +63,6 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Preston\Desktop\cse442-semester-project-team-gameway\views" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -183,14 +177,35 @@
     <MESSAGE value="#118 Every Game Room Gets a Route" />
     <MESSAGE value="#118 Every game room gets a route and users who create a room are redirected to their room" />
     <MESSAGE value="#119 Game rooms now display information from the database on the page" />
-    <option name="LAST_COMMIT_MESSAGE" value="#119 Game rooms now display information from the database on the page" />
+    <MESSAGE value="Created Multiplayer game&#10;#5&#10;#114&#10;#102&#10;#116&#10;#117" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Multiplayer game&#10;#5&#10;#114&#10;#102&#10;#116&#10;#117" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1512" y="434" key="Vcs.Push.Dialog.v2" />
-    <state x="1512" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" />
-    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog" />
-    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" />
-    <state x="1520" y="478" key="git4idea.merge.GitPullDialog" />
-    <state x="1520" y="478" key="git4idea.merge.GitPullDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" />
+    <state x="205" y="41" key="CommitChangelistDialog2" timestamp="1585254683434">
+      <screen x="0" y="23" width="1440" height="808" />
+    </state>
+    <state x="205" y="41" key="CommitChangelistDialog2/0.23.1440.808@0.23.1440.808" timestamp="1585254683434" />
+    <state width="1379" height="191" key="GridCell.Tab.0.bottom" timestamp="1585244961405">
+      <screen x="0" y="23" width="1440" height="814" />
+    </state>
+    <state width="1379" height="191" key="GridCell.Tab.0.bottom/0.23.1440.814@0.23.1440.814" timestamp="1585244961405" />
+    <state width="1379" height="191" key="GridCell.Tab.0.center" timestamp="1585244961403">
+      <screen x="0" y="23" width="1440" height="814" />
+    </state>
+    <state width="1379" height="191" key="GridCell.Tab.0.center/0.23.1440.814@0.23.1440.814" timestamp="1585244961403" />
+    <state width="1379" height="191" key="GridCell.Tab.0.left" timestamp="1585244961402">
+      <screen x="0" y="23" width="1440" height="814" />
+    </state>
+    <state width="1379" height="191" key="GridCell.Tab.0.left/0.23.1440.814@0.23.1440.814" timestamp="1585244961402" />
+    <state width="1379" height="191" key="GridCell.Tab.0.right" timestamp="1585244961404">
+      <screen x="0" y="23" width="1440" height="814" />
+    </state>
+    <state width="1379" height="191" key="GridCell.Tab.0.right/0.23.1440.814@0.23.1440.814" timestamp="1585244961404" />
+    <state x="1512" y="434" key="Vcs.Push.Dialog.v2" timestamp="1585244924377" />
+    <state x="1512" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1585244924377" />
+    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog" timestamp="1585244924377" />
+    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1585244924377" />
+    <state x="1520" y="478" key="git4idea.merge.GitPullDialog" timestamp="1585244924377" />
+    <state x="1520" y="478" key="git4idea.merge.GitPullDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1585244924377" />
   </component>
 </project>
