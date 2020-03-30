@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!--BEGIN META-->
     <meta content="yes" name="apple-mobile-web-app-capable">
@@ -13,20 +14,32 @@
     <!--END TITLE-->
 
     <!--BEGIN CSS FILES-->
-<!--    <link href="css/profile.css" rel="stylesheet" type="text/css">-->
-    <link href="css/mainstyle.css" rel="stylesheet" type="text/css">
+    <!--    <link href="css/profile.css" rel="stylesheet" type="text/css">-->
+    <link href="/css/mainstyle.css" rel="stylesheet" type="text/css">
+    <link href="/css/social.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Raleway:600,400,300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
     <!--END CSS FILES-->
 </head>
+
 <body>
     <!--BEGIN MAIN NAVIGATION-->
     <nav class="main-nav">
-        <a href="room-list"><h1><i class="fas fa-play-circle"></i></h1></a>
-        <a href="home"><h1>HOME</h1></a>
-        <a class="current" href="profile"><h1>PROFILE</h1></a>
-        <a href="rank"><h1>RANK</h1></a>
-        <a href="store"><h1>STORE</h1></a>
+        <a href="room-list">
+            <h1><i class="fas fa-play-circle"></i></h1>
+        </a>
+        <a href="home">
+            <h1>HOME</h1>
+        </a>
+        <a class="current" href="profile">
+            <h1>PROFILE</h1>
+        </a>
+        <a href="rank">
+            <h1>RANK</h1>
+        </a>
+        <a href="store">
+            <h1>STORE</h1>
+        </a>
         <div class="currency">
             <div class="cash">
                 <i class="fas fa-money-bill"></i>
@@ -46,6 +59,7 @@
         <header></header>
         <!--BEGIN PROFILE CONTAINER-->
         <div class="profile-container">
+            <% for(var profile of results02) { %>
             <!--BEGIN LEFT SIDE-->
             <div class="left-side">
                 <form class="profile-search-container">
@@ -53,14 +67,14 @@
                     <input type="text" id="username" name="username">
                 </form>
                 <div class="user-detail">
-                    <h3 class="user-id"><i class="fas fa-search"></i> Geoffrey</h3>
+                    <h3 class="user-id"><i class="fas fa-search"></i><%=profile.Username%></h3>
                     <div class="avatar-container">
-                        <img src="img/avatar.png" alt="user-avatar">
+                        <img src="/img/avatar.png" alt="user-avatar">
                     </div>
                     <div class="level">
-                        <h4 class="xp-level">Level: 32</h4>
-                        <progress value="77" max="100"></progress>
-                        <h4 class="xp-points">77 / 100</h4>
+                        <h4 class="xp-level"><%=profile.Level%></h4>
+                        <progress value="<%=profile.Xp%>" max="100"></progress>
+                        <h4 class="xp-points"><%=profile.Xp%>/100</h4>
                     </div>
                 </div>
                 <div class="status-message">
@@ -69,7 +83,7 @@
                 </div>
                 <div class="current-rank">
                     <h3>CURRENT RANK</h3>
-                    <img src="img/gold.png" alt="gold">
+                    <img src="/img/gold.png" alt="gold">
                 </div>
             </div>
             <!--END LEFT SIDE-->
@@ -80,15 +94,15 @@
                 <div class="right-top">
                     <div class="total-wins">
                         <h3>TOTAL WINS</h3>
-                        <h2>132</h2>
+                        <h2><%=profile.GamesWon%></h2>
                     </div>
                     <div class="games-played">
                         <h3>GAMES PLAYED</h3>
-                        <h2>542</h2>
+                        <h2><%=profile.GamesPlayed%></h2>
                     </div>
                     <div class="highest-rank">
                         <h3>HIGHEST RANK</h3>
-                        <h2>20</h2>
+                        <h2><%=profile.HighestRank%></h2>
                     </div>
                 </div>
                 <!--END RIGHT TOP-->
@@ -98,9 +112,9 @@
                     <div class="achievements">
                         <h3>ACHIEVEMENTS</h3>
                         <div class="achievement-images">
-                            <img src="img/achievement1.png" alt="achievement1">
-                            <img src="img/achievement2.png" alt="achievement2">
-                            <img src="img/achievement3.png" alt="achievement3">
+                            <img src="/img/achievement1.png" alt="achievement1">
+                            <img src="/img/achievement2.png" alt="achievement2">
+                            <img src="/img/achievement3.png" alt="achievement3">
                         </div>
                     </div>
                 </div>
@@ -165,6 +179,7 @@
                 <!--END RIGHT BOTTOM-->
             </div>
             <!--END RIGHT SIDE-->
+            <% }%>
         </div>
         <!--END PROFILE CONTAINER-->
     </main>
@@ -176,4 +191,5 @@
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/e584d861f4.js"></script>
     <!--END SCRIPTS-->
 </body>
+
 </html>

@@ -259,54 +259,33 @@ app.get('/profile/:username', (req, res) => {
     let path = req['path'];
     userID = path.split('/')[2];
 
-    let sql = "SELECT * FROM User";
+    let sql = "SELECT Username FROM User";
 
     db.query(dbName, (err, result) => {
         if (err) throw err;
     });
 
-    let query = db.query(sql, userID, (err, results) => {
+    let query = db.query(sql, (err, results) => {
 
-        db.query(players, (err, players) => {
-            let myPlayers = players;
-            db.query('SELECT * FROM GameRoom WHERE ID = ?;', userID, (err, result) => {
-                if (search(userID, ) !== false) {
+        console.log(`Result: ${results[0].Username}\nuserID: ${userID}`);
+        console.info(results);
 
-                }
-                
-                if (err) throw err;
-                let isFull = (result[0].PlayerCount === result[0].PlayerCapacity);
-                let isPrivate = result[0].IsPrivate;
-                let roomPassword = result[0].Password;
-                console.log(isFull);
-                console.log(isPrivate);
-                if (!isPrivate && !isFull) {
-                    res.render('game-room', { room: result, players: myPlayers });
-                    console.log(roomPass);
-                }
-                else if (isPrivate && !isFull) {
-                    console.log(roomPass);
-                    console.log(roomPassword);
-                    if (roomPass === roomPassword) {
-                        console.log(roomPass + roomPassword);
-                        res.render('game-room', { room: result, players: myPlayers });
-                        roomPass = "";
-                    }
-                    else if (roomPass !== roomPassword) {
-                        if (roomPass === "") {
-                            res.close;
-                        }
-                        else {
-                            res.render('error', { errorMsg: "You have entered the wrong password!" });
-                            roomPass = "";
-                        }
-                    }
-                }
-                else if (isFull) {
-                    res.render('error', { errorMsg: "The room is full!" });
-                }
+        let list = [];
+        for (let i = 0; i < results.length; ++i) {
+            list.push(results[i].Username);
+        }
+
+        if (search(userID, list) !== false) {
+            db.query(`SELECT * FROM User WHERE Username = '${userID}';`, (err, result) => {
+                console.info(result);
+                res.render('profile', { results02: result });
+
             });
-        });
+        }
+
+        else {
+            res.render('error', { errorMsg: "User does not exist." });
+        }
     });
 });
 
@@ -337,22 +316,15 @@ app.get('/rank', (req, res) => {
     database (type string)  - 
 */
 function search(user, database) {
-    database = database.split(`,`);
     let userinfo;
+
+    console.log(database);
 
     if (database.includes(user)) {
         userinfo = database.indexOf(user);
         return userinfo;
     }
     return false;
-}
-
-function getStatistics(user, database) {
-    user[0];
-}
-function displayStatistics(userdata) {
-    // 
-    return 0;
 }
 
 
@@ -417,6 +389,9 @@ app.get('/js/chatbox.js', function (req, res) {
 });
 app.get('/js/room-pass.js', function (req, res) {
     res.sendFile(__dirname + '/client/js/room-pass.js');
+});
+app.get('/js/script.js', function (req, res) {
+    res.sendFile(__dirname + '/client/js/script.js');
 });
 
 app.use('/img', express.static(__dirname + '/client/img'));

@@ -49,16 +49,20 @@
 
     </div>
     <main>
-        <header></header>
-        <div class="rank-wrapper">
+        <header>
             <div class="header">
                 <div class="leaderboard-title">
                     <h1>Leaderboard</h1>
                 </div>
                 <form class="search-box">
-                    <input type="text" class="search-player" placeholder="   Search Player...">
+                    <div class="btn-toggle">
+                        <button onclick="return transfer()"><i class="fas fa-search"></i></button>
+                    </div>
+                    <input type="text" class="search-player" placeholder="Search Player...">
                 </form>
             </div>
+        </header>
+        <div class="rank-wrapper">
             <div class="categories">
                 <h3>Rank</h3>
                 <h3>Name</h3>
@@ -66,7 +70,7 @@
                 <h3>Points</h3>
             </div>
             <div class="wrapper">
-                <% for(var user of results01) { %>
+                <% for(let user of results01) { %>
                 <a href="/profile/<%=user.Username%>">
                     <div class="player-stats">
                         <div class="rank"><%=user.Rank%></div>
@@ -81,5 +85,6 @@
         </div>
     </main>
 </body>
+<script src="/js/script.js"></script>
 
 </html>
