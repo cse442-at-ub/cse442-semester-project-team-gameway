@@ -1,4 +1,4 @@
-<!--Constants-->
+// < !--Constants-->
 const express = require('express');
 const mysql = require('mysql');
 const app = express();
@@ -12,14 +12,15 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 let roomPass = "";
 let roomID = "";
 
-<!--START WEBSITE-->
+// < !--START WEBSITE-- >
 serv.listen('3000', () => {
     console.log('Server Started on Port 3000')
 });
-<!--End Of Website-->
+// < !--End Of Website-- >
 
 
-<!--Database Connection-->
+
+// < !--Database Connection-- >
 var db = mysql.createConnection({
     host: "tethys.cse.buffalo.edu",
     user: "plrobert",
@@ -27,30 +28,38 @@ var db = mysql.createConnection({
     multipleStatements: true
 });
 
-<!--Connecting To Database-->
-db.connect((err) =>{
-    if(err) throw err;
+
+
+// < !--Connecting To Database-- >
+db.connect((err) => {
+    if (err) throw err;
 });
 
-<!--Setting View Engine-->
+
+
+// < !--Setting View Engine-- >
 app.set('view engine', 'ejs');
 
-<!--Start Of Database Functions-->
-<!--Get All Users-->
+
+
+// < !--Start Of Database Functions-- >
+// < !--Get All Users-- >
 app.get('/_get_users', (req, res) => {
     let initial = dbName;
     let sql = "SELECT * FROM `User`";
     db.query(initial, (err, result) => {
-        if(err) throw err;
+        if (err) throw err;
     });
 
     db.query(sql, (err, results) => {
-        if(err) throw err;
+        if (err) throw err;
         res.send('Users Fetched...');
     });
 });
 
-<!--Insert New User-->
+
+
+// < !--Insert New User-- >
 app.get('/_input_user', (req, res) => {
     let initial = dbName;
 
@@ -75,40 +84,46 @@ app.get('/_input_user', (req, res) => {
     let sql = "INSERT INTO User SET ?";
 
     db.query(initial, (err, result) => {
-        if(err) throw err;
+        if (err) throw err;
     });
 
     let query = db.query(sql, newUser, (err, result) => {
-        if(err) throw err;
+        if (err) throw err;
         res.send("User Added")
     })
 });
 
-<!--Get All Game Rooms-->
+
+
+// < !--Get All Game Rooms-- >
 app.get('/room-list', (req, res) => {
     let initial = dbName;
     let sql = "SELECT *  FROM `GameRoom` WHERE `isStarted` = 0 AND `isOver` = 0";
     db.query(initial, (err, result) => {
-        if(err) throw err;
+        if (err) throw err;
     });
 
     db.query(sql, (err, results) => {
-        if(err) throw err;
-        res.render('room-list', {results: results});
+        if (err) throw err;
+        res.render('room-list', { results: results });
     });
 });
 
-<!--Create Room Page-->
+
+
+// < !--Create Room Page-- >
 app.get('/create-room.ejs', (req, res) => {
     res.render('create-room');
 });
 
-<!--Insert New Game Room-->
+
+
+// < !--Insert New Game Room-- >
 app.post('/_create_room', urlencodedParser, (req, res) => {
     let isPrivate;
     let hostID = 0;
 
-    if(req.body["private"] === 'on') {
+    if (req.body["private"] === 'on') {
         isPrivate = 1;
     }
     else {
@@ -132,24 +147,24 @@ app.post('/_create_room', urlencodedParser, (req, res) => {
     let sql = "INSERT INTO GameRoom SET ?";
 
     db.query(initial, (err, result) => {
-        if(err) throw err;
+        if (err) throw err;
     });
 
     let query = db.query(sql, newRoom, (err, result) => {
-        if(err) throw err;
+        if (err) throw err;
     });
 
     sql = "SELECT * FROM GameRoom WHERE HostID = ? ORDER  BY ID DESC LIMIT 1";
 
     db.query(initial, (err, result) => {
-        if(err) throw err;
+        if (err) throw err;
     });
 
     query = db.query(sql, hostID, (err, result) => {
-        if(err) throw err;
+        if (err) throw err;
         let roomID = result[0]['ID'];
 
-        <!--Hard Coded User-->
+        // < !--Hard Coded User-- >
         let UserToRoomConnection = {
             UserID: 10,
             GameRoomID: roomID,
@@ -159,18 +174,20 @@ app.post('/_create_room', urlencodedParser, (req, res) => {
         sql = "INSERT INTO UserToRoom SET ?";
 
         db.query(initial, (err, none) => {
-            if(err) throw err;
+            if (err) throw err;
         });
 
         let query = db.query(sql, UserToRoomConnection, (err, none) => {
-            if(err) throw err;
+            if (err) throw err;
         });
         roomPass = req.body["password"];
         res.redirect('/game/' + result[0]['ID']);
     });
 });
 
-<!--Game Room Page-->
+
+
+// < !--Game Room Page-- >
 app.get('/game/:id', (req, res) => {
     let path = req['path'];
     roomID = path.split('/')[2];
@@ -178,12 +195,12 @@ app.get('/game/:id', (req, res) => {
     let sql = "SELECT * FROM UserToRoom WHERE GameRoomID = ?";
 
     db.query(dbName, (err, result) => {
-        if(err) throw err;
+        if (err) throw err;
     });
 
     let query = db.query(sql, roomID, (err, results) => {
         let players = "";
-        for(let i = 0; i < results.length; i++) {
+        for (let i = 0; i < results.length; i++) {
             players += ("SELECT * FROM User WHERE ID = " + results[i]['UserID'] + ';');
         }
 
@@ -196,44 +213,158 @@ app.get('/game/:id', (req, res) => {
                 let roomPassword = result[0].Password;
                 console.log(isFull);
                 console.log(isPrivate);
-                if(!isPrivate && !isFull) {
-                    res.render('game-room', {room: result, players: myPlayers});
+                if (!isPrivate && !isFull) {
+                    res.render('game-room', { room: result, players: myPlayers });
                     console.log(roomPass);
                 }
-                else if(isPrivate && !isFull) {
+                else if (isPrivate && !isFull) {
                     console.log(roomPass);
                     console.log(roomPassword);
-                    if(roomPass === roomPassword) {
+                    if (roomPass === roomPassword) {
                         console.log(roomPass + roomPassword);
-                        res.render('game-room', {room: result, players: myPlayers});
+                        res.render('game-room', { room: result, players: myPlayers });
                         roomPass = "";
                     }
                     else if (roomPass !== roomPassword) {
-                        if(roomPass === "") {
+                        if (roomPass === "") {
                             res.close;
                         }
                         else {
-                            res.render('error', {errorMsg: "You have entered the wrong password!"});
+                            res.render('error', { errorMsg: "You have entered the wrong password!" });
                             roomPass = "";
                         }
                     }
                 }
-                else if(isFull) {
-                    res.render('error', {errorMsg: "The room is full!"});
+                else if (isFull) {
+                    res.render('error', { errorMsg: "The room is full!" });
                 }
             });
         });
     });
 });
 
+
+
+// < !--Password Game Room-- >
 app.post('/room-password', urlencodedParser, (req, res) => {
     let path = req['path'];
     roomPass = req.body["room-password"];
     res.redirect('/game/' + roomID);
 });
-<!--End Of Database Functions-->
 
-<!--Start Page Routing-->
+
+
+// < !--Profile Page-- >
+app.get('/profile/:username', (req, res) => {
+    let path = req['path'];
+    userID = path.split('/')[2];
+
+    let sql = "SELECT * FROM User";
+
+    db.query(dbName, (err, result) => {
+        if (err) throw err;
+    });
+
+    let query = db.query(sql, userID, (err, results) => {
+
+        db.query(players, (err, players) => {
+            let myPlayers = players;
+            db.query('SELECT * FROM GameRoom WHERE ID = ?;', userID, (err, result) => {
+                if (search(userID, ) !== false) {
+
+                }
+                
+                if (err) throw err;
+                let isFull = (result[0].PlayerCount === result[0].PlayerCapacity);
+                let isPrivate = result[0].IsPrivate;
+                let roomPassword = result[0].Password;
+                console.log(isFull);
+                console.log(isPrivate);
+                if (!isPrivate && !isFull) {
+                    res.render('game-room', { room: result, players: myPlayers });
+                    console.log(roomPass);
+                }
+                else if (isPrivate && !isFull) {
+                    console.log(roomPass);
+                    console.log(roomPassword);
+                    if (roomPass === roomPassword) {
+                        console.log(roomPass + roomPassword);
+                        res.render('game-room', { room: result, players: myPlayers });
+                        roomPass = "";
+                    }
+                    else if (roomPass !== roomPassword) {
+                        if (roomPass === "") {
+                            res.close;
+                        }
+                        else {
+                            res.render('error', { errorMsg: "You have entered the wrong password!" });
+                            roomPass = "";
+                        }
+                    }
+                }
+                else if (isFull) {
+                    res.render('error', { errorMsg: "The room is full!" });
+                }
+            });
+        });
+    });
+});
+
+
+
+// < !-- Rank Page-- >
+app.get('/rank', (req, res) => {
+    let initial = dbName;
+    let sql = "SELECT *  FROM User ORDER BY RankPoints, Username";
+    db.query(initial, (err, result) => {
+        if (err) throw err;
+    });
+
+    db.query(sql, (err, results01) => {
+        if (err) throw err;
+        res.render('rank', { results01: results01 });
+    });
+});
+
+
+
+
+// < !-- Search Functions-- >
+// SEARCH FUNCTION && INFORMATION RETRIEVAL
+
+/*  Search function 
+    user (type string)      - select 
+    database (type string)  - 
+*/
+function search(user, database) {
+    database = database.split(`,`);
+    let userinfo;
+
+    if (database.includes(user)) {
+        userinfo = database.indexOf(user);
+        return userinfo;
+    }
+    return false;
+}
+
+function getStatistics(user, database) {
+    user[0];
+}
+function displayStatistics(userdata) {
+    // 
+    return 0;
+}
+
+
+
+
+// < !--End Of Database Functions-- >
+
+
+
+
+
+// < !--Start Page Routing-- >
 
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/client/index.html');
@@ -290,34 +421,36 @@ app.get('/js/room-pass.js', function (req, res) {
 
 app.use('/img', express.static(__dirname + '/client/img'));
 
-<!--End Page Routing-->
+// < !--End Page Routing-- >
+
+
 
 //Game
 var gameEnd = false;
 var SOCKET_LIST = {};
 
-var Entity = function(){
+var Entity = function () {
     var self = {
-        x:250,
-        y:250,
-        spdX:0,
-        spdY:0,
-        id:"",
+        x: 250,
+        y: 250,
+        spdX: 0,
+        spdY: 0,
+        id: "",
     }
-    self.update = function(){
+    self.update = function () {
         self.updatePosition();
     }
-    self.updatePosition = function(){
+    self.updatePosition = function () {
         self.x += self.spdX;
         self.y += self.spdY;
     }
-    self.getDistance = function(pt){
-        return Math.sqrt(Math.pow(self.x-pt.x,2) + Math.pow(self.y-pt.y,2));
+    self.getDistance = function (pt) {
+        return Math.sqrt(Math.pow(self.x - pt.x, 2) + Math.pow(self.y - pt.y, 2));
     }
     return self;
 }
 
-var Player = function(id){
+var Player = function (id) {
     var self = Entity();
     self.id = id;
     self.number = "" + Math.floor(10 * Math.random());
@@ -333,104 +466,99 @@ var Player = function(id){
     self.score = 0;
 
     var super_update = self.update;
-    self.update = function(){
+    self.update = function () {
         self.updateSpd();
         super_update();
 
-        if(self.pressingAttack){
+        if (self.pressingAttack) {
             self.shootBullet(self.mouseAngle);
         }
     }
-    self.shootBullet = function(angle){
-        var b = Bullet(self.id,angle);
+    self.shootBullet = function (angle) {
+        var b = Bullet(self.id, angle);
         b.x = self.x;
         b.y = self.y;
     }
 
 
-    self.updateSpd = function(){
-        if(self.pressingRight)
+    self.updateSpd = function () {
+        if (self.pressingRight)
             self.spdX = self.maxSpd;
-        else if(self.pressingLeft)
+        else if (self.pressingLeft)
             self.spdX = -self.maxSpd;
         else
             self.spdX = 0;
 
-        if(self.pressingUp)
+        if (self.pressingUp)
             self.spdY = -self.maxSpd;
-        else if(self.pressingDown)
+        else if (self.pressingDown)
             self.spdY = self.maxSpd;
         else
             self.spdY = 0;
     }
 
-    self.getInitPack = function(){
+    self.getInitPack = function () {
         return {
-            id:self.id,
-            x:self.x,
-            y:self.y,
-            number:self.number,
-            hp:self.hp,
-            hpMax:self.hpMax,
-            score:self.score,
+            id: self.id,
+            x: self.x,
+            y: self.y,
+            number: self.number,
+            hp: self.hp,
+            hpMax: self.hpMax,
+            score: self.score,
         };
     }
-
-    self.getUpdatePack = function(){
+    self.getUpdatePack = function () {
         return {
-            id:self.id,
-            x:self.x,
-            y:self.y,
-            hp:self.hp,
-            score:self.score,
+            id: self.id,
+            x: self.x,
+            y: self.y,
+            hp: self.hp,
+            score: self.score,
         }
     }
-
     Player.list[id] = self;
 
     initPack.player.push(self.getInitPack());
     return self;
 }
 Player.list = {};
-Player.onConnect = function(socket){
+Player.onConnect = function (socket) {
     var player = Player(socket.id);
-    socket.on('keyPress',function(data){
-        if(data.inputId === 'left')
+    socket.on('keyPress', function (data) {
+        if (data.inputId === 'left')
             player.pressingLeft = data.state;
-        else if(data.inputId === 'right')
+        else if (data.inputId === 'right')
             player.pressingRight = data.state;
-        else if(data.inputId === 'up')
+        else if (data.inputId === 'up')
             player.pressingUp = data.state;
-        else if(data.inputId === 'down')
+        else if (data.inputId === 'down')
             player.pressingDown = data.state;
-        else if(data.inputId === 'attack')
+        else if (data.inputId === 'attack')
             player.pressingAttack = data.state;
-        else if(data.inputId === 'mouseAngle')
+        else if (data.inputId === 'mouseAngle')
             player.mouseAngle = data.state;
     });
 
-    socket.emit('init',{
-        selfId:socket.id,
-        player:Player.getAllInitPack(),
-        bullet:Bullet.getAllInitPack(),
+    socket.emit('init', {
+        selfId: socket.id,
+        player: Player.getAllInitPack(),
+        bullet: Bullet.getAllInitPack(),
     })
 }
-
-Player.getAllInitPack = function(){
+Player.getAllInitPack = function () {
     var players = [];
-    for(var i in Player.list)
+    for (var i in Player.list)
         players.push(Player.list[i].getInitPack());
     return players;
 }
-
-
-Player.onDisconnect = function(socket){
+Player.onDisconnect = function (socket) {
     delete Player.list[socket.id];
     removePack.player.push(socket.id);
 }
-Player.update = function(){
+Player.update = function () {
     var pack = [];
-    for(var i in Player.list){
+    for (var i in Player.list) {
         var player = Player.list[i];
         player.update();
         pack.push(player.getUpdatePack());
@@ -439,33 +567,33 @@ Player.update = function(){
 }
 
 
-var Bullet = function(parent,angle){
+var Bullet = function (parent, angle) {
     var self = Entity();
     self.id = Math.random();
-    self.spdX = Math.cos(angle/180*Math.PI) * 10;
-    self.spdY = Math.sin(angle/180*Math.PI) * 10;
+    self.spdX = Math.cos(angle / 180 * Math.PI) * 10;
+    self.spdY = Math.sin(angle / 180 * Math.PI) * 10;
     self.parent = parent;
     self.timer = 0;
     self.toRemove = false;
     var super_update = self.update;
-    self.update = function(){
-        if(self.timer++ > 100)
+    self.update = function () {
+        if (self.timer++ > 100)
             self.toRemove = true;
         super_update();
 
-        for(var i in Player.list){
+        for (var i in Player.list) {
             var p = Player.list[i];
-            if(self.getDistance(p) < 32 && self.parent !== p.id){
+            if (self.getDistance(p) < 32 && self.parent !== p.id) {
                 p.hp -= 1;
 
-                if(p.hp <= 0){
+                if (p.hp <= 0) {
 
                     var shooter = Player.list[self.parent];
-                    if(shooter){
+                    if (shooter) {
                         shooter.score += 1;
                     }
 
-                    if (shooter.score == 3){
+                    if (shooter.score == 3) {
                         gameOver(shooter.id);
                         stopGame();
                         endGame();
@@ -483,19 +611,19 @@ var Bullet = function(parent,angle){
             }
         }
     }
-    self.getInitPack = function(){
+    self.getInitPack = function () {
         return {
-            id:self.id,
-            x:self.x,
-            y:self.y,
+            id: self.id,
+            x: self.x,
+            y: self.y,
         };
     }
 
-    self.getUpdatePack = function(){
+    self.getUpdatePack = function () {
         return {
-            id:self.id,
-            x:self.x,
-            y:self.y,
+            id: self.id,
+            x: self.x,
+            y: self.y,
         };
     }
 
@@ -504,13 +632,12 @@ var Bullet = function(parent,angle){
     return self;
 }
 Bullet.list = {};
-
-Bullet.update = function(){
+Bullet.update = function () {
     var pack = [];
-    for(var i in Bullet.list) {
+    for (var i in Bullet.list) {
         var bullet = Bullet.list[i];
         bullet.update();
-        if (bullet.toRemove){
+        if (bullet.toRemove) {
             delete Bullet.list[i];
             removePack.bullet.push(bullet.id);
         } else
@@ -518,28 +645,27 @@ Bullet.update = function(){
     }
     return pack;
 }
-
-Bullet.getAllInitPack = function(){
+Bullet.getAllInitPack = function () {
     var bullets = [];
-    for(var i in Bullet.list)
+    for (var i in Bullet.list)
         bullets.push(Bullet.list[i].getInitPack());
     return bullets;
 }
 
 
-var io = require('socket.io')(serv,{});
-io.sockets.on('connection', function(socket){
+var io = require('socket.io')(serv, {});
+io.sockets.on('connection', function (socket) {
     socket.id = Math.random();
     SOCKET_LIST[socket.id] = socket;
 
     Player.onConnect(socket);
 
-    socket.on('disconnect',function(){
+    socket.on('disconnect', function () {
         delete SOCKET_LIST[socket.id];
         Player.onDisconnect(socket);
     });
 
-    socket.on('pauseTheGame',function(){
+    socket.on('pauseTheGame', function () {
         startGame();
         console.log("Game has started.");
         console.log(gameEnd);
@@ -547,119 +673,117 @@ io.sockets.on('connection', function(socket){
 
 });
 
-var initPack = {player:[],bullet:[]};
-var removePack = {player:[],bullet:[]};
 
-setInterval(function(){
-    if(gameEnd == true){
-        for(var i in Player.list){
+var initPack = { player: [], bullet: [] };
+var removePack = { player: [], bullet: [] };
+setInterval(function () {
+    if (gameEnd == true) {
+        for (var i in Player.list) {
             Player.list[i].score = 0;
         }
         endGame();
     }
 
     var pack = {
-        player:Player.update(),
-        bullet:Bullet.update(),
+        player: Player.update(),
+        bullet: Bullet.update(),
     }
 
-    for(var i in SOCKET_LIST){
+    for (var i in SOCKET_LIST) {
         var socket = SOCKET_LIST[i];
-        socket.emit('init',initPack);
-        socket.emit('update',pack);
-        socket.emit('remove',removePack);
+        socket.emit('init', initPack);
+        socket.emit('update', pack);
+        socket.emit('remove', removePack);
     }
     initPack.player = [];
     initPack.bullet = [];
     removePack.player = [];
     removePack.bullet = [];
-},1000/25);
+}, 1000 / 25);
 
 
 function gameOver(id) {
-    for(var i in SOCKET_LIST) {
+    for (var i in SOCKET_LIST) {
         var socket = SOCKET_LIST[i];
         socket.emit('gameOver', id);
     }
 }
-
 function startGame() {
     gameEnd = false;
 }
-
 function stopGame() {
     gameEnd = true;
 }
 function endGame() {
-    if(gameEnd == true){
-        setTimeout(function (){},1000/33);
+    if (gameEnd == true) {
+        setTimeout(function () { }, 1000 / 33);
     }
     console.log("Game has ended");
     console.log(gameEnd);
 }
 
 
-<!--Reset Database-->
+// < !--Reset Database-- >
 app.get('/reset_db', (req, res) => {
     let initial = dbName;
 
     let sql = "DELETE FROM BlockedUsers";
     db.query(initial, (err, result) => {
-        if(err) throw err;
+        if (err) throw err;
     });
 
     let query = db.query(sql, (err, result) => {
-        if(err) throw err;
+        if (err) throw err;
         console.log("Table Deleted");
     });
 
     sql = "DELETE FROM ChatMessage";
     db.query(initial, (err, result) => {
-        if(err) throw err;
+        if (err) throw err;
     });
 
     query = db.query(sql, (err, result) => {
-        if(err) throw err;
+        if (err) throw err;
         console.log("Table Deleted");
     });
 
     sql = "DELETE FROM Friendship";
     db.query(initial, (err, result) => {
-        if(err) throw err;
+        if (err) throw err;
     });
 
     query = db.query(sql, (err, result) => {
-        if(err) throw err;
+        if (err) throw err;
         console.log("Table Deleted");
     });
 
     sql = "DELETE FROM GameRoom";
     db.query(initial, (err, result) => {
-        if(err) throw err;
+        if (err) throw err;
     });
 
     query = db.query(sql, (err, result) => {
-        if(err) throw err;
+        if (err) throw err;
         console.log("Table Deleted");
     });
 
     sql = "DELETE FROM User";
     db.query(initial, (err, result) => {
-        if(err) throw err;
+        if (err) throw err;
     });
 
     query = db.query(sql, (err, result) => {
-        if(err) throw err;
+        if (err) throw err;
         console.log("Table Deleted");
     });
 
     sql = "DELETE FROM UserToRoom";
     db.query(initial, (err, result) => {
-        if(err) throw err;
+        if (err) throw err;
     });
 
     query = db.query(sql, (err, result) => {
-        if(err) throw err;
+        if (err) throw err;
         console.log("Table Deleted");
     });
 
