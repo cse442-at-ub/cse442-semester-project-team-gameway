@@ -1,33 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a691e9d-81c5-4caf-828d-257efdc24621" name="Default Changelist" comment="Created Multiplayer game&#10;#5&#10;#114&#10;#102&#10;#116&#10;#117">
-      <change afterPath="$PROJECT_DIR$/core/pool.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/user.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/database.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/files.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/game-room.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/pages.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/home.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/index.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/profile.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/rank.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/store.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/canvas.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/create-room.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/game-room.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/profile.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/rank.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/room-list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/store.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/room-list.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/room-list.ejs" afterDir="false" />
-    </list>
+    <list default="true" id="e28cd179-e0f0-4469-817e-0956152535e5" name="Default Changelist" comment="Added node_module files" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -211,10 +185,10 @@
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="1010" y="452" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1585608956256" />
-    <state x="364" y="31" key="CommitChangelistDialog2" timestamp="1585258669455">
+    <state x="364" y="31" key="CommitChangelistDialog2" timestamp="1585691927365">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="364" y="31" key="CommitChangelistDialog2/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1585258669455" />
+    <state x="364" y="31" key="CommitChangelistDialog2/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1585691927365" />
     <state x="205" y="41" key="CommitChangelistDialog2/0.23.1440.808@0.23.1440.808" timestamp="1585254683434" />
     <state width="1379" height="191" key="GridCell.Tab.0.bottom" timestamp="1585244961405">
       <screen x="0" y="23" width="1440" height="814" />
