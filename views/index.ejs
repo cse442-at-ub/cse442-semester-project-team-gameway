@@ -16,6 +16,7 @@
     <link href="css/mainstyle.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Raleway:600,400,300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <!--END CSS FILES-->
 
     <!--BEGIN SCRIPTS-->
@@ -30,7 +31,6 @@
     <!--BEGIN PAGE CONTENT-->
     <div class="entry-page-content">
         <div class="entry-page-content-left">
-            TODO
         </div>
         <div class="entry-page-content-right">
             <div class="entry-switcher">
@@ -39,11 +39,11 @@
                 <button type="button" class="toggle" onclick="register()">Sign Up</button>
             </div>
             <div class="entry-form-container">
-                <form id="signin-form" action="home" method="post" enctype="multipart/form-data">
+                <form id="signin-form" action="/login" method="post">
                     <label for="signin-username">Username</label>
                     <input class="signin-field" id="signin-username" type="text" name="username" placeholder="Enter your username">
                     <label for="signin-password">Password</label>
-                    <input class="signin-field" id="signin-password" type="text" name="password" placeholder="Enter your password">
+                    <input class="signin-field" id="signin-password" type="password" name="password" placeholder="Enter your password">
                     <div class="remember-pw-container">
                         <input type="checkbox" id="remember-pw" name="agree" value="agree">
                         <label for="remember-pw">Remember Password</label>
@@ -52,17 +52,17 @@
                     <input class="signin-submit" type="submit" value="SIGN IN">
                 </form>
 
-                <form id="signup-form" action="/signup" method="post">
+                <form id="signup-form" action="/register" method="post">
                     <label for="signup-username">Username</label>
-                    <input class="signup-field" id="signup-username" type="text" name="username" placeholder="Enter your username">
+                    <input class="signup-field" id="signup-username" type="text" name="username" placeholder="Enter your username" required>
                     <label for="signup-email">Email</label>
-                    <input class="signup-field" id="signup-email" type="text" name="email" placeholder="Enter your email">
+                    <input class="signup-field" id="signup-email" type="email" name="email" placeholder="Enter your email" required>
                     <label for="signup-password">Password</label>
-                    <input class="signup-field" id="signup-password" type="text" name="password" placeholder="Enter your desired password">
+                    <input class="signup-field" id="signup-password" type="password" name="password" placeholder="Enter your desired password" required>
                     <label for="signup-reenter-password">Re-enter Password</label>
-                    <input class="signup-field" id="signup-reenter-password" type="text" name="reenter-password" placeholder="Re-enter your desired password">
+                    <input class="signup-field" id="signup-reenter-password" type="password" name="reenter-password" placeholder="Re-enter your desired password" required>
                     <div class="signup-agreement-container">
-                        <input type="checkbox" id="signup-agree" name="agree" value="agree">
+                        <input type="checkbox" id="signup-agree" name="agree" value="agree" required>
                         <label for="signup-agree">I Agree to the <a href="#">Terms of Service</a></label>
                     </div>
                     <input class="signup-submit" type="submit" value="SIGN UP">
