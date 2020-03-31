@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a691e9d-81c5-4caf-828d-257efdc24621" name="Default Changelist" comment="Created Multiplayer game&#10;#5&#10;#114&#10;#102&#10;#116&#10;#117">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-    </list>
+    <list default="true" id="e28cd179-e0f0-4469-817e-0956152535e5" name="Default Changelist" comment="Added node_module files" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -49,7 +53,7 @@
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="12.12.0" />
+    <property name="javascript.nodejs.core.library.configured.version" value="11.2.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/views" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
@@ -64,7 +68,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="df2e308a-40a7-4f37-92ae-5c3c37ab4812" name="Default Changelist" comment="Merge" />
+      <changelist id="6a691e9d-81c5-4caf-828d-257efdc24621" name="Default Changelist" comment="Created Multiplayer game&#10;#5&#10;#114&#10;#102&#10;#116&#10;#117" />
       <created>1582843861054</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -78,6 +82,7 @@
       <workItem from="1583900899317" duration="4198000" />
       <workItem from="1583947786763" duration="3145000" />
       <workItem from="1584116619914" duration="12271000" />
+      <workItem from="1585604303149" duration="25295000" />
     </task>
     <task id="LOCAL-00001" summary="#109 Created Database File">
       <created>1583521713487</created>
@@ -176,10 +181,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="Created Multiplayer game&#10;#5&#10;#114&#10;#102&#10;#116&#10;#117" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="364" y="31" key="CommitChangelistDialog2" timestamp="1585258669455">
+    <state x="1010" y="452" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585608956256">
       <screen x="0" y="0" width="2560" height="1410" />
     </state>
-    <state x="364" y="31" key="CommitChangelistDialog2/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1585258669455" />
+    <state x="1010" y="452" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1585608956256" />
+    <state x="364" y="31" key="CommitChangelistDialog2" timestamp="1585691927365">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="364" y="31" key="CommitChangelistDialog2/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1585691927365" />
     <state x="205" y="41" key="CommitChangelistDialog2/0.23.1440.808@0.23.1440.808" timestamp="1585254683434" />
     <state width="1379" height="191" key="GridCell.Tab.0.bottom" timestamp="1585244961405">
       <screen x="0" y="23" width="1440" height="814" />
