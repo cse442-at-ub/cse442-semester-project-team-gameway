@@ -18,7 +18,15 @@ router.get('/room-list', (req, res) => {
 
     pool.query(sql, (err, results) => {
         if(err) throw err;
-        res.render('room-list', {results: results});
+        // res.render('room-list', {results: results, opp:req.session.opp, name:user});
+
+        let user = req.session.user;
+
+        if(user) {
+            res.render('room-list', {results: results, opp:req.session.opp, user:user});
+            return;
+        }
+        res.redirect('/');
     });
 });
 
