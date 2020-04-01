@@ -62,7 +62,7 @@ router.get('/logout', (req, res, next) => {
             var sql = 'UPDATE User SET OnlineStatus = ? WHERE Username = ?';
             pool.query(sql,[onlineStatus, user.Username], function(err, result) {
                 if(err) throw err;
-            })
+            });
             res.redirect('/');
         });
     }
@@ -73,18 +73,8 @@ router.get('/home', function (req, res) {
     let user = req.session.user;
 
     if(user) {
+        console.log(user);
         res.render('home', {opp:req.session.opp, user:user});
-        return;
-    }
-    res.redirect('/');
-});
-
-// Profile Route
-router.get('/profile', function (req, res) {
-    let user = req.session.user;
-
-    if(user) {
-        res.render('profile', {opp:req.session.opp, user:user});
         return;
     }
     res.redirect('/');
