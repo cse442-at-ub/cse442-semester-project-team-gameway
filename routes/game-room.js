@@ -51,7 +51,7 @@ router.post('/_create_room', urlencodedParser, (req, res) => {
         GameMode: req.body["game-mode"],
         PlayerCount: 1,
         PlayerCapacity: req.body["player-capacity"],
-        CurrentGame: 'none',
+        CurrentGame: 'Dodge',
         isStarted: 0,
         isOver: 0,
     };

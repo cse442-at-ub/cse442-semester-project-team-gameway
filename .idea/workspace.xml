@@ -2,22 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a691e9d-81c5-4caf-828d-257efdc24621" name="Default Changelist" comment="Created Multiplayer game&#10;#5&#10;#114&#10;#102&#10;#116&#10;#117">
-      <change afterPath="$PROJECT_DIR$/routes/profile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/img/achievement1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/img/achievement2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/img/achievement3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/img/avatar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/img/spider.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/js/notifications.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/js/notifications.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/database.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/pages.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/pages.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/error.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/error.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/game-room.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/game-room.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/nav.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/nav.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/img/avatar1.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/avatars/avatar1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/img/avatar2.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/avatars/avatar2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/img/avatar3.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/avatars/avatar3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/img/avatar4.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/avatars/avatar4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/img/avatar5.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/avatars/avatar5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/img/avatar6.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/avatars/avatar6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/img/avatar7.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/avatars/avatar7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/img/avatar8.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/avatars/avatar8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/img/avatars/0.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/profile-pictures/0.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/img/avatars/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/profile-pictures/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/img/avatars/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/profile-pictures/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/img/avatars/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/profile-pictures/3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/img/avatars/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/profile-pictures/4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/game-room.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/game-room.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/profile.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/profile.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/store.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/store.ejs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +41,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -77,6 +78,9 @@
     <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Preston\Desktop\cse442-semester-project-team-gameway\client\img\avatars" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Preston\Desktop\cse442-semester-project-team-gameway\routes" />
       <recent name="C:\Users\Preston\Desktop\cse442-semester-project-team-gameway\views" />
