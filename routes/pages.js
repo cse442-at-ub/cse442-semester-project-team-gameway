@@ -54,8 +54,15 @@ router.post('/register', function (req, res) {
 
 // Logout Route
 router.get('/logout', (req, res, next) => {
-    if(req.session.user) {
+    let user = req.session.user;
+    if(user) {
         req.session.destroy(function() {
+            // Update Database Online Status
+            var onlineStatus = 0;
+            var sql = 'UPDATE User SET OnlineStatus = ? WHERE Username = ?';
+            pool.query(sql,[onlineStatus, user.Username], function(err, result) {
+                if(err) throw err;
+            })
             res.redirect('/');
         });
     }
@@ -66,7 +73,7 @@ router.get('/home', function (req, res) {
     let user = req.session.user;
 
     if(user) {
-        res.render('home', {opp:req.session.opp, name:user});
+        res.render('home', {opp:req.session.opp, user:user});
         return;
     }
     res.redirect('/');
@@ -74,22 +81,46 @@ router.get('/home', function (req, res) {
 
 // Profile Route
 router.get('/profile', function (req, res) {
-    res.render('profile');
+    let user = req.session.user;
+
+    if(user) {
+        res.render('profile', {opp:req.session.opp, user:user});
+        return;
+    }
+    res.redirect('/');
 });
 
 // Rank Route
 router.get('/rank', function (req, res) {
-    res.render('rank');
+    let user = req.session.user;
+
+    if(user) {
+        res.render('rank', {opp:req.session.opp, user:user});
+        return;
+    }
+    res.redirect('/');
 });
 
 // Store Route
 router.get('/store', function (req, res) {
-    res.render('store');
+    let user = req.session.user;
+
+    if(user) {
+        res.render('store', {opp:req.session.opp, user:user});
+        return;
+    }
+    res.redirect('/');
 });
 
 // Create Room Route
 router.get('/create-room', (req, res) => {
-    res.render('create-room');
+    let user = req.session.user;
+
+    if(user) {
+        res.render('create-room', {opp:req.session.opp, user:user});
+        return;
+    }
+    res.redirect('/');
 });
 
 module.exports = router;
