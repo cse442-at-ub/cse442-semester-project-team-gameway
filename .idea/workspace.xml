@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a691e9d-81c5-4caf-828d-257efdc24621" name="Default Changelist" comment="Created Multiplayer game&#10;#5&#10;#114&#10;#102&#10;#116&#10;#117">
+    <list default="true" id="6a691e9d-81c5-4caf-828d-257efdc24621" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/img/avatar1.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/avatars/avatar1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/img/avatar2.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/avatars/avatar2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/img/avatar3.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/avatars/avatar3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/img/avatar4.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/avatars/avatar4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/img/avatar5.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/avatars/avatar5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/img/avatar6.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/avatars/avatar6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/img/avatar7.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/avatars/avatar7.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/img/avatar8.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/avatars/avatar8.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/img/avatars/0.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/profile-pictures/0.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/img/avatars/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/profile-pictures/1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/img/avatars/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/profile-pictures/2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/img/avatars/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/profile-pictures/3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/img/avatars/4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/client/img/profile-pictures/4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/game-room.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/game-room.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/profile.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/profile.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/store.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/store.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/profile.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +26,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -120,6 +105,7 @@
       <workItem from="1585604303149" duration="25295000" />
       <workItem from="1585757227522" duration="724000" />
       <workItem from="1585766163731" duration="4573000" />
+      <workItem from="1585774541835" duration="244000" />
     </task>
     <task id="LOCAL-00001" summary="#109 Created Database File">
       <created>1583521713487</created>
@@ -184,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584128703435</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Image Organization">
+      <created>1585772836762</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1585772836762</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,7 +209,9 @@
     <MESSAGE value="#119 Game rooms now display information from the database on the page" />
     <MESSAGE value="Created Multiplayer game&#10;#5&#10;#114&#10;#102&#10;#116&#10;#117" />
     <MESSAGE value="Merge branch 'social' into develop&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'social' into develop&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <MESSAGE value="Image Orginization" />
+    <MESSAGE value="Image Organization" />
+    <option name="LAST_COMMIT_MESSAGE" value="Image Organization" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1010" y="452" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" />
