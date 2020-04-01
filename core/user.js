@@ -47,10 +47,13 @@ User.prototype = {
                 var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
                 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
                 var dateTime = date+' '+time;
-                var sql = 'UPDATE User SET OnlineStatus = ?, LastLogin = ? WHERE Username = ?';
-                pool.query(sql,[onlineStatus, dateTime, data[0]], function(err, result) {
+                var rank = 'Unranked';
+                var avatar = Math.floor(Math.random() * 5);
+                var level = 1;
+                var sql = 'UPDATE User SET OnlineStatus = ?, LastLogin = ?, Rank = ?, HighestRank = ?, AvatarID = ?, Level = ? WHERE Username = ?';
+                pool.query(sql,[onlineStatus, dateTime, rank, rank, avatar, level, data[0]], function(err, result) {
                     if(err) throw err;
-                })
+                });
 
                 callback(result.insertId);
             });

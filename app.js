@@ -6,6 +6,7 @@ const pageRouter = require('./routes/pages');
 const fileRouter = require('./routes/files');
 const gameRoomRouter = require('./routes/game-room');
 const databaseRouter = require('./routes/database');
+const profileRouter = require('./routes/profile');
 const app = express();
 var serv = require('http').Server(app);
 
@@ -60,6 +61,8 @@ app.use(fileRouter);
 app.use(gameRoomRouter);
 // Serve Database
 app.use(databaseRouter);
+// Serve Profile
+app.use(profileRouter);
 // Error Handling
 app.use((req, res, next) => {
     var err = new Error('Page not found');

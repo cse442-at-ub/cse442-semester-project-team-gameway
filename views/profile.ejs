@@ -6,8 +6,8 @@
     <meta name="description" content="#">
     <meta name="keywords" content="#">
 
-    <link rel="stylesheet" href="css/mainstyle.css" type="text/css">
-    <link rel="stylesheet" href="css/social.css" type="text/css">
+    <link rel="stylesheet" href="/css/mainstyle.css" type="text/css">
+    <link rel="stylesheet" href="/css/social.css" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,500,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
@@ -27,25 +27,25 @@
                     <input type="text" id="username" name="username">
                 </form>
                 <div class="user-detail">
-                    <h3 class="user-id"><i class="fas fa-search"></i> Geoffrey</h3>
+                    <h3 class="user-id"><i class="fas fa-search"></i><%=profile.Username%></h3>
                     <div class="avatar-container">
-                        <img src="img/avatar.png" alt="user-avatar">
+                        <img src="/img/avatars/<%=profile.AvatarID%>.jpg" alt="user-avatar">
                     </div>
                     <div class="level">
-                        <h4 class="xp-level">Level: 32</h4>
+                        <h4 class="xp-level">Level: <%=profile.Level%></h4>
                         <div class="xp-bar">
                             <div class="xp-progress-bar"></div>
                         </div>
-                        <h4 class="xp-points">77 / 100</h4>
+                        <h4 class="xp-points">XP: <%=profile.Xp%> / 100</h4>
                     </div>
                 </div>
                 <div class="status-message">
                     <h3>STATUS MESSAGE</h3>
-                    <a>Here to have a fun time. I love to play games and I attend University at Buffalo</a>
+                    <a><%=profile.Status%></a>
                 </div>
                 <div class="current-rank">
                     <h3>CURRENT RANK</h3>
-                    <img src="img/gold.png" alt="gold">
+                    <img src="/img/<%=profile.Rank.toLocaleLowerCase()%>.png" alt="rank">
                 </div>
             </div>
             <!--END LEFT SIDE-->
@@ -56,15 +56,15 @@
                 <div class="right-top">
                     <div class="total-wins">
                         <h3>TOTAL WINS</h3>
-                        <h2>132</h2>
+                        <h2><%=profile.GamesWon%></h2>
                     </div>
                     <div class="games-played">
                         <h3>GAMES PLAYED</h3>
-                        <h2>542</h2>
+                        <h2><%=profile.GamesPlayed%></h2>
                     </div>
                     <div class="highest-rank">
                         <h3>HIGHEST RANK</h3>
-                        <h2>20</h2>
+                        <h2><%=profile.HighestRank%></h2>
                     </div>
                 </div>
                 <!--END RIGHT TOP-->
@@ -74,9 +74,9 @@
                     <div class="achievements">
                         <h3>ACHIEVEMENTS</h3>
                         <div class="achievement-images">
-                            <img src="img/achievement1.png" alt="achievement1">
-                            <img src="img/achievement2.png" alt="achievement2">
-                            <img src="img/achievement3.png" alt="achievement3">
+                            <% for(let x = 0; x <achievements.length; x++) {%>
+                                <img src="/img/achievements/<%=achievements[x]%>.png" alt="achievement">
+                            <% }%>
                         </div>
                     </div>
                 </div>
@@ -86,56 +86,21 @@
                 <div class="right-bottom">
                     <div class="match-history">
                         <h3>MATCH HISTORY</h3>
-                        <div class="match-wrapper">
-                            <div class="match">
-                                <h4 class="result">WIN</h4>
-                                <h4 class="mode">Normal</h4>
-                                <h4 class="length">15:34</h4>
-                                <h4 class="xp">99xp</h4>
-                                <h4 class="coin">3246</h4>
-                                <h4 class="date">02/22/2020</h4>
+                        <% for(let x = 0; x <matches.length; x++) {%>
+                            <div class="match-wrapper">
+                                <div class="match">
+                                    <h4 class="result">
+                                        <%if(user_match[x].isWon === 1){ %>
+                                            WIN
+                                        <%} else {%>
+                                            LOSS
+                                        <% }%>
+                                    </h4>
+                                    <h4 class="mode"><%=matches[x].Game%></h4>
+                                    <h4 class="date"><%=matches[x].Date%></h4>
+                                </div>
                             </div>
-                        </div>
-                        <div class="match-wrapper">
-                            <div class="match">
-                                <h4 class="result">WIN</h4>
-                                <h4 class="mode">Normal</h4>
-                                <h4 class="length">15:34</h4>
-                                <h4 class="xp">99xp</h4>
-                                <h4 class="coin">3246</h4>
-                                <h4 class="date">02/22/2020</h4>
-                            </div>
-                        </div>
-                        <div class="match-wrapper">
-                            <div class="match">
-                                <h4 class="result">WIN</h4>
-                                <h4 class="mode">Normal</h4>
-                                <h4 class="length">15:34</h4>
-                                <h4 class="xp">99xp</h4>
-                                <h4 class="coin">3246</h4>
-                                <h4 class="date">02/22/2020</h4>
-                            </div>
-                        </div>
-                        <div class="match-wrapper">
-                            <div class="match">
-                                <h4 class="result">WIN</h4>
-                                <h4 class="mode">Normal</h4>
-                                <h4 class="length">15:34</h4>
-                                <h4 class="xp">99xp</h4>
-                                <h4 class="coin">3246</h4>
-                                <h4 class="date">02/22/2020</h4>
-                            </div>
-                        </div>
-                        <div class="match-wrapper">
-                            <div class="match">
-                                <h4 class="result">WIN</h4>
-                                <h4 class="mode">Normal</h4>
-                                <h4 class="length">15:34</h4>
-                                <h4 class="xp">99xp</h4>
-                                <h4 class="coin">3246</h4>
-                                <h4 class="date">02/22/2020</h4>
-                            </div>
-                        </div>
+                        <% }%>
                     </div>
                 </div>
                 <!--END RIGHT BOTTOM-->

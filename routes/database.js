@@ -34,7 +34,7 @@ router.get('/_input_user', (req, res) => {
         GamesWon: 0,
         Level: 1,
         Xp: 0,
-        Rank: 'None',
+        Rank: 'Unranked',
         RankPoints: 0,
         HighestRank: 'None'
     };
