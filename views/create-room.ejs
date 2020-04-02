@@ -19,46 +19,56 @@
         <%- include('partials/nav'); %>
         <%- include('partials/social'); %>
     <main>
-        <form action="/_create_room" method="post">
-            <!-- Naming room -->
-            <label for="room-name"></label>
-            <input type="text" name="room-name" id="room-name" placeholder="Enter room title">
+        <header></header>
+        <div class="create-room">
+            <h3>Creating room ...</h3>
+            <form action="/_create_room" method="post">
+                <!-- Naming room -->
+                <div>
+                    <label for="room-name"></label>
+                    <input type="text" name="room-name" id="room-name" placeholder="Enter room title">
+                </div>
 
-            <br>
-            <!-- Setting room size -->
-            <label for="player-capacity">Amount of Players</label>
-            <select name="player-capacity" id="player-capacity">
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
+                <!-- Setting room size -->
+                <div>
+                    <label for="player-capacity">Amount of Players</label>
+                    <select name="player-capacity" id="player-capacity">
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
 
-            <br>
-            <!-- Selecting game -->
-            <label for="game-mode">Select Game Mode</label>
-            <select name="game-mode" id="game-mode">
-                <option value="Party">Party</option>
-                <option value="Co-op">Co-op</option>
-                <option value="game3">game three</option>
-                <option value="game4">game four</option>
-            </select>
+                <!-- Selecting game -->
+                <div>
+                    <label for="game-mode">Select Game Mode</label>
+                    <select name="game-mode" id="game-mode">
+                        <option value="Party">Party</option>
+                        <option value="Co-op">Co-op</option>
+                        <option value="game3">game three</option>
+                        <option value="game4">game four</option>
+                    </select>
+                </div>
 
-            <br>
-            <!-- Room lock -->
-            <label for="private">
-                Private Room?
-                <input type="checkbox" name="private" id="private">
-            </label>
+                <!-- Room lock -->
+                <div>
+                    <label for="private">
+                        Private Room?
+                        <input type="checkbox" name="private" id="private">
+                    </label>
 
-            <label for="password"></label>
-            <input type="text" name="password" id="password" placeholder="Enter Room Password">
+                    <label for="password"></label>
+                    <input type="text" name="password" id="password" placeholder="Enter Room Password">
+                </div>
 
-            <br>
-            <!-- Confirm room creation -->
-            <input id="createRoom" type="submit" value="create room">
-            <!-- Confirm room exit -->
-            <button id="goBack" onclick="">go back</button>
-        </form>
+                <div>
+                    <!-- Confirm room creation -->
+                    <input id="createRoom" type="submit" value="create room">
+                    <!-- Confirm room exit -->
+                    <button id="goBack" onclick="">go back</button>
+                </div>
+            </form>
+        </div>
     </main>
     </body>
 
