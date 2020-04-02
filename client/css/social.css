@@ -2,16 +2,48 @@
 /* CSS Document */
 
 /*==============================================================
-01 BASIC CHAT SETUP
-02 SOCIAL LIST
-03 SOCIAL CHAT
-04 NOTIFICATIONS
-05 TOGGLES
-06 TOOLBAR
-07 add more..
+01 COLORS & OPACITY
+02 BASIC SETUP
+03 LOGIN/REGISTER
+04 NAVIGATION
+05 SOCIAL
+06 DEFAULT CONTENT
+07 HOME
+08 PROFILE
+09 RANK
+10 STORE
+11 LATTICE
+12 add more..
 -- enforce the 4 line gap between each section --
 -- enforce CSS header styling                  --
 ==============================================================*/
+
+
+
+
+/* ===== 01 COLORS & OPACITY ===== */
+:root {
+    --content0: #FFFFFF;    /*Primary: Default text/icon color*/
+    --content1: #65ACEE;    /*Secondary: Sub-menus, social buttons, status*/
+
+    --bg0: #1F2B4D;         /*Default background*/
+    --bg1: #04315A;         /*Navbar and shop/all other buttons*/
+    --bg2: #224B71;         /*Social bar*/
+
+    --ok: #6EC927;          /*Available, Good, Ok, Proceed, Healthy*/
+    --oklt: #C5FF97;        /*light version, for glow effects*/
+    --focus: #5127C9;       /*Focused, Do Not Disturb, Muted, Silenced*/
+    --focuslt: #9997FF;     /*light version, for glow effects*/
+    --urgent: #C31616;      /*Urgency, Busy, Attention*/
+    --urgentlt: #FF6969;    /*light version, for glow effects*/
+    --warn: #C99227;        /*Caution, Processing, Maintenance, In-Progress*/
+    --warnlt: #FFC187;      /*light version, for glow effects*/
+
+    --op6: 60%;                /*Opacity: inactive for primary elements*/
+    --op3: 30%;                /*Opacity: inactive for secondary elements*/
+}
+
+
 
 
 /* ===== 01 BASIC CHAT SETUP ===== */
@@ -26,7 +58,7 @@
 .social-pfp, .social-me-pfp-bg,.social-me .social-pfp >img  {
     width: 98%;
     height: 98%;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -73,9 +105,12 @@
 
 
 /* ===== 02 SOCIAL LIST ===== */
-.social-list { 
+.social-list {
     overflow: scroll;
     box-shadow: inset 0 -100px 90px -100px var(--bg0);
+}
+.social-list > div {
+    cursor: pointer;
 }
 .social-person {
     top: 0;
@@ -116,8 +151,19 @@
     flex-direction: row;
 }
 .social-chat-label {
-    padding: 15px 5px 10px 5px;
+    padding: 15px 15px 10px 15px;
     background-color: var(--content1);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.social-chat-label button, .toolbar button {
+    width: fit-content;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    color: var(--content0);
+    cursor: pointer;
 }
 .social-chat-active {
     width: 120px;
@@ -162,10 +208,10 @@
     display: flex;
     flex-direction: column;
 }
-.send, .send * { 
+.send, .send * {
     display: flex;
     flex-direction: column;
-    align-self: flex-end; 
+    align-self: flex-end;
 }
 .send .message-content > a { width: fit-content; }
 .receive, .receive * { align-self: flex-start; }
@@ -183,7 +229,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-} 
+}
 .social-chat-messenger .social-pfp img {
     width: 98%;
     height: 98%;
@@ -214,11 +260,6 @@
 .toggle-list >* {
     padding: 0 5px;
     opacity: var(--op3);
-    cursor: pointer;
-}
-.toggle-list >*:hover {
-    padding: 0 5px;
-    opacity: var(--op6);
 }
 
 
@@ -227,6 +268,7 @@
     background-color: var(--content1);
     padding: 2px 8px;
     border-radius: 500px;
+
 }
 .social-search button {
     width: fit-content;
@@ -243,12 +285,12 @@
     align-items: center;
 }
 .btn-toggle {
+    width: fit-content;
     height: 100%;
     position: absolute;
     top: 0px;
     left: 0px;
     z-index: 2;
-    cursor: pointer;
 }
 .social-search input {
     background-color: var(--content0);
@@ -275,9 +317,10 @@
     flex-direction: row;
     justify-content: flex-end;
 }
-.toolbar > a {
-    padding: 5px 10px;
+.toolbar > button {
+    padding: 10px;
     opacity: var(--op3);
+    font-size: inherit;
 }
 
 .inactive {
@@ -287,4 +330,7 @@
 
 
 
-/* ===== 07 CATEGORY ===== */
+/* ===== 12 CATEGORY ===== */
+.hidden {
+    display: none;
+}
