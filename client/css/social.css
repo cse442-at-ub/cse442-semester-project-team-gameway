@@ -58,7 +58,6 @@
 .social-pfp, .social-me-pfp-bg,.social-me .social-pfp >img  {
     width: 98%;
     height: 98%;
-    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -105,7 +104,7 @@
 
 
 /* ===== 02 SOCIAL LIST ===== */
-.social-list { 
+.social-list {
     overflow: scroll;
     box-shadow: inset 0 -100px 90px -100px var(--bg0);
 }
@@ -208,10 +207,10 @@
     display: flex;
     flex-direction: column;
 }
-.send, .send * { 
+.send, .send * {
     display: flex;
     flex-direction: column;
-    align-self: flex-end; 
+    align-self: flex-end;
 }
 .send .message-content > a { width: fit-content; }
 .receive, .receive * { align-self: flex-start; }
@@ -229,7 +228,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-} 
+}
 .social-chat-messenger .social-pfp img {
     width: 98%;
     height: 98%;

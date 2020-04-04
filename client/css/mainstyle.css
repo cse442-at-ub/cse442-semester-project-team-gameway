@@ -1023,7 +1023,7 @@ article:hover, .item:hover {
     font-size: 18px;
     cursor: pointer;
     background-image: var(--bg1);
-
+    
     background-color: transparent;
     border: none;
     -webkit-box-shadow: none;
