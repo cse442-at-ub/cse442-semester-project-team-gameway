@@ -16,10 +16,45 @@
 <body>
     <%- include('partials/nav'); %>
     <%- include('partials/social'); %>
+
+<body>
+    <!--BEGIN MAIN NAVIGATION-->
+    <nav class="main-nav">
+        <a href="room-list">
+            <h1><i class="fas fa-play-circle"></i></h1>
+        </a>
+        <a href="home">
+            <h1>HOME</h1>
+        </a>
+        <a class="current" href="profile">
+            <h1>PROFILE</h1>
+        </a>
+        <a href="rank">
+            <h1>RANK</h1>
+        </a>
+        <a href="store">
+            <h1>STORE</h1>
+        </a>
+        <div class="currency">
+            <div class="cash">
+                <i class="fas fa-money-bill"></i>
+                <span>2147483647</span>
+            </div>
+            <div class="coins">
+                <i class="fas fa-coins"></i>
+                <span>2147483647</span>
+            </div>
+        </div>
+    </nav>
+    <!--END MAIN NAVIGATION-->
+
+    <div class="social"></div>
+
     <main>
         <header></header>
         <!--BEGIN PROFILE CONTAINER-->
         <div class="profile-container">
+            <% for(var profile of results02) { %>
             <!--BEGIN LEFT SIDE-->
             <div class="left-side">
                 <form class="profile-search-container">
@@ -32,11 +67,9 @@
                         <img src="/img/profile-pictures/<%=profile.AvatarID%>.jpg" alt="user-avatar">
                     </div>
                     <div class="level">
-                        <h4 class="xp-level">Level: <%=profile.Level%></h4>
-                        <div class="xp-bar">
-                            <div class="xp-progress-bar"></div>
-                        </div>
-                        <h4 class="xp-points">XP: <%=profile.Xp%> / 100</h4>
+                        <h4 class="xp-level"><%=profile.Level%></h4>
+                        <progress value="<%=profile.Xp%>" max="100"></progress>
+                        <h4 class="xp-points"><%=profile.Xp%>/100</h4>
                     </div>
                 </div>
                 <div class="status-message">
@@ -106,6 +139,7 @@
                 <!--END RIGHT BOTTOM-->
             </div>
             <!--END RIGHT SIDE-->
+            <% }%>
         </div>
         <!--END PROFILE CONTAINER-->
     </main>

@@ -33,50 +33,21 @@
                 <h3>Points</h3>
             </div>
             <div class="wrapper">
-
-                <div class="player-stats">
-                    <div class="rank">1</div>
-                    <div class="name">Preston</div>
-                    <div class="wins">54</div>
-                    <div class="points">4393</div>
-                </div>
-                <div class="player-stats">
-                    <div class="rank">2</div>
-                    <div class="name">Jack</div>
-                    <div class="wins">54</div>
-                    <div class="points">4393</div>
-                </div>
-                <div class="player-stats">
-                    <div class="rank">3</div>
-                    <div class="name">Geoffrey</div>
-                    <div class="wins">54</div>
-                    <div class="points">4393</div>
-                </div>
-                <div class="player-stats">
-                    <div class="rank">4</div>
-                    <div class="name">Justin</div>
-                    <div class="wins">54</div>
-                    <div class="points">4393</div>
-                </div>
-                <div class="player-stats">
-                    <div class="rank">5</div>
-                    <div class="name">Steven</div>
-                    <div class="wins">54</div>
-                    <div class="points">4393</div>
-                </div>
-                <div class="player-stats">
-                    <div class="rank">6</div>
-                    <div class="name">John</div>
-                    <div class="wins">54</div>
-                    <div class="points">4393</div>
-                </div>
-
-                <div class="button-section">
-                    <button class="load-more-btn">Load More...</button>
-                </div>
+                <% for(let user of results01) { %>
+                <a href="/profile/<%=user.Username%>">
+                    <div class="player-stats">
+                        <div class="rank"><%=user.Rank%></div>
+                        <div class="name"><%=user.Username%></div>
+                        <div class="wins"><%=user.GamesWon%></div>
+                        <div class="points"><%=user.RankPoints%></div>
+                    </div>
+                </a>
+                <% }%>
 
             </div>
         </div>
     </main>
 </body>
+<script src="/js/script.js"></script>
+
 </html>
