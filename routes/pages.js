@@ -80,17 +80,6 @@ router.get('/home', function (req, res) {
     res.redirect('/');
 });
 
-// Rank Route
-router.get('/rank', function (req, res) {
-    let user = req.session.user;
-
-    if(user) {
-        res.render('rank', {opp:req.session.opp, user:user});
-        return;
-    }
-    res.redirect('/');
-});
-
 // Store Route
 router.get('/store', function (req, res) {
     let user = req.session.user;

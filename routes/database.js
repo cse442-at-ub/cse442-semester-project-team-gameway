@@ -3,7 +3,7 @@ const pool = require('../core/pool');
 const router = express.Router();
 const dbName = "USE cse442_542_2020_spring_teamc_db; ";
 
-<!--Get All Users-->
+// <!--Get All Users-->
 router.get('/_get_users', (req, res) => {
     let initial = dbName;
     let sql = "SELECT * FROM `User`";
@@ -17,7 +17,7 @@ router.get('/_get_users', (req, res) => {
     });
 });
 
-<!--Insert New User-->
+// <!--Insert New User-->
 router.get('/_input_user', (req, res) => {
     let initial = dbName;
 
@@ -34,7 +34,7 @@ router.get('/_input_user', (req, res) => {
         GamesWon: 0,
         Level: 1,
         Xp: 0,
-        Rank: 'Unranked',
+        Rank: 'N/A',
         RankPoints: 0,
         HighestRank: 'None'
     };
@@ -51,7 +51,7 @@ router.get('/_input_user', (req, res) => {
     })
 });
 
-<!--Reset Database-->
+// <!--Reset Database-->
 router.get('/reset_db', (req, res) => {
     let initial = dbName;
 

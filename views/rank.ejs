@@ -17,6 +17,7 @@
 <body>
     <%- include('partials/nav'); %>
     <%- include('partials/social'); %>
+
     <main>
         <header></header>
         <div class="rank-wrapper">
@@ -33,7 +34,7 @@
                 <h3>Points</h3>
             </div>
             <div class="wrapper">
-                <% for(let user of results01) { %>
+                <% for(var user of results) { %>
                 <a href="/profile/<%=user.Username%>">
                     <div class="player-stats">
                         <div class="rank"><%=user.Rank%></div>

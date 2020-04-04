@@ -37,14 +37,14 @@ db.connect((err) => {
     if (err) throw err;
 });
 
-<!--Body Parser-->
+// <!--Body Parser-->
 app.use(urlencodedParser);
 
-<!--Setting View Engine-->
+// <!--Setting View Engine-->
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-<!--Session-->
+// <!--Session-->
 app.use(session({
     secret:'login-session',
     resave: false,
@@ -54,7 +54,7 @@ app.use(session({
     }
 }));
 
-<!--Start Routing-->
+// <!--Start Routing-->
 // Serve Static Files
 app.use(express.static(path.join(__dirname, 'client')));
 // Serve Pages
@@ -79,7 +79,7 @@ app.use((err, req, res, next) =>{
     res.status(err.status || 500);
     res.render('error', {errorMsg:err.message});
 });
-<!--End Routing-->
+// <!--End Routing-->
 
 //Game
 var gameEnd = false;
