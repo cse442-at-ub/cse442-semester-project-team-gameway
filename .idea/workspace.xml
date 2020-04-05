@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a691e9d-81c5-4caf-828d-257efdc24621" name="Default Changelist" comment="">
+    <list default="true" id="6a691e9d-81c5-4caf-828d-257efdc24621" name="Default Changelist" comment="Created Multiplayer game&#10;#5&#10;#114&#10;#102&#10;#116&#10;#117">
+      <change afterPath="$PROJECT_DIR$/client/yes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/social.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/social.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/room-list.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/room-list.ejs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -106,6 +108,7 @@
       <workItem from="1585757227522" duration="724000" />
       <workItem from="1585766163731" duration="4573000" />
       <workItem from="1585774541835" duration="244000" />
+      <workItem from="1586130415050" duration="273000" />
     </task>
     <task id="LOCAL-00001" summary="#109 Created Database File">
       <created>1583521713487</created>
