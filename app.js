@@ -46,7 +46,7 @@ app.set('view engine', 'ejs');
 
 // <!--Session-->
 app.use(session({
-    secret:'login-session',
+    secret: 'login-session',
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -75,9 +75,9 @@ app.use((req, res, next) => {
     err.status = 404;
     next(err);
 });
-app.use((err, req, res, next) =>{
+app.use((err, req, res, next) => {
     res.status(err.status || 500);
-    res.render('error', {errorMsg:err.message});
+    res.render('error', { errorMsg: err.message });
 });
 // <!--End Routing-->
 
@@ -86,17 +86,25 @@ app.use((err, req, res, next) =>{
 // Game
 /* statistics */
 
-/*  updateUserMatch adds current player's recently completed match statistics to the database
-
+/*  updateUserMatch adds current player's match history
     @user: the current Match associated with user (UserToMatch on the database)
 */
-function updateUserMatch(userMatch){
+function updateUserMatch(userMatch) {
     userMatch.isWon = isWon;
-    userMatch.XP = XP;
-    userMatch.Coins = coins;
     userMatch.GameLength = gameLength;
+    userMatch.Coins = coins;
+    userMatch.Xp = xp;
+    userMatch.RankPoints = rankpoints;
 }
-function updateProfile(match){
+/*  updateProfile update current player's profile
+    @user: the current Match associated with user (UserToMatch on the database)
+*/
+function updateProfile(user) {
+    user.Coins += coins;
+    user.Xp += xp;
+    user.RankPoints += rankpoints;
+    user.GamesPlayed += 1;
+    if (isWon) { user.GamesWon += 1; }
 }
 
 
