@@ -81,7 +81,28 @@ app.use((err, req, res, next) =>{
 });
 // <!--End Routing-->
 
-//Game
+
+
+// Game
+/* statistics */
+
+/*  updateUserMatch adds current player's recently completed match statistics to the database
+
+    @user: the current Match associated with user (UserToMatch on the database)
+*/
+function updateUserMatch(userMatch){
+    userMatch.isWon = isWon;
+    userMatch.XP = XP;
+    userMatch.Coins = coins;
+    userMatch.GameLength = gameLength;
+}
+function updateProfile(match){
+}
+
+
+
+/* logistics */
+
 var gameEnd = false;
 var SOCKET_LIST = {};
 
