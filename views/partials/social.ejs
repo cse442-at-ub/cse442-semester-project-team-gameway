@@ -37,23 +37,20 @@
 
     <div class="social-list">
 
-        <% for(var friend of friendList) { %>
+        <% for(let x = 0; x <friends.length; x++) {%>
 
             <div class="social-me social-person" onclick="showChat()">
             <div class="social-pfp">
-                <img src="/img/profile-pictures/1.jpg" alt="#">
+                <img src="/img/profile-pictures/<%=friends[x].AvatarID%>.jpg" alt="#">
             </div>
             <div class="social-bio">
-
-                <a><%=friend.UserID2%></a>
-                <a><%=friend.UserID2_Status%></a>
-
+                <a><%=friends[x].Username%></a>
+                <a><%=friends[x].Status%></a>
             </div>
             <div class="social-gift">
                 <i></i>
             </div>
             </div>
-
         <% }%>
 
     </div>
