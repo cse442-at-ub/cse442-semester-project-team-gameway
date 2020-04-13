@@ -45,18 +45,18 @@
 
         <% for(let x = 0; x <friends.length; x++) {%>
 
-            <div class="social-me social-person" id="social-node" onclick="showChat()">
-                <div class="social-pfp">
-                    <img src="/img/profile-pictures/<%=friends[x].AvatarID%>.jpg" alt="#">
-                </div>
-                <div class="social-bio">
-                    <a class="user-name"><%=friends[x].Username%></a>
-                    <a><%=friends[x].Status%></a>
-                </div>
-                <div class="social-gift">
-                    <i></i>
-                </div>
+        <div class="social-me social-person" id="social-node" onclick="showChat()">
+            <div class="social-pfp">
+                <img src="/img/profile-pictures/<%=friends[x].AvatarID%>.jpg" alt="#">
             </div>
+            <div class="social-bio">
+                <a class="user-name"><%=friends[x].Username%></a>
+                <a><%=friends[x].Status%></a>
+            </div>
+            <div class="social-gift">
+                <i></i>
+            </div>
+        </div>
         <% }%>
 
     </div>
