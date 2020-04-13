@@ -30,26 +30,32 @@
                     <i class="inactive fas fa-user-plus" style="cursor: pointer"></i>
                 </button>
             </div>
-            <input type="text" name="friend" id="friend">
+            <input type="text" name="friend" id="friend" placeholder="Add a friend...">
+        </form>
+        <form>
+            <div class="btn-toggle">
+                <i class="fas fa-search"></i>
+            </div>
+            <input id="searchInput" type="text" onkeyup="searchBar()" placeholder="Search for a friend...">
         </form>
     </div>
 
 
-    <div class="social-list">
+    <div class="social-list" id="social-list">
 
         <% for(let x = 0; x <friends.length; x++) {%>
 
-            <div class="social-me social-person" onclick="showChat()">
-            <div class="social-pfp">
-                <img src="/img/profile-pictures/<%=friends[x].AvatarID%>.jpg" alt="#">
-            </div>
-            <div class="social-bio">
-                <a><%=friends[x].Username%></a>
-                <a><%=friends[x].Status%></a>
-            </div>
-            <div class="social-gift">
-                <i></i>
-            </div>
+            <div class="social-me social-person" id="social-node" onclick="showChat()">
+                <div class="social-pfp">
+                    <img src="/img/profile-pictures/<%=friends[x].AvatarID%>.jpg" alt="#">
+                </div>
+                <div class="social-bio">
+                    <a class="user-name"><%=friends[x].Username%></a>
+                    <a><%=friends[x].Status%></a>
+                </div>
+                <div class="social-gift">
+                    <i></i>
+                </div>
             </div>
         <% }%>
 
@@ -114,3 +120,24 @@
         </form>
     </div>
 </div>
+
+<script>
+    function searchBar() {
+        var input, filter, div, social, name, roomHeaders, a, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        div = document.getElementById("social-list");
+        social = div.getElementsByClassName("social-me");
+        console.log(social);
+        for (i = 0; i < social.length; i++) {
+            a = social[i].getElementsByClassName("user-name")[0];
+            console.log(a);
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                social[i].style.display = "flex";
+            } else {
+                social[i].style.display = "none";
+            }
+        }
+    }
+</script>
