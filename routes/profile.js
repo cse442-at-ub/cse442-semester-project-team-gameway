@@ -63,9 +63,10 @@ router.get('/profile/:username', function (req, res) {
                 });
             }
         });
-    } else {
-        res.redirect('/');
     }
+
+    res.redirect('/');
+
 });
 
 module.exports = router;
