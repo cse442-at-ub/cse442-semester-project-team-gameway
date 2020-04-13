@@ -32,13 +32,11 @@ router.post('/friend_request', urlencodedParser, (req, res) => {
             return;
         }
             friend_ID = result[0]["ID"];
-            friend_status = result[0]["Status"];
             user_ID = username.ID;
 
             let addedFriend = {
                 UserID1: user_ID,
                 UserID2: friend_ID,
-                UserID2_Status: friend_status,
             };
 
             sql = "INSERT INTO Friendship SET ?";
@@ -51,8 +49,7 @@ router.post('/friend_request', urlencodedParser, (req, res) => {
                 if(err) throw err;
             });
 
-            res.redirect('/friend-added');
-
+            res.redirect('/home');
     });
 
 });
