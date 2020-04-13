@@ -88,10 +88,10 @@ router.get('/home', function (req, res) {
         pool.query(sql, [user['ID'], user['ID']], (err, relationships) => {
             let friendIDs = [];
             for(let x = 0; x < relationships.length; x++){
-                if(relationships[x]['UserID1'] !== user['Username'] && friendIDs.includes(relationships[x]['UserID1']) === false){
+                if(relationships[x]['UserID1'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID1']) === false){
                     friendIDs.push(relationships[x]['UserID1'])
                 }
-                else if(relationships[x]['UserID2'] !== user['Username'] && friendIDs.includes(relationships[x]['UserID2']) === false){
+                else if(relationships[x]['UserID2'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID2']) === false){
                     friendIDs.push(relationships[x]['UserID2'])
                 }
             }
@@ -138,9 +138,9 @@ router.get('/rank', function (req, res) {
         pool.query(sql, [user['ID'], user['ID']], (err, relationships) => {
             let friendIDs = [];
             for (let x = 0; x < relationships.length; x++) {
-                if (relationships[x]['UserID1'] !== user['Username'] && friendIDs.includes(relationships[x]['UserID1']) === false) {
+                if (relationships[x]['UserID1'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID1']) === false) {
                     friendIDs.push(relationships[x]['UserID1'])
-                } else if (relationships[x]['UserID2'] !== user['Username'] && friendIDs.includes(relationships[x]['UserID2']) === false) {
+                } else if (relationships[x]['UserID2'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID2']) === false) {
                     friendIDs.push(relationships[x]['UserID2'])
                 }
             }
@@ -186,9 +186,9 @@ router.get('/store', function (req, res) {
         pool.query(sql, [user['ID'], user['ID']], (err, relationships) => {
             let friendIDs = [];
             for (let x = 0; x < relationships.length; x++) {
-                if (relationships[x]['UserID1'] !== user['Username'] && friendIDs.includes(relationships[x]['UserID1']) === false) {
+                if (relationships[x]['UserID1'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID1']) === false) {
                     friendIDs.push(relationships[x]['UserID1'])
-                } else if (relationships[x]['UserID2'] !== user['Username'] && friendIDs.includes(relationships[x]['UserID2']) === false) {
+                } else if (relationships[x]['UserID2'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID2']) === false) {
                     friendIDs.push(relationships[x]['UserID2'])
                 }
             }
@@ -232,9 +232,9 @@ router.get('/create-room', (req, res) => {
         pool.query(sql, [user['ID'], user['ID']], (err, relationships) => {
             let friendIDs = [];
             for (let x = 0; x < relationships.length; x++) {
-                if (relationships[x]['UserID1'] !== user['Username'] && friendIDs.includes(relationships[x]['UserID1']) === false) {
+                if (relationships[x]['UserID1'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID1']) === false) {
                     friendIDs.push(relationships[x]['UserID1'])
-                } else if (relationships[x]['UserID2'] !== user['Username'] && friendIDs.includes(relationships[x]['UserID2']) === false) {
+                } else if (relationships[x]['UserID2'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID2']) === false) {
                     friendIDs.push(relationships[x]['UserID2'])
                 }
             }
