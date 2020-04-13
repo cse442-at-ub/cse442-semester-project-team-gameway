@@ -77,8 +77,6 @@ router.get('/home', function (req, res) {
     let user = req.session.user;
 
     if(user) {
-        console.log(user);
-
         let sql = "SELECT * FROM Friendship WHERE UserID1 = ? OR UserID2 = ?";
 
         pool.query(dbName, (err, result) => {
@@ -106,7 +104,6 @@ router.get('/home', function (req, res) {
                 }
 
                 pool.query(sql, (err, friends) => {
-                    console.log(friends);
                     res.render('home', {opp: req.session.opp, user: user, friends: friends});
                     return;
                 });
