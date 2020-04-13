@@ -6,7 +6,7 @@ const dbName = "USE cse442_542_2020_spring_teamc_db; ";
  <!--Rank Page-->
 router.get('/rank', (req, res) => {
     let initial = dbName;
-    let sql = "SELECT * FROM `User` ORDER BY RankPoints DESC, Username ASC";
+    let sql = "SELECT * FROM `User`";
     pool.query(initial, (err, sadfsdv) => {
         if(err) throw err;
     });
