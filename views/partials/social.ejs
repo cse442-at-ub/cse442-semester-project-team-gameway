@@ -64,7 +64,7 @@
     <div class="social-notifications">
         <a>You have 0 notifications.</a>
     </div>
-    <div class="social-chat hidden">
+    <div class="social-chat" style="display: none">
         <div class="social-chat-label">
             <label>Username</label>
             <button onclick="hideChat();"><i class="fas fa-window-minimize"></i></button>
@@ -120,4 +120,24 @@
         </form>
     </div>
 </div>
-<script src="js/script.js"></script>
+
+<script>
+    function searchBar() {
+        var input, filter, div, social, a, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        div = document.getElementById("social-list");
+        social = div.getElementsByClassName("social-me");
+        console.log(social);
+        for (i = 0; i < social.length; i++) {
+            a = social[i].getElementsByClassName("user-name")[0];
+            console.log(a);
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                social[i].style.display = "flex";
+            } else {
+                social[i].style.display = "none";
+            }
+        }
+    }
+</script>
