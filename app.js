@@ -8,8 +8,10 @@ const gameRoomRouter = require('./routes/game-room');
 const databaseRouter = require('./routes/database');
 const profileRouter = require('./routes/profile');
 const rankRouter = require('./routes/rank');
+const pool = require('./core/pool');
 const app = express();
 var serv = require('http').Server(app);
+let io = require('socket.io')(serv);
 
 const bodyParser = require('body-parser');
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
@@ -45,14 +47,19 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // <!--Session-->
-app.use(session({
-    secret:'login-session',
+let sessionMiddleware = session({
+    secret: 'login-session',
     resave: false,
     saveUninitialized: false,
     cookie: {
         maxAge: 60 * 1000 * 30
     }
-}));
+});
+app.use(sessionMiddleware);
+
+io.use(function (socket, next) {
+    sessionMiddleware(socket.request, socket.request.res, next);
+});
 
 // <!--Start Routing-->
 // Serve Static Files
@@ -75,13 +82,43 @@ app.use((req, res, next) => {
     err.status = 404;
     next(err);
 });
-app.use((err, req, res, next) =>{
+app.use((err, req, res, next) => {
     res.status(err.status || 500);
-    res.render('error', {errorMsg:err.message});
+    res.render('error', { errorMsg: err.message });
 });
 // <!--End Routing-->
 
-//Game
+
+
+// Game
+
+/* statistics */
+
+/*  updateUserMatch adds current player's match history
+    @user: the current Match associated with user (UserToMatch on the database)
+*/
+function updateUserMatch(userMatch) {
+    userMatch.isWon = isWon;
+    userMatch.GameLength = gameLength;
+    userMatch.Coins = coins;
+    userMatch.Xp = xp;
+    userMatch.RankPoints = rankpoints;
+}
+/*  updateProfile update current player's profile
+    @user: the current Match associated with user (UserToMatch on the database)
+*/
+function updateProfile(user) {
+    user.Coins += coins;
+    user.Xp += xp;
+    user.RankPoints += rankpoints;
+    user.GamesPlayed += 1;
+    if (isWon) { user.GamesWon += 1; }
+}
+
+
+
+/* logistics */
+
 var gameEnd = false;
 var SOCKET_LIST = {};
 
@@ -106,10 +143,10 @@ var Entity = function () {
     return self;
 }
 
-var Player = function (id) {
+var Player = function (id, user) {
     var self = Entity();
     self.id = id;
-    self.number = "" + Math.floor(10 * Math.random());
+    self.username = user;
     self.pressingRight = false;
     self.pressingLeft = false;
     self.pressingUp = false;
@@ -120,6 +157,7 @@ var Player = function (id) {
     self.hp = 10;
     self.hpMax = 10;
     self.score = 0;
+
 
     var super_update = self.update;
     self.update = function () {
@@ -180,7 +218,7 @@ var Player = function (id) {
 }
 Player.list = {};
 Player.onConnect = function (socket) {
-    var player = Player(socket.id);
+    var player = Player(socket.id, socket.request.session.user.Username);
     socket.on('keyPress', function (data) {
         if (data.inputId === 'left')
             player.pressingLeft = data.state;
@@ -250,7 +288,7 @@ var Bullet = function (parent, angle) {
                     }
 
                     if (shooter.score == 3) {
-                        gameOver(shooter.id);
+                        gameOver(shooter.username);
                         stopGame();
                         endGame();
                     }
@@ -309,8 +347,13 @@ Bullet.getAllInitPack = function () {
 }
 
 
-var io = require('socket.io')(serv, {});
 io.sockets.on('connection', function (socket) {
+    // console.info(`THE USERNAME: ${socket.request.session.user.Username} \n`);
+    console.log(`SESSION.USER`);
+    console.info(socket.request.session.user.Username);
+
+
+
     socket.id = Math.random();
     SOCKET_LIST[socket.id] = socket;
 
@@ -358,12 +401,65 @@ setInterval(function () {
 }, 1000 / 25);
 
 
-function gameOver(id) {
-    for (var i in SOCKET_LIST) {
-        var socket = SOCKET_LIST[i];
-        socket.emit('gameOver', id);
+function gameOver(username) {
+    for (let i in SOCKET_LIST) {
+
+        let
+            socket = SOCKET_LIST[i],
+            sql = '',
+            uData = socket.request.session.user,
+            user = uData.Username,
+            isWon = calcWon(user, username),
+            coins = uData.Coins + calcCoins(20, isWon),
+            gamesPlayed = uData.GamesPlayed + 1,
+            gamesWon = uData.GamesWon + isWon,
+            level = uData.Level + calcLvl(16),
+            xp = uData.Xp + calcXp(16, isWon, uData.Xp),
+            rankPoints = uData.RankPoints + 100,
+            rank = calcRank(rankPoints),
+            status = 'Online',
+            userID = uData.ID;
+
+        // UPDATE USER PROFILE
+        sql = 'UPDATE User SET Coins = ?, GamesPlayed = ?, GamesWon = ?, Level = ?, Xp = ?, Rank = ?, RankPoints = ?, Status = ? WHERE Username = ?';
+        pool.query(sql, [coins, gamesPlayed, gamesWon, level, xp, rank, rankPoints, status, user], function (err, result) { if (err) throw err; });
+
+        // UPDATE USER GAME HISTORY MATCH
+        sql = 'INSERT INTO UserToMatch SET UserID = ?, isWon = ?, Xp = ?, RankPoints = ?';
+        pool.query(sql, [userID, isWon, coins, xp, rankPoints], function (err, result) { if (err) throw err; });
+
+        socket.emit('gameOver', username);
     }
+
+    //// CALCULATE STATISTICS (START) ////
+    function calcWon(user, username) {
+        if (username === user) { return 1; }
+        else { return 0; }
+    }
+    function calcCoins(points, isWon) {
+        if (isWon === 1) { points = points * 1.5; } // calculations for winner
+        return points;
+    }
+    function calcLvl(points) {
+        if (!calcXp(points) === points) { return 1; }
+        else { return 0; }
+    }
+    function calcXp(points, isWon, userXP) {
+        if (isWon === 1) { points = points * 1.5; } // calculations for winner
+        if (100 <= userXP + points) { return userXP + points - 100; }
+        else { return userXP + points; }
+    }
+    function calcRank(points) {
+        if (50000 <= points) { return 'pro'; }
+        else if (25000 <= points) { return 'elite'; }
+        else if (10000 <= points) { return 'expert'; }
+        else if (01000 <= points) { return 'novice'; }
+        else { return 'none'; }
+    }
+    //// CALCULATE STATISTICS (END) ////
 }
+
+
 function startGame() {
     gameEnd = false;
 }
