@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--BEGIN META-->
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta content="Sandy Liu" name="author">
+    <meta charset="UTF-8">
+    <!--END META-->
+
+    <!--BEGIN TITLE-->
+    <title>Gameway | Authenticator</title>
+    <!--END TITLE-->
+
+    <!--BEGIN CSS FILES-->
+    <link href="css/mainstyle.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Raleway:600,400,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <!--END CSS FILES-->
+
+    <!--BEGIN SCRIPTS-->
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/e584d861f4.js"></script>
+    <!--END SCRIPTS-->
+</head>
+<body>
+    <!--BEGIN PAGE BACKGROUND-->
+    <div class="right-bg"></div>
+    <!--END PAGE BACKGROUND-->
+
+    <!--BEGIN PAGE CONTENT-->
+    <div class="entry-page-content">
+        <div class="entry-page-content-left">
+        </div>
+        <div class="entry-page-content-right">
+            <div class="entry-switcher">
+                <div id="entry-switcher-button"></div>
+                <button type="button" class="toggle" onclick="login()">Sign In</button>
+                <button type="button" class="toggle" onclick="register()">Sign Up</button>
+            </div>
+            <div class="entry-form-container">
+                <form id="signin-form" action="/login" method="post">
+                    <label for="signin-username">Username</label>
+                    <input class="signin-field" id="signin-username" type="text" name="username" placeholder="Enter your username">
+                    <label for="signin-password">Password</label>
+                    <input class="signin-field" id="signin-password" type="password" name="password" placeholder="Enter your password">
+                    <div class="remember-pw-container">
+                        <input type="checkbox" id="remember-pw" name="agree" value="agree">
+                        <label for="remember-pw">Remember Password</label>
+                    </div>
+                    <a class="signin-forgot-password" href="#">Forgot Password</a>
+                    <input class="signin-submit" type="submit" value="SIGN IN">
+                </form>
+
+                <form id="signup-form" action="/register" method="post">
+                    <label for="signup-username">Username</label>
+                    <input class="signup-field" id="signup-username" type="text" name="username" placeholder="Enter your username" pattern=".{,12}" title="12 characters maximum!" required>
+                    <label for="signup-email">Email</label>
+                    <input class="signup-field" id="signup-email" type="email" name="email" placeholder="Enter your email" required>
+                    <label for="signup-password">Password</label>
+                    <input class="signup-field" id="signup-password" type="password" name="password" placeholder="Enter your desired password" required>
+                    <label for="signup-reenter-password">Re-enter Password</label>
+                    <input class="signup-field" id="signup-reenter-password" type="password" name="reenter-password" placeholder="Re-enter your desired password" required>
+                    <div class="signup-agreement-container">
+                        <input type="checkbox" id="signup-agree" name="agree" value="agree" required>
+                        <label for="signup-agree">I Agree to the <a href="#">Terms of Service</a></label>
+                    </div>
+                    <input class="signup-submit" type="submit" value="SIGN UP">
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <!--END PAGE CONTENT-->
+
+    <script>
+        var x = document.getElementById("signin-form");
+        var y = document.getElementById("signup-form");
+        var z = document.getElementById("entry-switcher-button");
+
+        function login() {
+            x.style.left = "0";
+            y.style.left = "100%";
+            z.style.left = "0px";
+        }
+
+        function register() {
+            x.style.left = "-100%";
+            y.style.left = "0";
+            z.style.left = "50%";
+        }
+    </script>
+</body>
+</html>

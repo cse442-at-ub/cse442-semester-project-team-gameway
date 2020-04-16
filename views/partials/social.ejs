@@ -1,0 +1,123 @@
+<div class="social">
+    <div class="toolbar">
+        <a href="/logout"><button>Logout <i class="fas fa-sign-out-alt"></i></button></a>
+    </div>
+    <div class="social-me">
+        <div class="social-me-pfp-bg">
+            <div class="social-pfp">
+                <img src="/img/profile-pictures/<%=user.AvatarID%>.jpg" alt="#">
+            </div>
+        </div>
+        <div class="social-bio">
+            <a><%=user.Username%></a>
+            <a><%=user.Status%></a>
+        </div>
+    </div>
+    <div class="social-toggles">
+        <a>Friends</a>
+        <div class="toggle-list">
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-user-secret"></i>
+            <i class="fas fa-map-marker-alt"></i>
+        </div>
+    </div>
+
+    <div class="social-search">
+        <form action="/friend_request" method="post">
+            <div class="btn-toggle">
+                <button><i class="fas fa-search"></i></button>
+                <button type="submit">
+                    <i class="inactive fas fa-user-plus" style="cursor: pointer"></i>
+                </button>
+            </div>
+            <input type="text" name="friend" id="friend" placeholder="Add a friend...">
+        </form>
+        <form>
+            <div class="btn-toggle">
+                <i class="fas fa-search"></i>
+            </div>
+            <input id="searchInput" type="text" onkeyup="searchBar()" placeholder="Search for a friend...">
+        </form>
+    </div>
+
+
+    <div class="social-list" id="social-list">
+
+        <% for(let x = 0; x <friends.length; x++) {%>
+
+        <div class="social-me social-person" id="social-node" onclick="showChat()">
+            <div class="social-pfp">
+                <img src="/img/profile-pictures/<%=friends[x].AvatarID%>.jpg" alt="#">
+            </div>
+            <div class="social-bio">
+                <a class="user-name" href="/profile/<%=friends[x].Username%>"><%=friends[x].Username%></a>
+                <a><%=friends[x].Status%></a>
+            </div>
+            <div class="social-gift">
+                <i></i>
+            </div>
+        </div>
+        <% }%>
+
+    </div>
+
+    <div class="social-notifications">
+        <a>You have 0 notifications.</a>
+    </div>
+    <div class="social-chat hidden">
+        <div class="social-chat-label">
+            <label>Username</label>
+            <button onclick="hideChat();"><i class="fas fa-window-minimize"></i></button>
+        </div>
+        <form>
+
+            <div class="social-chat-active">
+                <button id="superman">Superman</button>
+                <button id="batman">Batman</button>
+                <button id="wonderwoman">Wonderwoman</button>
+                <button id="ironman">Ironman</button>
+            </div>
+
+            <div class="social-chat-messenger">
+                <div class="all-messages">
+                    <section>
+                        <a>-- March 17, 2020 --</a>
+                        <div class="message-block send">
+                            <div class="message-content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.</p>
+                                <a>5:37 AM</a>
+                            </div>
+                            <div class="social-pfp">
+                                <img src="/img/profile-pictures/1.jpg" alt="#">
+                            </div>
+                        </div>
+                        <div class="message-block send">
+                            <div class="message-content">
+                                <p>Morbi tristique senectus et netus. Eu augue ut lectus arcu bibendum at varius
+                                    vel. Odio eu feugiat pretium nibh ipsum.</p>
+                                <a>5:37 AM</a>
+                            </div>
+                            <div class="social-pfp">
+                                <img src="/img/profile-pictures/1.jpg" alt="#">
+                            </div>
+                        </div>
+                        <div class="message-block receive">
+                            <div class="message-content">
+                                <p>tincidunt praesent semper feugiat nibh. Tristique nu</p>
+                                <a>5:37 AM</a>
+                            </div>
+                            <div class="social-pfp">
+                                <img src="/img/profile-pictures/1.jpg" alt="#">
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <input class="social-chat-input" type="text" />
+            </div>
+
+        </form>
+    </div>
+</div>
+<script src="js/script.js"></script>

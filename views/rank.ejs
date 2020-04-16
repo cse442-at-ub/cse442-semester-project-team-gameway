@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="#">
+    <meta name="keywords" content="#">
+
+    <link rel="stylesheet" href="css/mainstyle.css" type="text/css">
+    <link rel="stylesheet" href="css/social.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+    <title>Gameway | RANK</title>
+</head>
+
+<body>
+    <%- include('partials/nav'); %>
+    <%- include('partials/social'); %>
+
+    <main>
+        <header></header>
+        <div class="rank-wrapper">
+            <div class="header">
+                <div class="leaderboard-title"><h1>Leaderboard</h1></div>
+                <form class="search-box">
+                    <input type="text" class="search-player" placeholder="   Search Player...">
+                </form>
+            </div>
+            <div class="categories">
+                <h3>Rank</h3>
+                <h3>Name</h3>
+                <h3>Wins</h3>
+                <h3>Points</h3>
+            </div>
+            <div class="wrapper">
+                <% for(var user of results) { %>
+                <a href="/profile/<%=user.Username%>">
+                    <div class="player-stats">
+                        <div class="rank"><%=user.Rank%></div>
+                        <div class="name"><%=user.Username%></div>
+                        <div class="wins"><%=user.GamesWon%></div>
+                        <div class="points"><%=user.RankPoints%></div>
+                    </div>
+                </a>
+                <% }%>
+
+            </div>
+        </div>
+    </main>
+</body>
+<script src="/js/script.js"></script>
+
+</html>

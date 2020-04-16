@@ -1,0 +1,335 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*==============================================================
+01 COLORS & OPACITY
+02 BASIC SETUP
+03 LOGIN/REGISTER
+04 NAVIGATION
+05 SOCIAL
+06 DEFAULT CONTENT
+07 HOME
+08 PROFILE
+09 RANK
+10 STORE
+11 LATTICE
+12 add more..
+-- enforce the 4 line gap between each section --
+-- enforce CSS header styling                  --
+==============================================================*/
+
+
+
+
+/* ===== 01 COLORS & OPACITY ===== */
+:root {
+    --content0: #FFFFFF;    /*Primary: Default text/icon color*/
+    --content1: #65ACEE;    /*Secondary: Sub-menus, social buttons, status*/
+
+    --bg0: #1F2B4D;         /*Default background*/
+    --bg1: #04315A;         /*Navbar and shop/all other buttons*/
+    --bg2: #224B71;         /*Social bar*/
+
+    --ok: #6EC927;          /*Available, Good, Ok, Proceed, Healthy*/
+    --oklt: #C5FF97;        /*light version, for glow effects*/
+    --focus: #5127C9;       /*Focused, Do Not Disturb, Muted, Silenced*/
+    --focuslt: #9997FF;     /*light version, for glow effects*/
+    --urgent: #C31616;      /*Urgency, Busy, Attention*/
+    --urgentlt: #FF6969;    /*light version, for glow effects*/
+    --warn: #C99227;        /*Caution, Processing, Maintenance, In-Progress*/
+    --warnlt: #FFC187;      /*light version, for glow effects*/
+
+    --op6: 60%;                /*Opacity: inactive for primary elements*/
+    --op3: 30%;                /*Opacity: inactive for secondary elements*/
+}
+
+
+
+
+/* ===== 01 BASIC CHAT SETUP ===== */
+.social {
+    height: 100%;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+}
+.social-pfp, .social-me-pfp-bg,.social-me .social-pfp >img  {
+    width: 98%;
+    height: 98%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 500px;
+    padding: 3px;
+    background-color: var(--oklt);
+    overflow: hidden;
+}
+.social-me .social-pfp >img{
+    padding: 0px;
+    border: 2px solid var(--ok);
+}
+.social-me-pfp-bg {
+    width: 120px;
+    height: 120px;
+    background-color: var(--bg2);
+    border: none;
+    padding: 5px;
+    overflow: auto;
+}
+.social-me {
+    width: fit-content;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    margin-bottom: 10px;
+    top: 0;
+    left: -75px;
+}
+.social-me > .social-bio {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+}
+
+
+
+
+/* ===== 02 SOCIAL LIST ===== */
+.social-list {
+    overflow: scroll;
+    box-shadow: inset 0 -100px 90px -100px var(--bg0);
+}
+.social-list > div {
+    cursor: pointer;
+}
+.social-person {
+    top: 0;
+    left: 0;
+}
+.social-person .social-pfp {
+    width: 50px;
+    height: 50px;
+    padding: 2px;
+}
+.social-person .social-pfp >img {
+    border: 1px solid var(--ok);
+}
+
+
+
+
+/* ===== 03 SOCIAL CHAT ===== */
+.social-chat {
+    width: 450px;
+    height: 400px;
+    background-color: var(--bg2);
+    overflow: hidden;
+    position: absolute;
+    bottom: 0px;
+    left: -470px;
+    z-index: 100;
+    box-shadow: 0 0 20px -10px var(--content1);
+
+    display: flex;
+    flex-direction: column;
+}
+.social-chat > form {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+}
+.social-chat-label {
+    padding: 15px 15px 10px 15px;
+    background-color: var(--content1);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.social-chat-label button, .toolbar button {
+    width: fit-content;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    color: var(--content0);
+    cursor: pointer;
+}
+.social-chat-active {
+    width: 120px;
+    background-color: var(--bg1);
+}
+.social-chat-active > button {
+    background-color: var(--bg1);
+    padding: 5px;
+    width: 100%;
+    border: none;
+
+    text-align: left;
+    color: var(--content0);
+}
+.social-chat-messenger {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+.all-messages {
+    width: 100%;
+    height: 326px;
+    overflow: scroll;
+}
+.social-chat-messenger section {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.social-chat-messenger section > a:first-of-type {
+    padding: 15px;
+    text-align: center;
+}
+.message-block {
+    padding: 10px;
+    width: 60%;
+
+    display: flex;
+    flex-direction: column;
+}
+.send, .send * {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+}
+.send .message-content > a { width: fit-content; }
+.receive, .receive * { align-self: flex-start; }
+.message-content p {
+    background-color: var(--content1);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 4px 0px;
+}
+.social-chat-messenger .social-pfp {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.social-chat-messenger .social-pfp img {
+    width: 98%;
+    height: 98%;
+    border-radius: 999px;
+}
+.social-chat-input {
+    width: 100%;
+    padding: 4px;
+}
+
+
+
+
+/* ===== 04 NOTIFICATIONS ===== */
+.social-notifications {
+    padding: 15px 0;
+}
+
+
+
+
+/* ===== 05 TOGGLES ===== */
+.social-toggles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.toggle-list >* {
+    padding: 0 5px;
+    opacity: var(--op3);
+}
+
+
+.btn-toggle, .social-search input {
+    width: fit-content;
+    background-color: var(--content1);
+    padding: 2px 8px;
+    border-radius: 500px;
+
+}
+.social-search button {
+    width: fit-content;
+    background-color: var(--content1);
+    color: var(--content0);
+    border: none;
+    padding-right: 8px;
+}
+.social-search button:last-of-type {padding-right:0px;}
+.btn-toggle, .social-search > form {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.btn-toggle {
+    width: fit-content;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+}
+.social-search input {
+    background-color: var(--content0);
+    padding: 4px 0px 4px 65px;
+    width: 100%;
+    border: none;
+    z-index: 1;
+}
+.social-search > form {
+    height: auto;
+    position: relative;
+    margin: 10px 0px 35px 0px;
+}
+
+
+
+
+/* ===== 06 TOOLBAR ===== */
+.toolbar {
+    top: 0px;
+    right: 0px;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.toolbar > button {
+    padding: 10px;
+    opacity: var(--op3);
+    font-size: inherit;
+}
+
+.inactive {
+    opacity: var(--op3);
+}
+
+
+
+
+/* ===== 12 CATEGORY ===== */
+.hidden {
+    display: none;
+}

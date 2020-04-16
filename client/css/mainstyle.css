@@ -13,7 +13,9 @@
 09 RANK
 10 STORE
 11 LATTICE
-12 add more..
+12 CREATE ROOM
+13 ROOM LIST
+99 add more..
 -- enforce the 4 line gap between each section --
 -- enforce CSS header styling                  --
 ==============================================================*/
@@ -97,7 +99,7 @@ h4 { font-size: 18px; }
 /* --- 2.2 buttons --- */
 a:visited, a:link { color: var(--content0); text-decoration: none; }
 .btn00:hover, .btn01:hover { border: solid 2px var(--content0); }
-.btn00, .btn01 {
+.btn00, .btn01, .btn02 {
     background-color: var(--bg1);
     color: var(--content0);
     border: solid 2px var(--bg1);
@@ -114,6 +116,14 @@ a:visited, a:link { color: var(--content0); text-decoration: none; }
     border: 0px;
     border-radius: 999px;
     padding: 5px;
+}
+.btn02 {
+    background-color: var(--bg2);
+    border: 0px;
+    margin: 0 5px;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    font-weight: 600;
 }
 
 
@@ -934,4 +944,160 @@ article:hover, .item:hover {
 
 
 
-/* ===== 12 CATEGORY ===== */
+/* ===== 12 CREATE ROOM ===== */
+.create-room {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.create-room h3 {
+    text-transform: initial;
+    margin-bottom: 50px;
+}
+.create-room form {
+    border-top: 5px solid var(--content0);
+    padding-top: 10px;
+    width: 450px;
+}
+.create-room input, .create-room button {
+    padding: 8px 15px;
+    background-image: var(--content0);
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+.create-room input[type="text"],
+.create-room input[type="password"] {
+    border-radius: 25px;
+}
+.create-room input[type="submit"] {
+    width: fit-content;
+    font-weight: 800;
+    cursor: pointer;
+    background-image: var(--bg1);
+}
+.create-room button {
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.create-room div {
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.create-room label:first-of-type, .create-room label:first-of-type input[type="text"] {
+    width: 100%;
+}
+
+
+
+
+/* ===== 13 ROOM LIST ===== */
+.room-list header, .room-list header form, .room-list header>div:last-child {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.room-list header {
+    grid-column: 1 / -1;
+    padding: 0 50px;
+}
+.room-list > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.room-list .btn02 { margin: 0 0 0 10px; }
+
+/* ---/ 13.1 filter system /--- */
+.room-list input[type="submit"] {
+    color: var(--content0);
+    text-transform: capitalize;
+    width: fit-content;
+    font-weight: 500;
+    font-size: 18px;
+    cursor: pointer;
+    background-image: var(--bg1);
+    
+    background-color: transparent;
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+.room-list .social-search {
+    width: 45%;
+}
+.room-list .social-search input {
+    padding: 4px 0 4px 85px;
+    height: 41px;
+    font-size: 18px;
+}
+.room-list .social-search form {
+    margin: 0;
+}
+.room-list .social-search button:last-of-type {
+    font-size: 18px;
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+/* ---/ 13.2 room node /--- */
+.room-node,
+.room-node div {
+    width: fit-content;
+    height: fit-content;
+    background-color: var(--ok);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.room-node {
+    width: 30%;
+}
+.room-node div {
+    flex-direction: column;
+    background-color: var(--ok);
+}
+.room-node div >* , .room-node form input {
+    padding: 15px 20px;
+}
+.room-node .room-text {
+    width: 100%;
+    align-items: flex-start;
+}
+.room-node .room-text > a {
+    width: 100%;
+    color: var(--bg0);
+    background-color: var(--oklt);
+}
+.room-node .room-status {
+    width: fit-content;
+}
+.room-node>div>:last-child {
+    padding: 35px 20px;
+    font-size: 32px;
+}
+.room-node form {
+    padding: 0;
+}
+#room-password-popup {
+    width:240px;
+    height:120px;
+    padding:20px;
+    background-color: #285075;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: none;
+}
+
+
+/* ===== 99 CATEGORY ===== */

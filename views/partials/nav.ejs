@@ -1,0 +1,17 @@
+<nav class="main-nav">
+    <a href="/room-list"><h1><i class="fas fa-play-circle"></i></h1></a>
+    <a href="/home"><h1>HOME</h1></a>
+    <a href="/profile/<%=user.Username%>"><h1>PROFILE</h1></a>
+    <a href="/rank"><h1>RANK</h1></a>
+    <a href="/store"><h1>STORE</h1></a>
+    <div class="currency">
+        <div class="cash">
+            <i class="fas fa-money-bill"></i>
+            <span><%=user.Cash%></span>
+        </div>
+        <div class="coins">
+            <i class="fas fa-coins"></i>
+            <span><%=user.Coins%></span>
+        </div>
+    </div>
+</nav>
