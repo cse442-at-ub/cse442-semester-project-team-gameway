@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6a691e9d-81c5-4caf-828d-257efdc24621" name="Default Changelist" comment="commented out rank.js&#10;deleted route to rank.js in app.js&#10;updated game-room.js (line 72)&#10;updated sql line in rank route for pages.js">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/pages.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/pages.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/social.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/social.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/room-list.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/room-list.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +62,18 @@
       <recent name="C:\Users\Preston\Desktop\cse442-semester-project-team-gameway\routes" />
       <recent name="C:\Users\Preston\Desktop\cse442-semester-project-team-gameway\views" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -169,12 +181,13 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="#109 Created Database File" />
@@ -195,28 +208,26 @@
     <option name="LAST_COMMIT_MESSAGE" value="commented out rank.js&#10;deleted route to rank.js in app.js&#10;updated game-room.js (line 72)&#10;updated sql line in rank route for pages.js" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1010" y="452" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587064613520" />
-    <state x="1010" y="452" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1587064613521" />
-    <state x="364" y="0" key="CommitChangelistDialog2" timestamp="1587064707545">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="364" y="0" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587064707545" />
-    <state x="364" y="31" key="CommitChangelistDialog2/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1587064613521" />
-    <state x="205" y="41" key="CommitChangelistDialog2/0.23.1440.808@0.23.1440.808" timestamp="1587064613521" />
-    <state width="1379" height="191" key="GridCell.Tab.0.bottom" timestamp="1587064613521" />
-    <state width="1379" height="191" key="GridCell.Tab.0.bottom/0.23.1440.814@0.23.1440.814" timestamp="1587064613521" />
-    <state width="1379" height="191" key="GridCell.Tab.0.center" timestamp="1587064613521" />
-    <state width="1379" height="191" key="GridCell.Tab.0.center/0.23.1440.814@0.23.1440.814" timestamp="1587064613521" />
-    <state width="1379" height="191" key="GridCell.Tab.0.left" timestamp="1587064613521" />
-    <state width="1379" height="191" key="GridCell.Tab.0.left/0.23.1440.814@0.23.1440.814" timestamp="1587064613521" />
-    <state width="1379" height="191" key="GridCell.Tab.0.right" timestamp="1587064613521" />
-    <state width="1379" height="191" key="GridCell.Tab.0.right/0.23.1440.814@0.23.1440.814" timestamp="1587064613521" />
-    <state x="1512" y="434" key="Vcs.Push.Dialog.v2" timestamp="1587064613521" />
-    <state x="1512" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1587064613521" />
-    <state x="1512" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1587064613521" />
-    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog" timestamp="1587064613521" />
-    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1587064613521" />
-    <state x="1520" y="478" key="git4idea.merge.GitPullDialog" timestamp="1587064613521" />
-    <state x="1520" y="478" key="git4idea.merge.GitPullDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1587064613521" />
+    <state x="1010" y="452" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" />
+    <state x="1010" y="452" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" />
+    <state x="364" y="0" key="CommitChangelistDialog2" />
+    <state x="364" y="0" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" />
+    <state x="364" y="31" key="CommitChangelistDialog2/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" />
+    <state x="205" y="41" key="CommitChangelistDialog2/0.23.1440.808@0.23.1440.808" />
+    <state width="1379" height="191" key="GridCell.Tab.0.bottom" />
+    <state width="1379" height="191" key="GridCell.Tab.0.bottom/0.23.1440.814@0.23.1440.814" />
+    <state width="1379" height="191" key="GridCell.Tab.0.center" />
+    <state width="1379" height="191" key="GridCell.Tab.0.center/0.23.1440.814@0.23.1440.814" />
+    <state width="1379" height="191" key="GridCell.Tab.0.left" />
+    <state width="1379" height="191" key="GridCell.Tab.0.left/0.23.1440.814@0.23.1440.814" />
+    <state width="1379" height="191" key="GridCell.Tab.0.right" />
+    <state width="1379" height="191" key="GridCell.Tab.0.right/0.23.1440.814@0.23.1440.814" />
+    <state x="1512" y="434" key="Vcs.Push.Dialog.v2" />
+    <state x="1512" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" />
+    <state x="1512" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" />
+    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog" />
+    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" />
+    <state x="1520" y="478" key="git4idea.merge.GitPullDialog" />
+    <state x="1520" y="478" key="git4idea.merge.GitPullDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" />
   </component>
 </project>
