@@ -122,7 +122,7 @@ router.get('/home', function (req, res) {
 // Rank Route
 router.get('/rank', function (req, res) {
     let initial = dbName;
-    let sql = "SELECT * FROM `User`";
+    let sql = "SELECT * FROM User ORDER BY RankPoints DESC, Username ASC";
     pool.query(initial, (err, sadfsdv) => {
         if(err) throw err;
     });

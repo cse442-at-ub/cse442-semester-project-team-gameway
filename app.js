@@ -75,7 +75,6 @@ app.use(databaseRouter);
 // Serve Profile
 app.use(profileRouter);
 // Serve Rank
-app.use(rankRouter);
 // Error Handling
 app.use((req, res, next) => {
     var err = new Error('Page not found');
@@ -453,7 +452,7 @@ function gameOver(username) {
         if (50000 <= points) { return 'pro'; }
         else if (25000 <= points) { return 'elite'; }
         else if (10000 <= points) { return 'expert'; }
-        else if (01000 <= points) { return 'novice'; }
+        else if (0o1000 <= points) { return 'novice'; }
         else { return 'none'; }
     }
     //// CALCULATE STATISTICS (END) ////
