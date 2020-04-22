@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a691e9d-81c5-4caf-828d-257efdc24621" name="Default Changelist" comment="">
+    <list default="true" id="6a691e9d-81c5-4caf-828d-257efdc24621" name="Default Changelist" comment="commented out rank.js&#10;deleted route to rank.js in app.js&#10;updated game-room.js (line 72)&#10;updated sql line in rank route for pages.js">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/game-room.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/game-room.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/pages.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/pages.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/game-room.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/game-room.ejs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,7 +28,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="friend-chat" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

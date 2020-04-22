@@ -61,22 +61,25 @@
             const roomID = "<%=gameRoom.ID%>";
 
             // Message
-            socket.emit('new-user', roomID, username);
+            socket.emit('new-user', username);
 
             socket.on('chat-message', data => {
                 addMessage(`${data.username}: ${data.message}`);
             })
 
-            // New User Joined
+            // New User Joined or left
             socket.on('user-connected', name => {
                 addMessage(`${name} connected`);
+            })
+
+            socket.on('user-disconnected', name => {
+                addMessage(`${name} disconnected`);
             })
 
             messageForm.addEventListener('submit', e => {
                 e.preventDefault();
                 const message = messageInput.value;
                 socket.emit('send-chat-message', message);
-                console.log(message);
                 messageInput.value = '';
             })
 
@@ -85,6 +88,9 @@
                 var newContent = messageElement + document.getElementById("message-container").innerHTML
                 document.getElementById("message-container").innerHTML = newContent;
             }
+        </script>
+
+        <script>
 
             function Restart_Game() {
                 var restart_menu = document.getElementById("gameOver");

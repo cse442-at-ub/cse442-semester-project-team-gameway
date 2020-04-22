@@ -349,35 +349,25 @@ Bullet.getAllInitPack = function () {
     return bullets;
 };
 
+var users = {};
+
 io.sockets.on('connection', function (socket) {
     // console.info(`THE USERNAME: ${socket.request.session.user.Username} \n`);
     if (socket.request.session.user) {
         console.info(socket.request.session.user.Username);
 
-        socket.on('new-user', (roomID, name) => {
-            socket.join(roomID);
-            let sql = "SELECT * FROM User WHERE `Username` = ? ";
-
-            pool.query(dbName, (err, result) => {
-                if (err) throw err;
-            });
-
-
-            pool.query(sql, name, (err, user) => {
-                pool.query("UPDATE `UserToRoom` SET `socketID`=? WHERE UserID=? ", [socket.id, user.Username], (err, results) => {
-                    if (err) throw err;
-                });
-            });
-            socket.to(roomID).broadcast.emit('user-connected', name);
+        socket.on('new-user', name => {
+            users[socket.id] = name;
+            socket.broadcast.emit('user-connected', name)
         });
 
-        socket.on('send-chat-message', (roomID, message) => {
-            socket.to(roomID).broadcast.emit('chat-message', {message: message, username: function () {
-                    pool.query("SELECT * FROM `UserToRoom` WHERE `GameRoomID` = ? AND `socketID` = ?", [roomID, socket.id], (err, results) => {
-                        return results[1]
-                    })
-                }
-            });
+        socket.on('send-chat-message', message => {
+            socket.broadcast.emit('chat-message', {message: message, username: users[socket.id]});
+        });
+
+        socket.on('disconnect', () => {
+            socket.broadcast.emit('user-disconnected', users[socket.id]);
+            delete users[socket.id];
         });
 
         socket.id = Math.random();
