@@ -7,6 +7,7 @@ const fileRouter = require('./routes/files');
 const gameRoomRouter = require('./routes/game-room');
 const databaseRouter = require('./routes/database');
 const profileRouter = require('./routes/profile');
+const storeRouter = require('./routes/store');
 const rankRouter = require('./routes/rank');
 const pool = require('./core/pool');
 const app = express();
@@ -74,6 +75,8 @@ app.use(gameRoomRouter);
 app.use(databaseRouter);
 // Serve Profile
 app.use(profileRouter);
+// Serve Store
+app.use(storeRouter);
 // Serve Rank
 // Error Handling
 app.use((req, res, next) => {
