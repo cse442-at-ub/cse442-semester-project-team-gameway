@@ -51,7 +51,6 @@ router.post('/register', function (req, res) {
             });
         }
         else {
-            console.log('Error creating a new user...');
         }
     });
 });
@@ -133,7 +132,6 @@ router.get('/rank', function (req, res) {
         let user = req.session.user;
 
         if (user) {
-            console.log(user);
 
             let sql = "SELECT * FROM Friendship WHERE UserID1 = ? OR UserID2 = ?";
 
@@ -161,7 +159,6 @@ router.get('/rank', function (req, res) {
                     }
 
                     pool.query(sql, (err, friends) => {
-                        console.log(friends);
                         res.render('rank', {results: results, opp: req.session.opp, user: user, friends: friends});
                         return;
                     });
@@ -181,7 +178,6 @@ router.get('/store', function (req, res) {
     let user = req.session.user;
 
     if(user) {
-        console.log(user);
 
         let sql = "SELECT * FROM Friendship WHERE UserID1 = ? OR UserID2 = ?";
 
@@ -208,7 +204,6 @@ router.get('/store', function (req, res) {
                     }
                 }
                 pool.query(sql, (err, friends) => {
-                    console.log(friends);
                     res.render('store', {opp: req.session.opp, user: user, friends: friends});
                     return;
                 });
@@ -227,7 +222,6 @@ router.get('/create-room', (req, res) => {
     let user = req.session.user;
 
     if(user) {
-        console.log(user);
 
         let sql = "SELECT * FROM Friendship WHERE UserID1 = ? OR UserID2 = ?";
 
@@ -254,7 +248,6 @@ router.get('/create-room', (req, res) => {
                     }
                 }
                 pool.query(sql, (err, friends) => {
-                    console.log(friends);
                     res.render('create-room', {opp: req.session.opp, user: user, friends: friends});
                     return;
                 });

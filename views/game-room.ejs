@@ -6,8 +6,6 @@
         <link rel="stylesheet" href="/css/game-room.css" type="text/css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
         <script src="https://kit.fontawesome.com/07b8d94df6.js" crossorigin="anonymous"></script>
-        <script src="/js/notifications.js"></script>
-        <script src="/js/chatbox.js"></script>
     </head>
 
     <body>
@@ -36,36 +34,13 @@
         <!-- Chat Box -->
         <div class="chat-box">
             <h1>Chat</h1>
-
-            <ul class="messages" style="padding-left: 2%">
-                <li><b class="msg">Preston: </b>Hello</li>
-                <li><b class="msg">Preston: </b>Anyone there?</li>
-                <li><b class="msg">Max: </b>hi</li>
-                <li><b class="msg">Joe: </b>hey</li>
-                <li><b class="msg">Max: </b>hi</li>
-                <li><b class="msg">Joe: </b>hey</li>
-                <li><b class="msg">Max: </b>hi</li>
-                <li><b class="msg">Joe: </b>hey</li>
-                <li><b class="msg">Max: </b>hi</li>
-                <li><b class="msg">Joe: </b>hey</li>
-                <li><b class="msg">Preston: </b>stop spamming</li>
-                <li><b class="msg">Joe: </b>hey</li>
-                <li><b class="msg">Joe: </b>hey</li>
-                <li><b class="msg">Joe: </b>hey</li>
-                <li><b class="msg">Joe: </b>hey</li>
-                <li><b class="msg">Joe: </b>hey</li>
-                <li><b class="msg">Joe: </b>hey</li>
-                <li><b class="msg">WWWWWWWWWWWW: </b>WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW</li>
-
+            <ul id="message-container" class="messages" style="padding-left: 2%; display: flex; flex-direction: column-reverse">
+                <li id="loggedUser"><%=user.Username%></li>
             </ul>
-
-            <div class="chat-input">
-                <label>
-                    <input type="text" placeholder="Message...">
-                </label>
-                <button>Send</button>
-            </div>
-
+            <form id="send-container" class="chat-input">
+                <label><input type="text" id="message-input" placeholder="Message..."></label>
+                <button type="submit" id="send-button">Send</button>
+            </form>
         </div>
 
         <div id="gameOver">
@@ -76,8 +51,41 @@
         <canvas id="game-window" class="game-window"  width="1024" height="576" style=" border: 1px solid #000000;"></canvas>
 
         <script src="/socket.io/socket.io.js"></script>
+        <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
 
         <script>
+            // things
+            const socket = io('http://localhost:3000');
+            const messageForm = document.getElementById('send-container');
+            const messageContainer = document.getElementById('message-container');
+            const messageInput = document.getElementById('message-input');
+            const username = document.getElementById('loggedUser').innerHTML;
+
+            // Message
+            addMessage('You Joined');
+            socket.emit('new-user', username);
+
+            socket.on('chat-message', data => {
+                addMessage(`${data.username}: ${data.message}`);
+            })
+
+            // New User Joined
+            socket.on('user-connected', name => {
+                addMessage(`${name} connected`);
+            })
+
+            messageForm.addEventListener('submit', e => {
+                e.preventDefault();
+                const message = messageInput.value;
+                socket.emit('send-chat-message', message);
+                messageInput.value = '';
+            })
+
+            function addMessage(message) {
+                const messageElement = "<li>"+ message +"</li>";
+                var newContent = messageElement + document.getElementById("message-container").innerHTML
+                document.getElementById("message-container").innerHTML = newContent;
+            }
 
             function Restart_Game() {
                 var restart_menu = document.getElementById("gameOver");
@@ -87,7 +95,6 @@
 
             var HEIGHT = 576;
             var WIDTH = 1024;
-            var socket = io();
 
             var Img = {};
             Img.player = new Image();
@@ -153,12 +160,11 @@
             var selfId = null;
 
 
-            socket.on('gameOver',function(data){
+            socket.on('gameOver', function(data){
                 var gameover_menu = document.getElementById("gameOver");
                 document.getElementById("title").innerHTML = data;
                 gameover_menu.style.visibility = "visible";
             });
-
 
             socket.on('init',function(data){
                 if(data.selfId !== undefined){

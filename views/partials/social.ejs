@@ -62,25 +62,32 @@
     </div>
 
     <div class="social-notifications">
+        <button onclick="showChat()"><i class="fas fa-comments"></i></button>
         <a>You have 0 notifications.</a>
     </div>
-    <div class="social-chat hidden">
+
+    <div class="social-chat" id="chatBox">
         <div class="social-chat-label">
-            <label>Username</label>
+            <label id="partner">
+                    <% if (friends.length === 0) { %>
+                        No Friends
+                    <%} else { %>
+                        <%=friends[0].Username%>
+                <% } %>
+            </label>
             <button onclick="hideChat();"><i class="fas fa-window-minimize"></i></button>
         </div>
-        <form>
 
+        <form>
             <div class="social-chat-active">
-                <button id="superman">Superman</button>
-                <button id="batman">Batman</button>
-                <button id="wonderwoman">Wonderwoman</button>
-                <button id="ironman">Ironman</button>
+                <% for(let x = 0; x <friends.length; x++) {%>
+                    <button type="button" onclick="swapUsers('<%=friends[x].Username%>')" id="<%=friends[x].Username%>"><%=friends[x].Username%></button>
+                <% }%>
             </div>
 
             <div class="social-chat-messenger">
                 <div class="all-messages">
-                    <section>
+                    <section id="msgs">
                         <a>-- March 17, 2020 --</a>
                         <div class="message-block send">
                             <div class="message-content">
@@ -89,26 +96,17 @@
                                 <a>5:37 AM</a>
                             </div>
                             <div class="social-pfp">
-                                <img src="/img/profile-pictures/1.jpg" alt="#">
+                                <img src="/img/profile-pictures/<%=user.AvatarID%>.jpg" alt="#">
                             </div>
                         </div>
-                        <div class="message-block send">
-                            <div class="message-content">
-                                <p>Morbi tristique senectus et netus. Eu augue ut lectus arcu bibendum at varius
-                                    vel. Odio eu feugiat pretium nibh ipsum.</p>
-                                <a>5:37 AM</a>
-                            </div>
-                            <div class="social-pfp">
-                                <img src="/img/profile-pictures/1.jpg" alt="#">
-                            </div>
-                        </div>
+
                         <div class="message-block receive">
                             <div class="message-content">
                                 <p>tincidunt praesent semper feugiat nibh. Tristique nu</p>
                                 <a>5:37 AM</a>
                             </div>
                             <div class="social-pfp">
-                                <img src="/img/profile-pictures/1.jpg" alt="#">
+                                <img src="/img/profile-pictures/<%=friends[0].AvatarID%>.jpg" alt="#">
                             </div>
                         </div>
                     </section>
@@ -119,8 +117,13 @@
 
         </form>
     </div>
+
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/chatbox.js"></script>
+
 <script>
+    // Search for friends on friends list
     function searchBar() {
         var input, filter, div, social, a, i, txtValue;
         input = document.getElementById("searchInput");

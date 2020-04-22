@@ -79,7 +79,6 @@ router.get('/profile/:username', function (req, res) {
                                         }
 
                                         pool.query(sql, (err, friends) => {
-                                            console.log(friends);
                                             res.render('profile', {
                                                 opp: req.session.opp,
                                                 user: user,
@@ -134,7 +133,6 @@ router.get('/profile/:username', function (req, res) {
                                     }
 
                                     pool.query(sql, (err, friends) => {
-                                        console.log(friends);
                                         res.render('profile', {opp: req.session.opp, user: user, profile: profile[0], achievements: list, user_match: [], matches: [], friends: friends});
                                         return;
                                     });

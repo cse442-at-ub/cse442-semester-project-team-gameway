@@ -10,65 +10,69 @@ let roomID = "";
 
 <!--Display Room List-->
     router.get('/room-list', (req, res) => {
-        let initial = dbName;
-        let sql = "SELECT *  FROM `GameRoom` WHERE `isStarted` = 0 AND `isOver` = 0";
-        pool.query(initial, (err, result) => {
-            if (err) throw err;
-        });
+        let user = req.session.user;
 
-        pool.query(sql, (err, results) => {
-            if (err) throw err;
-            // res.render('room-list', {results: results, opp:req.session.opp, name:user});
+        if(user) {
+            let initial = dbName;
+            let sql = "SELECT *  FROM `GameRoom` WHERE `isStarted` = 0 AND `isOver` = 0";
+            pool.query(initial, (err, result) => {
+                if (err) throw err;
+            });
 
-            let user = req.session.user;
+            pool.query(sql, (err, results) => {
+                if (err) throw err;
+                // res.render('room-list', {results: results, opp:req.session.opp, name:user});
 
-            if (user) {
-                console.log(user);
+                let user = req.session.user;
 
-                let sql = "SELECT * FROM Friendship WHERE UserID1 = ? OR UserID2 = ?";
+                if (user) {
+                    let sql = "SELECT * FROM Friendship WHERE UserID1 = ? OR UserID2 = ?";
 
-                pool.query(dbName, (err, result) => {
-                    if (err) throw err;
-                });
+                    pool.query(dbName, (err, result) => {
+                        if (err) throw err;
+                    });
 
-                pool.query(sql, [user['ID'], user['ID']], (err, relationships) => {
-                    let friendIDs = [];
-                    for (let x = 0; x < relationships.length; x++) {
-                        if (relationships[x]['UserID1'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID1']) === false) {
-                            friendIDs.push(relationships[x]['UserID1'])
-                        } else if (relationships[x]['UserID2'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID2']) === false) {
-                            friendIDs.push(relationships[x]['UserID2'])
-                        }
-                    }
-
-                    if (friendIDs.length > 0) {
-                        let sql = "SELECT * FROM User WHERE ";
-                        for (let x = 0; x < friendIDs.length; x++) {
-                            sql = sql.concat("ID = ", friendIDs[x]);
-                            if (x + 1 !== friendIDs.length) {
-                                sql = sql.concat(" OR ");
+                    pool.query(sql, [user['ID'], user['ID']], (err, relationships) => {
+                        let friendIDs = [];
+                        for (let x = 0; x < relationships.length; x++) {
+                            if (relationships[x]['UserID1'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID1']) === false) {
+                                friendIDs.push(relationships[x]['UserID1'])
+                            } else if (relationships[x]['UserID2'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID2']) === false) {
+                                friendIDs.push(relationships[x]['UserID2'])
                             }
                         }
 
-                        pool.query(sql, (err, friends) => {
-                            console.log(friends);
-                            res.render('room-list', {
-                                results: results,
-                                opp: req.session.opp,
-                                user: user,
-                                friends: friends
+                        if (friendIDs.length > 0) {
+                            let sql = "SELECT * FROM User WHERE ";
+                            for (let x = 0; x < friendIDs.length; x++) {
+                                sql = sql.concat("ID = ", friendIDs[x]);
+                                if (x + 1 !== friendIDs.length) {
+                                    sql = sql.concat(" OR ");
+                                }
+                            }
+
+                            pool.query(sql, (err, friends) => {
+                                res.render('room-list', {
+                                    results: results,
+                                    opp: req.session.opp,
+                                    user: user,
+                                    friends: friends
+                                });
+                                return;
                             });
+                        } else {
+                            res.render('room-list', {results: results, opp: req.session.opp, user: user, friends: []});
                             return;
-                        });
-                    } else {
-                        res.render('room-list', {results: results, opp: req.session.opp, user: user, friends: []});
-                        return;
-                    }
-                });
-                return;
-            }
+                        }
+                    });
+                    return;
+                }
+                res.redirect('/');
+            });
+        }
+        else {
             res.redirect('/');
-        });
+        }
     });
 
 <!--Insert New Game Room-->
@@ -138,12 +142,11 @@ let roomID = "";
         });
     });
 
-<!--Game Room Page-->
+    <!--Game Room Page-->
     router.get('/game/:id', (req, res) => {
         let user = req.session.user;
         if (user) {
-            let path = req['path'];
-            roomID = path.split('/')[2];
+            roomID = req.params.id;
 
             let sql = "SELECT * FROM UserToRoom WHERE GameRoomID = ?";
 
@@ -164,18 +167,12 @@ let roomID = "";
                         let isFull = (result[0].PlayerCount === result[0].PlayerCapacity);
                         let isPrivate = result[0].IsPrivate;
                         let roomPassword = result[0].Password;
-                        console.log(isFull);
-                        console.log(isPrivate);
                         if (!isPrivate && !isFull) {
-                            res.render('game-room', { room: result, players: myPlayers });
-                            console.log(roomPass);
+                            res.render('game-room', { room: result, players: myPlayers, user:user });
                         }
                         else if (isPrivate && !isFull) {
-                            console.log(roomPass);
-                            console.log(roomPassword);
                             if (roomPass === roomPassword) {
-                                console.log(roomPass + roomPassword);
-                                res.render('game-room', { room: result, players: myPlayers });
+                                res.render('game-room', { room: result, players: myPlayers, user:user });
                                 roomPass = "";
                             }
                             else if (roomPass !== roomPassword) {

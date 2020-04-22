@@ -7,6 +7,7 @@ const fileRouter = require('./routes/files');
 const gameRoomRouter = require('./routes/game-room');
 const databaseRouter = require('./routes/database');
 const profileRouter = require('./routes/profile');
+const chatBoxRouter = require('./client/js/chatbox');
 const rankRouter = require('./routes/rank');
 const pool = require('./core/pool');
 const app = express();
@@ -22,8 +23,6 @@ serv.listen('3000', () => {
 });
 // < !--End Of Website-- >
 
-
-
 // < !--Database Connection-- >
 var db = mysql.createConnection({
     host: "tethys.cse.buffalo.edu",
@@ -31,8 +30,6 @@ var db = mysql.createConnection({
     password: "50227586",
     multipleStatements: true
 });
-
-
 
 // < !--Connecting To Database-- >
 db.connect((err) => {
@@ -74,6 +71,8 @@ app.use(gameRoomRouter);
 app.use(databaseRouter);
 // Serve Profile
 app.use(profileRouter);
+// Chat
+app.use(chatBoxRouter);
 // Serve Rank
 // Error Handling
 app.use((req, res, next) => {
@@ -86,8 +85,6 @@ app.use((err, req, res, next) => {
     res.render('error', { errorMsg: err.message });
 });
 // <!--End Routing-->
-
-
 
 // Game
 
@@ -113,8 +110,6 @@ function updateProfile(user) {
     user.GamesPlayed += 1;
     if (isWon) { user.GamesWon += 1; }
 }
-
-
 
 /* logistics */
 
@@ -337,37 +332,48 @@ Bullet.update = function () {
             pack.push(bullet.getUpdatePack());
     }
     return pack;
-}
+};
+
 Bullet.getAllInitPack = function () {
     var bullets = [];
     for (var i in Bullet.list)
         bullets.push(Bullet.list[i].getInitPack());
     return bullets;
-}
+};
 
-
+const users = {};
 io.sockets.on('connection', function (socket) {
     // console.info(`THE USERNAME: ${socket.request.session.user.Username} \n`);
-    console.log(`SESSION.USER`);
-    console.info(socket.request.session.user.Username);
+    if (socket.request.session.user) {
+        console.log(`SESSION.USER`);
+        console.info(socket.request.session.user.Username);
+        socket.emit('chat-message', 'Hello World');
 
+        socket.on('new-user', name => {
+            users[socket.id] = name;
+            socket.broadcast.emit('user-connected', name);
+        });
 
+        socket.on('send-chat-message', message => {
+            socket.broadcast.emit('chat-message', {message: message, username:users[socket.id]});
+        });
 
-    socket.id = Math.random();
-    SOCKET_LIST[socket.id] = socket;
+        socket.id = Math.random();
+        SOCKET_LIST[socket.id] = socket;
 
-    Player.onConnect(socket);
+        Player.onConnect(socket);
 
-    socket.on('disconnect', function () {
-        delete SOCKET_LIST[socket.id];
-        Player.onDisconnect(socket);
-    });
+        socket.on('disconnect', function () {
+            delete SOCKET_LIST[socket.id];
+            Player.onDisconnect(socket);
+        });
 
-    socket.on('pauseTheGame', function () {
-        startGame();
-        console.log("Game has started.");
-        console.log(gameEnd);
-    });
+        socket.on('pauseTheGame', function () {
+            startGame();
+            console.log("Game has started.");
+            console.log(gameEnd);
+        });
+    }
 
 });
 
