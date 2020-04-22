@@ -33,11 +33,11 @@
             </div>
             <!--START STORE NAVIGATION-->
             <header class="submenu">
-                <a><h3>Featured</h3></a>
-                <a><h3>Characters</h3></a>
-                <a><h3>Icons</h3></a>
-                <a><h3>Crates</h3></a>
-                <a><h3>Purchase <i class="fas fa-money-bill"></i></h3></a>
+                <a class="featured"><h3>Featured</h3></a>
+                <a class="characters"><h3>Characters</h3></a>
+                <a class="icons"><h3>Icons</h3></a>
+                <a class="crates"><h3>Crates</h3></a>
+                <a class="purchase"><h3>Purchase <i class="fas fa-money-bill"></i></h3></a>
             </header>
             <!--END STORE NAVIGATION-->
         </header>
@@ -45,162 +45,35 @@
 
         <!--BEGIN FEATURED PAGE-->
         <div id="featured-page" class="store">
-            <div class="item">
-                <div class="stack-top">
-                    <h4>ASHE</h4>
-                    <div class="btn00">
-                        5000 WC
-                    </div>
-                </div>
-                <div class="stack-bot">
-                    <img src="/img/avatars/avatar1.png" alt="#">
-                </div>
-            </div>
-            <div class="item">
-                <div class="stack-top">
-                    <h4>ASHE</h4>
-                    <div class="btn00">
-                        5000 WC
-                    </div>
-                </div>
-                <div class="stack-bot">
-                    <img src="/img/avatars/avatar2.png" alt="#">
-                </div>
-            </div>
-            <div class="item">
-                <div class="stack-top">
-                    <h4>ASHE</h4>
-                    <div class="btn00">
-                        5000 WC
-                    </div>
-                </div>
-                <div class="stack-bot">
-                    <img src="/img/avatars/avatar3.png" alt="#">
-                </div>
-            </div>
-            <div class="item">
-                <div class="stack-top">
-                    <h4>ASHE</h4>
-                    <div class="btn00">
-                        5000 WC
-                    </div>
-                </div>
-                <div class="stack-bot">
-                    <img src="/img/avatars/avatar4.png" alt="#">
-                </div>
-            </div>
-            <div class="item">
-                <div class="stack-top">
-                    <h4>ASHE</h4>
-                    <div class="btn00">
-                        5000 WC
-                    </div>
-                </div>
-                <div class="stack-bot">
-                    <img src="/img/avatars/avatar5.png" alt="#">
-                </div>
-            </div>
-            <div class="item">
-                <div class="stack-top">
-                    <h4>ASHE</h4>
-                    <div class="btn00">
-                        5000 WC
-                    </div>
-                </div>
-                <div class="stack-bot">
-                    <img src="/img/avatars/avatar6.png" alt="#">
-                </div>
-            </div>
-            <div class="item">
-                <div class="stack-top">
-                    <h4>ASHE</h4>
-                    <div class="btn00">
-                        5000 WC
-                    </div>
-                </div>
-                <div class="stack-bot">
-                    <img src="/img/avatars//avatar7.png" alt="#">
-                </div>
-            </div>
-            <div class="item">
-                <div class="stack-top">
-                    <h4>ASHE</h4>
-                    <div class="btn00">
-                        5000 WC
-                    </div>
-                </div>
-                <div class="stack-bot">
-                    <img src="/img/avatars/avatar8.png" alt="#">
-                </div>
-            </div>
-            <div class="item">
-                <div class="stack-top">
-                    <h4>ASHE</h4>
-                    <div class="btn00">
-                        5000 WC
-                    </div>
-                </div>
-                <div class="stack-bot">
-                    <img src="/img/avatars/avatar1.png" alt="#">
-                </div>
-            </div>
-            <div class="item">
-                <div class="stack-top">
-                    <h4>ASHE</h4>
-                    <div class="btn00">
-                        5000 WC
-                    </div>
-                </div>
-                <div class="stack-bot">
-                    <img src="/img/avatars/avatar1.png" alt="#">
-                </div>
-            </div>
-            <div class="item">
-                <div class="stack-top">
-                    <h4>ASHE</h4>
-                    <div class="btn00">
-                        5000 WC
-                    </div>
-                </div>
-                <div class="stack-bot">
-                    <img src="/img/avatars/avatar1.png" alt="#">
-                </div>
-            </div>
-            <div class="item">
-                <div class="stack-top">
-                    <h4>ASHE</h4>
-                    <div class="btn00">
-                        5000 WC
-                    </div>
-                </div>
-                <div class="stack-bot">
-                    <img src="/img/avatars/avatar1.png" alt="#">
-                </div>
-            </div>
-            <div class="item">
-                <div class="stack-top">
-                    <h4>ASHE</h4>
-                    <div class="btn00">
-                        5000 WC
-                    </div>
-                </div>
-                <div class="stack-bot">
-                    <img src="/img/avatars/avatar1.png" alt="#">
-                </div>
-            </div>
-            <div class="item">
-                <div class="stack-top">
-                    <h4>ASHE</h4>
-                    <div class="btn00">
-                        5000 WC
-                    </div>
-                </div>
-                <div class="stack-bot">
-                    <img src="/img/avatars/avatar1.png" alt="#">
-                </div>
-            </div>
         </div>
         <!--END FEATURED PAGE-->
+        <!--BEGIN CHARACTERS PAGE-->
+        <div id="characters-page" class="store">
+        </div>
+        <!--END CHARACTERS PAGE-->
+        <!--BEGIN ICONS PAGE-->
+        <div id="icons-page" class="store">
+            <% for(var icon of icons) { %>
+            <div class="item">
+                <div class="stack-top">
+                    <h4><%=icon.ItemName%></h4>
+                    <a href="/purchase/icons/<%=icon.ItemID%>"><div class="btn00"><%=icon.Price%> Coins</div></a>
+                </div>
+                <div class="stack-bot">
+                    <img src="/img/profile-pictures/<%=icon.ItemID%>.jpg"  alt="#">
+                </div>
+            </div>
+            <% }%>
+        </div>
+        <!--END ICONS PAGE-->
+        <!--BEGIN CRATES PAGE-->
+        <div id="crates-page" class="store">
+        </div>
+        <!--END CRATES PAGE-->
+        <!--BEGIN PURCHASE PAGE-->
+        <div id="purchase-page" class="store">
+        </div>
+        <!--END PURCHASE PAGE-->
     </main>
 
     <!--BEGIN FOOTER-->

@@ -884,6 +884,27 @@ main > div {
     color: #ffffff;
 }
 
+#characters-page {
+    display: none;
+}
+#icons-page {
+    display: none;
+}
+#crates-page {
+    display: none;
+}
+#purchase-page {
+    display: none;
+}
+
+/*$('#featured-page').fadeOut('fast');*/
+/*$('#characters-page').fadeOut('fast');*/
+/*$('#icons-page').fadeOut('fast');*/
+/*$('#crates-page').fadeOut('fast');*/
+/*$('#purchase-page').fadeIn('slow');*/
+
+
+
 
 
 
