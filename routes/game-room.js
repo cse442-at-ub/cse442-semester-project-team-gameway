@@ -75,71 +75,77 @@ let roomID = "";
         }
     });
 
-<!--Insert New Game Room-->
+    <!--Insert New Game Room-->
     router.post('/_create_room', urlencodedParser, (req, res) => {
-        let isPrivate;
-        let hostID = 0;
+        let user = req.session.user;
 
-        if (req.body["private"] === 'on') {
-            isPrivate = 1;
-        }
-        else {
-            isPrivate = 0;
-        }
+        if(user) {
+            let isPrivate;
+            let hostID = user.ID;
 
-        let initial = dbName;
-        let newRoom = {
-            HostID: hostID,
-            RoomName: req.body["room-name"],
-            IsPrivate: isPrivate,
-            Password: req.body["password"],
-            GameMode: req.body["game-mode"],
-            PlayerCount: 1,
-            PlayerCapacity: req.body["player-capacity"],
-            CurrentGame: 'Dodge',
-            isStarted: 0,
-            isOver: 0,
-        };
+            if (req.body["private"] === 'on') {
+                isPrivate = 1;
+            }
+            else {
+                isPrivate = 0;
+            }
 
-        let sql = "INSERT INTO GameRoom SET ?";
+            let initial = dbName;
+            let newRoom = {
+                HostID: hostID,
+                RoomName: req.body["room-name"],
+                IsPrivate: isPrivate,
+                Password: req.body["password"],
+                GameMode: req.body["game-mode"],
+                PlayerCount: 1,
+                PlayerCapacity: req.body["player-capacity"],
+                CurrentGame: 'Dodge',
+                isStarted: 0,
+                isOver: 0,
+            };
 
-        pool.query(initial, (err, result) => {
-            if (err) throw err;
-        });
+            let sql = "INSERT INTO GameRoom SET ?";
 
-        let query = pool.query(sql, newRoom, (err, result) => {
-            if (err) throw err;
-        });
+            pool.query(initial, (err, result) => {
+                if (err) throw err;
+            });
 
-        sql = "SELECT * FROM GameRoom WHERE HostID = ? ORDER  BY ID DESC LIMIT 1";
+            let query = pool.query(sql, newRoom, (err, result) => {
+                if (err) throw err;
+            });
 
-        pool.query(initial, (err, result) => {
-            if (err) throw err;
-        });
+            sql = "SELECT * FROM GameRoom WHERE HostID = ? ORDER  BY ID DESC LIMIT 1";
 
-        query = pool.query(sql, hostID, (err, result) => {
-            if (err) throw err;
-            let roomID = result[0]['ID'];
+            pool.query(initial, (err, result) => {
+                if (err) throw err;
+            });
 
-        <!--Hard Coded User-->
+            query = pool.query(sql, hostID, (err, result) => {
+                if (err) throw err;
+                let roomID = result[0]['ID'];
+
                 let UserToRoomConnection = {
-                    UserID: 10,
+                    UserID: user.ID,
                     GameRoomID: roomID,
                     Score: 0
                 };
 
-            sql = "INSERT INTO UserToRoom SET ?";
+                sql = "INSERT INTO UserToRoom SET ?";
 
-            pool.query(initial, (err, none) => {
-                if (err) throw err;
-            });
+                pool.query(initial, (err, none) => {
+                    if (err) throw err;
+                });
 
-            let query = pool.query(sql, UserToRoomConnection, (err, none) => {
-                if (err) throw err;
+                let query = pool.query(sql, UserToRoomConnection, (err, none) => {
+                    if (err) throw err;
+                });
+                roomPass = req.body["password"];
+                res.redirect('/game/' + result[0]['ID']);
             });
-            roomPass = req.body["password"];
-            res.redirect('/game/' + result[0]['ID']);
-        });
+        }
+        else{
+            res.redirect('/');
+        }
     });
 
     <!--Game Room Page-->
@@ -155,10 +161,14 @@ let roomID = "";
             });
 
             let query = pool.query(sql, roomID, (err, results) => {
+                if(results.length === 0) {
+                    res.render('error', {errorMsg: "Room Not Found"} );
+                    return;
+                }
                 let players = "";
                 for (let i = 0; i < results.length; i++) {
                     players += ("SELECT * FROM User WHERE ID = " + results[i]['UserID'] + ';');
-        }
+                }
 
                 pool.query(players, (err, players) => {
                     let myPlayers = players;

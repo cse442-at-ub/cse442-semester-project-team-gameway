@@ -15,10 +15,8 @@
         <a href="http://localhost:3000/room-list">Leave</a>
 
         <!-- Player List -->
-        <ul class="player-list">
-            <% for(var player of players) { %>
-                <li style="background: red"><%=player.Username%></li>
-            <% }%>
+        <ul class="player-list" id="player-list">
+
         </ul>
 
         <!-- Game Information -->
@@ -35,7 +33,7 @@
         <div class="chat-box">
             <h1>Chat</h1>
             <ul id="message-container" class="messages" style="padding-left: 2%; display: flex; flex-direction: column-reverse">
-                <li id="loggedUser"><%=user.Username%></li>
+
             </ul>
             <form id="send-container" class="chat-input">
                 <label><input type="text" id="message-input" placeholder="Message..."></label>
@@ -59,11 +57,11 @@
             const messageForm = document.getElementById('send-container');
             const messageContainer = document.getElementById('message-container');
             const messageInput = document.getElementById('message-input');
-            const username = document.getElementById('loggedUser').innerHTML;
+            const username = "<%=user.Username%>";
+            const roomID = "<%=gameRoom.ID%>";
 
             // Message
-            addMessage('You Joined');
-            socket.emit('new-user', username);
+            socket.emit('new-user', roomID, username);
 
             socket.on('chat-message', data => {
                 addMessage(`${data.username}: ${data.message}`);
@@ -78,6 +76,7 @@
                 e.preventDefault();
                 const message = messageInput.value;
                 socket.emit('send-chat-message', message);
+                console.log(message);
                 messageInput.value = '';
             })
 

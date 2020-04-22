@@ -9,13 +9,14 @@ const databaseRouter = require('./routes/database');
 const profileRouter = require('./routes/profile');
 const chatBoxRouter = require('./client/js/chatbox');
 const rankRouter = require('./routes/rank');
+const dbName = "USE cse442_542_2020_spring_teamc_db; ";
 const pool = require('./core/pool');
 const app = express();
 var serv = require('http').Server(app);
 let io = require('socket.io')(serv);
 
 const bodyParser = require('body-parser');
-const urlencodedParser = bodyParser.urlencoded({ extended: false });
+const urlencodedParser = bodyParser.urlencoded({ extended: true });
 
 // < !--START WEBSITE-- >
 serv.listen('3000', () => {
@@ -183,7 +184,7 @@ var Player = function (id, user) {
             self.spdY = self.maxSpd;
         else
             self.spdY = 0;
-    }
+    };
 
     self.getInitPack = function () {
         return {
@@ -195,7 +196,8 @@ var Player = function (id, user) {
             hpMax: self.hpMax,
             score: self.score,
         };
-    }
+    };
+
     self.getUpdatePack = function () {
         return {
             id: self.id,
@@ -204,12 +206,14 @@ var Player = function (id, user) {
             hp: self.hp,
             score: self.score,
         }
-    }
+    };
+
     Player.list[id] = self;
 
     initPack.player.push(self.getInitPack());
     return self;
-}
+};
+
 Player.list = {};
 Player.onConnect = function (socket) {
     var player = Player(socket.id, socket.request.session.user.Username);
@@ -233,17 +237,20 @@ Player.onConnect = function (socket) {
         player: Player.getAllInitPack(),
         bullet: Bullet.getAllInitPack(),
     })
-}
+};
+
 Player.getAllInitPack = function () {
     var players = [];
     for (var i in Player.list)
         players.push(Player.list[i].getInitPack());
     return players;
-}
+};
+
 Player.onDisconnect = function (socket) {
     delete Player.list[socket.id];
     removePack.player.push(socket.id);
-}
+};
+
 Player.update = function () {
     var pack = [];
     for (var i in Player.list) {
@@ -252,8 +259,7 @@ Player.update = function () {
         pack.push(player.getUpdatePack());
     }
     return pack;
-}
-
+};
 
 var Bullet = function (parent, angle) {
     var self = Entity();
@@ -281,13 +287,13 @@ var Bullet = function (parent, angle) {
                         shooter.score += 1;
                     }
 
-                    if (shooter.score == 3) {
+                    if (shooter.score === 3) {
                         gameOver(shooter.username);
                         stopGame();
                         endGame();
                     }
 
-                    self.toRemove == true;
+                    self.toRemove === true;
                     p.hp = p.hpMax;
                     p.x = Math.random() * 500;
                     p.y = Math.random() * 500;
@@ -298,14 +304,15 @@ var Bullet = function (parent, angle) {
                 self.toRemove = true;
             }
         }
-    }
+    };
+
     self.getInitPack = function () {
         return {
             id: self.id,
             x: self.x,
             y: self.y,
         };
-    }
+    };
 
     self.getUpdatePack = function () {
         return {
@@ -313,12 +320,13 @@ var Bullet = function (parent, angle) {
             x: self.x,
             y: self.y,
         };
-    }
+    };
 
     Bullet.list[self.id] = self;
     initPack.bullet.push(self.getInitPack());
     return self;
-}
+};
+
 Bullet.list = {};
 Bullet.update = function () {
     var pack = [];
@@ -341,21 +349,35 @@ Bullet.getAllInitPack = function () {
     return bullets;
 };
 
-const users = {};
 io.sockets.on('connection', function (socket) {
     // console.info(`THE USERNAME: ${socket.request.session.user.Username} \n`);
     if (socket.request.session.user) {
-        console.log(`SESSION.USER`);
         console.info(socket.request.session.user.Username);
-        socket.emit('chat-message', 'Hello World');
 
-        socket.on('new-user', name => {
-            users[socket.id] = name;
-            socket.broadcast.emit('user-connected', name);
+        socket.on('new-user', (roomID, name) => {
+            socket.join(roomID);
+            let sql = "SELECT * FROM User WHERE `Username` = ? ";
+
+            pool.query(dbName, (err, result) => {
+                if (err) throw err;
+            });
+
+
+            pool.query(sql, name, (err, user) => {
+                pool.query("UPDATE `UserToRoom` SET `socketID`=? WHERE UserID=? ", [socket.id, user.Username], (err, results) => {
+                    if (err) throw err;
+                });
+            });
+            socket.to(roomID).broadcast.emit('user-connected', name);
         });
 
-        socket.on('send-chat-message', message => {
-            socket.broadcast.emit('chat-message', {message: message, username:users[socket.id]});
+        socket.on('send-chat-message', (roomID, message) => {
+            socket.to(roomID).broadcast.emit('chat-message', {message: message, username: function () {
+                    pool.query("SELECT * FROM `UserToRoom` WHERE `GameRoomID` = ? AND `socketID` = ?", [roomID, socket.id], (err, results) => {
+                        return results[1]
+                    })
+                }
+            });
         });
 
         socket.id = Math.random();
@@ -365,13 +387,11 @@ io.sockets.on('connection', function (socket) {
 
         socket.on('disconnect', function () {
             delete SOCKET_LIST[socket.id];
-            Player.onDisconnect(socket);
+
         });
 
         socket.on('pauseTheGame', function () {
             startGame();
-            console.log("Game has started.");
-            console.log(gameEnd);
         });
     }
 
@@ -381,7 +401,7 @@ io.sockets.on('connection', function (socket) {
 var initPack = { player: [], bullet: [] };
 var removePack = { player: [], bullet: [] };
 setInterval(function () {
-    if (gameEnd == true) {
+    if (gameEnd === true) {
         for (var i in Player.list) {
             Player.list[i].score = 0;
         }
@@ -391,7 +411,7 @@ setInterval(function () {
     var pack = {
         player: Player.update(),
         bullet: Bullet.update(),
-    }
+    };
 
     for (var i in SOCKET_LIST) {
         var socket = SOCKET_LIST[i];
@@ -472,9 +492,7 @@ function stopGame() {
     gameEnd = true;
 }
 function endGame() {
-    if (gameEnd == true) {
+    if (gameEnd === true) {
         setTimeout(function () { }, 1000 / 33);
     }
-    console.log("Game has ended");
-    console.log(gameEnd);
 }
