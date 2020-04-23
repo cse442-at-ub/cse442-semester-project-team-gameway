@@ -76,6 +76,19 @@ router.get('/logout', (req, res, next) => {
 router.get('/home', function (req, res) {
     let user = req.session.user;
     if(user) {
+
+        let avatarSQL = "SELECT * FROM Purchases WHERE UserID = ? AND ItemType = ?";
+
+        pool.query(avatarSQL,[user.ID, "icons"] , (err, avatars) => {
+            let avatarList = [];
+            for(let x = 0; x < avatars.length; x++){
+                if(avatarList.includes(avatars[x]['ItemID']) === false){
+                    avatarList.push(avatars[x]['ItemID'])
+                }
+            }
+            console.log("Current user's avatars:");
+            console.log(avatarList);
+
         let userSQL = "SELECT * FROM User WHERE ID = ?";
         pool.query(userSQL, user.ID,(err, sessionUser) => {
             let sql = "SELECT * FROM Friendship WHERE UserID1 = ? OR UserID2 = ?";
@@ -95,6 +108,9 @@ router.get('/home', function (req, res) {
                     }
                 }
 
+                console.log("Current user's friends:")
+                console.log(friendIDs);
+
                 if(friendIDs.length > 0) {
                     let sql = "SELECT * FROM User WHERE ";
                     for (let x = 0; x < friendIDs.length; x++) {
@@ -104,17 +120,18 @@ router.get('/home', function (req, res) {
                         }
                     }
 
-                    pool.query(sql, (err, friends) => {
-                        res.render('home', {opp: req.session.opp, user: sessionUser[0], friends: friends});
+                    pool.query(sql, (err, friends,) => {
+                        res.render('home', {opp: req.session.opp, user: sessionUser[0], avatarList, friends: friends});
                         return;
                     });
                 }
                 else {
-                    res.render('home', {opp: req.session.opp, user: sessionUser[0], friends: []});
+                    res.render('home', {opp: req.session.opp, avatars: avatars, user: sessionUser[0], friends: []});
                     return;
                 }
             });
         });
+     });
 
         return;
     }

@@ -5,7 +5,7 @@
     <div class="social-me">
         <div class="social-me-pfp-bg">
             <div class="social-pfp">
-                <img src="/img/profile-pictures/<%=user.AvatarID%>.jpg" alt="#">
+              <a onclick= "showAvatars();">  <img src="/img/profile-pictures/<%=user.AvatarID%>.jpg" alt="#"> </a>
             </div>
         </div>
         <div class="social-bio">
@@ -120,7 +120,20 @@
         </form>
     </div>
 </div>
+
+<div id="avatar-list" class="avatar-list">
+    <% for(var pics in avatarList) {%>
+        <div id="small-avatars">
+            <img src="/img/profile-pictures/<%=avatarList[pics]%>.jpg">
+        </div>
+    <% }%>
+</div>
+
+
 <script>
+
+    document.getElementById('avatar-list').style.display = 'none';
+
     function searchBar() {
         var input, filter, div, social, a, i, txtValue;
         input = document.getElementById("searchInput");
@@ -139,4 +152,17 @@
             }
         }
     }
+    
+    function showAvatars() {
+        let image = document.getElementById("avatar-list");
+
+        if(image.style.display !== "flex"){
+            image.style.display = "flex";
+        } else {
+            image.style.display = "none";
+        }
+
+    }
+    document.getElementById('avatar-list').addEventListener('click', showAvatars);
+    
 </script>
