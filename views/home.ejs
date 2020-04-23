@@ -19,8 +19,8 @@
     <%- include('partials/social'); %>
     <main>
         <header class="submenu">
-            <h3>overview</h3>
-            <h3>patch notes</h3>
+            <h3 onclick="changePageHome('overview')">overview</h3>
+            <h3 onclick="changePageHome('patchnotes')">patch notes</h3>
         </header>
         <div class="overview hidden">
             <article>
@@ -235,5 +235,6 @@
             </div>
         </div>
     </main>
+    <script src="js/script.js" type="text/javascript"></script>
 </body>
 </html>
