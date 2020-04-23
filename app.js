@@ -408,30 +408,37 @@ function gameOver(username) {
 
         let
             socket = SOCKET_LIST[i],
-            sql = '',
-            uData = socket.request.session.user,
-            user = uData.Username,
-            isWon = calcWon(user, username),
-            coins = uData.Coins + calcCoins(20, isWon),
-            gamesPlayed = uData.GamesPlayed + 1,
-            gamesWon = uData.GamesWon + isWon,
-            level = uData.Level + calcLvl(16),
-            xp = uData.Xp + calcXp(16, isWon, uData.Xp),
-            rankPoints = uData.RankPoints + 100,
-            rank = calcRank(rankPoints),
-            status = 'Online',
-            userID = uData.ID;
+            user = socket.request.session.user,
+            userSQL = "SELECT * FROM User WHERE ID = ?";
 
-        // UPDATE USER PROFILE
-        sql = 'UPDATE User SET Coins = ?, GamesPlayed = ?, GamesWon = ?, Level = ?, Xp = ?, Rank = ?, RankPoints = ?, Status = ? WHERE Username = ?';
-        pool.query(sql, [coins, gamesPlayed, gamesWon, level, xp, rank, rankPoints, status, user], function (err, result) { if (err) throw err; });
+        pool.query(userSQL, user.ID, (err, sessionUser) => {
+            let
+                uData = sessionUser[0],
+                sql = '',
+                user = uData.Username,
+                isWon = calcWon(user, username),
+                coins = uData.Coins + calcCoins(20, isWon),
+                gamesPlayed = uData.GamesPlayed + 1,
+                gamesWon = uData.GamesWon + isWon,
+                level = uData.Level + calcLvl(16),
+                xp = uData.Xp + calcXp(16, isWon, uData.Xp),
+                rankPoints = uData.RankPoints + 100,
+                rank = calcRank(rankPoints),
+                status = 'Online',
+                userID = uData.ID;
 
-        // UPDATE USER GAME HISTORY MATCH
-        sql = 'INSERT INTO UserToMatch SET UserID = ?, isWon = ?, Xp = ?, RankPoints = ?';
-        pool.query(sql, [userID, isWon, coins, xp, rankPoints], function (err, result) { if (err) throw err; });
+            // UPDATE USER PROFILE
+            sql = 'UPDATE User SET Coins = ?, GamesPlayed = ?, GamesWon = ?, Level = ?, Xp = ?, Rank = ?, RankPoints = ?, Status = ? WHERE Username = ?';
+            pool.query(sql, [coins, gamesPlayed, gamesWon, level, xp, rank, rankPoints, status, user], function (err, result) { if (err) throw err; });
 
-        socket.emit('gameOver', username);
+            // UPDATE USER GAME HISTORY MATCH
+            sql = 'INSERT INTO UserToMatch SET UserID = ?, isWon = ?, Xp = ?, RankPoints = ?';
+            pool.query(sql, [userID, isWon, coins, xp, rankPoints], function (err, result) { if (err) throw err; });
+
+            socket.emit('gameOver', username);
+        });
     }
+
 
     //// CALCULATE STATISTICS (START) ////
     function calcWon(user, username) {
@@ -448,7 +455,7 @@ function gameOver(username) {
     }
     function calcXp(points, isWon, userXP) {
         if (isWon === 1) { points = points * 1.5; } // calculations for winner
-        if (100 <= userXP + points) { return userXP + points - 100; }
+        if (100 < userXP + points) { return userXP + points - 100; }
         else { return userXP + points; }
     }
     function calcRank(points) {
