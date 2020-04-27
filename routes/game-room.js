@@ -112,35 +112,34 @@ let roomID = "";
 
             let query = pool.query(sql, newRoom, (err, result) => {
                 if (err) throw err;
-            });
+                sql = "SELECT * FROM GameRoom WHERE HostID = ? ORDER  BY ID DESC LIMIT 1";
 
-            sql = "SELECT * FROM GameRoom WHERE HostID = ? ORDER  BY ID DESC LIMIT 1";
-
-            pool.query(initial, (err, result) => {
-                if (err) throw err;
-            });
-
-            query = pool.query(sql, hostID, (err, result) => {
-                if (err) throw err;
-                let roomID = result[0]['ID'];
-
-                let UserToRoomConnection = {
-                    UserID: user.ID,
-                    GameRoomID: roomID,
-                    Score: 0
-                };
-
-                sql = "INSERT INTO UserToRoom SET ?";
-
-                pool.query(initial, (err, none) => {
+                pool.query(initial, (err, result) => {
                     if (err) throw err;
                 });
 
-                let query = pool.query(sql, UserToRoomConnection, (err, none) => {
+                query = pool.query(sql, hostID, (err, result) => {
                     if (err) throw err;
+                    let roomID = result[0]['ID'];
+
+                    let UserToRoomConnection = {
+                        UserID: user.ID,
+                        GameRoomID: roomID,
+                        Score: 0
+                    };
+
+                    sql = "INSERT INTO UserToRoom SET ?";
+
+                    pool.query(initial, (err, none) => {
+                        if (err) throw err;
+                    });
+
+                    let query = pool.query(sql, UserToRoomConnection, (err, none) => {
+                        if (err) throw err;
+                        roomPass = req.body["password"];
+                        res.redirect('/game/' + result[0]['ID']);
+                    });
                 });
-                roomPass = req.body["password"];
-                res.redirect('/game/' + result[0]['ID']);
             });
         }
         else{
@@ -154,7 +153,7 @@ let roomID = "";
         if (user) {
             roomID = req.params.id;
 
-            let sql = "SELECT * FROM UserToRoom WHERE GameRoomID = ?";
+            let sql = "SELECT * FROM GameRoom WHERE ID = ?";
 
             pool.query(dbName, (err, result) => {
                 if (err) throw err;
@@ -177,12 +176,13 @@ let roomID = "";
                         let isFull = (result[0].PlayerCount === result[0].PlayerCapacity);
                         let isPrivate = result[0].IsPrivate;
                         let roomPassword = result[0].Password;
+                        var join = false;
                         if (!isPrivate && !isFull) {
-                            res.render('game-room', { room: result, players: myPlayers, user:user });
+                            join = true;
                         }
                         else if (isPrivate && !isFull) {
                             if (roomPass === roomPassword) {
-                                res.render('game-room', { room: result, players: myPlayers, user:user });
+                                join = true;
                                 roomPass = "";
                             }
                             else if (roomPass !== roomPassword) {
@@ -197,6 +197,20 @@ let roomID = "";
                         }
                         else if (isFull) {
                             res.render('error', { errorMsg: "The room is full!" });
+                        }
+
+                        if(join) {
+                            let UserToRoomConnection = {
+                                UserID: user.ID,
+                                GameRoomID: roomID,
+                                Score: 0
+                            };
+
+                            sql = "INSERT INTO UserToRoom SET ?";
+
+                            pool.query(sql, UserToRoomConnection, (err, none) => {
+                                res.render('game-room', { room: result, players: myPlayers, user:user });
+                            });
                         }
                     });
                 });

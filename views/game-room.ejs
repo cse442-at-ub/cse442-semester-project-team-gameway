@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="/css/game-room.css" type="text/css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
         <script src="https://kit.fontawesome.com/07b8d94df6.js" crossorigin="anonymous"></script>
+        <script src="/socket.io/socket.io.js"></script>
     </head>
 
     <body>
@@ -48,7 +49,6 @@
 
         <canvas id="game-window" class="game-window"  width="1024" height="576" style=" border: 1px solid #000000;"></canvas>
 
-        <script src="/socket.io/socket.io.js"></script>
         <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
 
         <script>
@@ -61,25 +61,31 @@
             const roomID = "<%=gameRoom.ID%>";
 
             // Message
-            socket.emit('new-user', username);
+            socket.emit('new-user', roomID, username);
 
             socket.on('chat-message', data => {
-                addMessage(`${data.username}: ${data.message}`);
+                if(data.room === roomID) {
+                    addMessage(`${data.username}: ${data.message}`);
+                }
             })
 
             // New User Joined or left
-            socket.on('user-connected', name => {
-                addMessage(`${name} connected`);
+            socket.on('user-connected', data => {
+                if(data.room === roomID) {
+                    addMessage(`${data.name} connected`);
+                }
             })
 
-            socket.on('user-disconnected', name => {
-                addMessage(`${name} disconnected`);
+            socket.on('user-disconnected', data => {
+                if(parseInt(roomID) === data.room) {
+                    addMessage(`${data.user} disconnected`);
+                }
             })
 
             messageForm.addEventListener('submit', e => {
                 e.preventDefault();
                 const message = messageInput.value;
-                socket.emit('send-chat-message', message);
+                socket.emit('send-chat-message', roomID, message);
                 messageInput.value = '';
             })
 

@@ -124,19 +124,23 @@ var Entity = function () {
         spdX: 0,
         spdY: 0,
         id: "",
-    }
+    };
+
     self.update = function () {
         self.updatePosition();
-    }
+    };
+
     self.updatePosition = function () {
         self.x += self.spdX;
         self.y += self.spdY;
-    }
+    };
+
     self.getDistance = function (pt) {
         return Math.sqrt(Math.pow(self.x - pt.x, 2) + Math.pow(self.y - pt.y, 2));
-    }
+    };
+
     return self;
-}
+};
 
 var Player = function (id, user) {
     var self = Entity();
@@ -162,12 +166,13 @@ var Player = function (id, user) {
         if (self.pressingAttack) {
             self.shootBullet(self.mouseAngle);
         }
-    }
+    };
+
     self.shootBullet = function (angle) {
         var b = Bullet(self.id, angle);
         b.x = self.x;
         b.y = self.y;
-    }
+    };
 
 
     self.updateSpd = function () {
@@ -287,20 +292,17 @@ var Bullet = function (parent, angle) {
                         shooter.score += 1;
                     }
 
-                    if (shooter.score === 3) {
+                    if (shooter.score == 3) {
                         gameOver(shooter.username);
                         stopGame();
                         endGame();
                     }
 
-                    self.toRemove === true;
+                    self.toRemove == true;
                     p.hp = p.hpMax;
                     p.x = Math.random() * 500;
                     p.y = Math.random() * 500;
-
-
                 }
-
                 self.toRemove = true;
             }
         }
@@ -349,39 +351,61 @@ Bullet.getAllInitPack = function () {
     return bullets;
 };
 
-var users = {};
-
 io.sockets.on('connection', function (socket) {
     // console.info(`THE USERNAME: ${socket.request.session.user.Username} \n`);
     if (socket.request.session.user) {
-        console.info(socket.request.session.user.Username);
+        var user = socket.request.session.user;
 
-        socket.on('new-user', name => {
-            users[socket.id] = name;
-            socket.broadcast.emit('user-connected', name)
+        socket.on('new-user', (room, name) => {
+            socket.join(room, function () {
+                socket.broadcast.emit('user-connected', {name: name, room: room});
+            });
         });
 
-        socket.on('send-chat-message', message => {
-            socket.broadcast.emit('chat-message', {message: message, username: users[socket.id]});
+        socket.on('send-chat-message', (room, message) => {
+            socket.broadcast.emit('chat-message', {message: message, username: user.Username, room: room});
         });
 
         socket.on('disconnect', () => {
-            socket.broadcast.emit('user-disconnected', users[socket.id]);
-            delete users[socket.id];
+            let sql = "SELECT * FROM `UserToRoom` WHERE `UserID`=? ORDER BY `DateJoined`";
+
+            pool.query(dbName, (err, result) => {
+                if (err) throw err;
+            });
+
+            pool.query(sql, user.ID, (err, result) => {
+                if (err) throw err;
+                if(result[0]) {
+                    console.log(user.Username);
+                    socket.broadcast.emit('user-disconnected', {user: user.Username, room: result[0].GameRoomID});
+                    let sql = "DELETE FROM `UserToRoom` WHERE UserID = ?";
+
+                    pool.query(dbName, (err, result) => {
+                        if (err) throw err;
+                    });
+
+                    pool.query(sql, user.ID, (err, result) => {
+                        delete SOCKET_LIST[socket.id];
+                    });
+                }
+            });
         });
 
-        socket.id = Math.random();
+        socket.id = user.ID;
         SOCKET_LIST[socket.id] = socket;
 
         Player.onConnect(socket);
 
-        socket.on('disconnect', function () {
-            delete SOCKET_LIST[socket.id];
-
-        });
-
         socket.on('pauseTheGame', function () {
             startGame();
+        });
+
+        socket.on('connect_error', function(err) {
+            console.log("client connect_error: ", err);
+        });
+
+        socket.on('connect_timeout', function(err) {
+            console.log("client connect_timeout: ", err);
         });
     }
 
