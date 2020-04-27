@@ -10,21 +10,22 @@ let roomID = "";
 
 <!--Display Room List-->
     router.get('/room-list', (req, res) => {
-        let initial = dbName;
-        let sql = "SELECT *  FROM `GameRoom` WHERE `isStarted` = 0 AND `isOver` = 0";
-        pool.query(initial, (err, result) => {
-            if (err) throw err;
-        });
+        let user = req.session.user;
 
-        pool.query(sql, (err, results) => {
-            if (err) throw err;
-            // res.render('room-list', {results: results, opp:req.session.opp, name:user});
+        if(user) {
+            let initial = dbName;
+            let sql = "SELECT *  FROM `GameRoom` WHERE `isStarted` = 0 AND `isOver` = 0";
+            pool.query(initial, (err, result) => {
+                if (err) throw err;
+            });
 
-            let user = req.session.user;
+            pool.query(sql, (err, results) => {
+                if (err) throw err;
+                // res.render('room-list', {results: results, opp:req.session.opp, name:user});
 
-            if (user) {
-                let userSQL = "SELECT * FROM User WHERE ID = ?";
-                pool.query(userSQL, user.ID,(err, sessionUser) => {
+                let user = req.session.user;
+
+                if (user) {
                     let sql = "SELECT * FROM Friendship WHERE UserID1 = ? OR UserID2 = ?";
 
                     pool.query(dbName, (err, result) => {
@@ -51,112 +52,122 @@ let roomID = "";
                             }
 
                             pool.query(sql, (err, friends) => {
-                                console.log(friends);
                                 res.render('room-list', {
                                     results: results,
                                     opp: req.session.opp,
-                                    user: sessionUser[0],
+                                    user: user,
                                     friends: friends
                                 });
                                 return;
                             });
                         } else {
-                            res.render('room-list', {results: results, opp: req.session.opp, user: sessionUser[0], friends: []});
+                            res.render('room-list', {results: results, opp: req.session.opp, user: user, friends: []});
                             return;
                         }
                     });
-                });
-                return;
-            }
-            res.redirect('/');
-        });
-    });
-
-<!--Insert New Game Room-->
-    router.post('/_create_room', urlencodedParser, (req, res) => {
-        let isPrivate;
-        let hostID = 0;
-
-        if (req.body["private"] === 'on') {
-            isPrivate = 1;
+                    return;
+                }
+                res.redirect('/');
+            });
         }
         else {
-            isPrivate = 0;
+            res.redirect('/');
         }
-
-        let initial = dbName;
-        let newRoom = {
-            HostID: hostID,
-            RoomName: req.body["room-name"],
-            IsPrivate: isPrivate,
-            Password: req.body["password"],
-            GameMode: req.body["game-mode"],
-            PlayerCount: 1,
-            PlayerCapacity: req.body["player-capacity"],
-            CurrentGame: 'Dodge',
-            isStarted: 0,
-            isOver: 0,
-        };
-
-        let sql = "INSERT INTO GameRoom SET ?";
-
-        pool.query(initial, (err, result) => {
-            if (err) throw err;
-        });
-
-        let query = pool.query(sql, newRoom, (err, result) => {
-            if (err) throw err;
-        });
-
-        sql = "SELECT * FROM GameRoom WHERE HostID = ? ORDER  BY ID DESC LIMIT 1";
-
-        pool.query(initial, (err, result) => {
-            if (err) throw err;
-        });
-
-        query = pool.query(sql, hostID, (err, result) => {
-            if (err) throw err;
-            let roomID = result[0]['ID'];
-
-        <!--Hard Coded User-->
-                let UserToRoomConnection = {
-                    UserID: 10,
-                    GameRoomID: roomID,
-                    Score: 0
-                };
-
-            sql = "INSERT INTO UserToRoom SET ?";
-
-            pool.query(initial, (err, none) => {
-                if (err) throw err;
-            });
-
-            let query = pool.query(sql, UserToRoomConnection, (err, none) => {
-                if (err) throw err;
-            });
-            roomPass = req.body["password"];
-            res.redirect('/game/' + result[0]['ID']);
-        });
     });
 
-<!--Game Room Page-->
+    <!--Insert New Game Room-->
+    router.post('/_create_room', urlencodedParser, (req, res) => {
+        let user = req.session.user;
+
+        if(user) {
+            let isPrivate;
+            let hostID = user.ID;
+
+            if (req.body["private"] === 'on') {
+                isPrivate = 1;
+            }
+            else {
+                isPrivate = 0;
+            }
+
+            let initial = dbName;
+            let newRoom = {
+                HostID: hostID,
+                RoomName: req.body["room-name"],
+                IsPrivate: isPrivate,
+                Password: req.body["password"],
+                GameMode: req.body["game-mode"],
+                PlayerCount: 1,
+                PlayerCapacity: req.body["player-capacity"],
+                CurrentGame: 'Dodge',
+                isStarted: 0,
+                isOver: 0,
+            };
+
+            let sql = "INSERT INTO GameRoom SET ?";
+
+            pool.query(initial, (err, result) => {
+                if (err) throw err;
+            });
+
+            let query = pool.query(sql, newRoom, (err, result) => {
+                if (err) throw err;
+                sql = "SELECT * FROM GameRoom WHERE HostID = ? ORDER  BY ID DESC LIMIT 1";
+
+                pool.query(initial, (err, result) => {
+                    if (err) throw err;
+                });
+
+                query = pool.query(sql, hostID, (err, result) => {
+                    if (err) throw err;
+                    let roomID = result[0]['ID'];
+
+                    let UserToRoomConnection = {
+                        UserID: user.ID,
+                        GameRoomID: roomID,
+                        Score: 0
+                    };
+
+                    sql = "INSERT INTO UserToRoom SET ?";
+
+                    pool.query(initial, (err, none) => {
+                        if (err) throw err;
+                    });
+
+                    let query = pool.query(sql, UserToRoomConnection, (err, none) => {
+                        if (err) throw err;
+                        roomPass = req.body["password"];
+                        res.redirect('/game/' + result[0]['ID']);
+                    });
+                });
+            });
+        }
+        else{
+            res.redirect('/');
+        }
+    });
+
+    <!--Game Room Page-->
     router.get('/game/:id', (req, res) => {
         let user = req.session.user;
         if (user) {
-            let path = req['path'];
-            roomID = path.split('/')[2];
+            roomID = req.params.id;
 
-            let sql = "SELECT * FROM UserToRoom WHERE GameRoomID = ?";
+            let sql = "SELECT * FROM GameRoom WHERE ID = ?";
 
             pool.query(dbName, (err, result) => {
                 if (err) throw err;
             });
 
             let query = pool.query(sql, roomID, (err, results) => {
+                if(results.length === 0) {
+                    res.render('error', {errorMsg: "Room Not Found"} );
+                    return;
+                }
                 let players = "";
                 for (let i = 0; i < results.length; i++) {
                     players += ("SELECT * FROM User WHERE ID = " + results[i]['UserID'] + ';');
-        }
+                }
 
                 pool.query(players, (err, players) => {
                     let myPlayers = players;
@@ -165,18 +176,13 @@ let roomID = "";
                         let isFull = (result[0].PlayerCount === result[0].PlayerCapacity);
                         let isPrivate = result[0].IsPrivate;
                         let roomPassword = result[0].Password;
-                        console.log(isFull);
-                        console.log(isPrivate);
+                        var join = false;
                         if (!isPrivate && !isFull) {
-                            res.render('game-room', { room: result, players: myPlayers });
-                            console.log(roomPass);
+                            join = true;
                         }
                         else if (isPrivate && !isFull) {
-                            console.log(roomPass);
-                            console.log(roomPassword);
                             if (roomPass === roomPassword) {
-                                console.log(roomPass + roomPassword);
-                                res.render('game-room', { room: result, players: myPlayers });
+                                join = true;
                                 roomPass = "";
                             }
                             else if (roomPass !== roomPassword) {
@@ -191,6 +197,20 @@ let roomID = "";
                         }
                         else if (isFull) {
                             res.render('error', { errorMsg: "The room is full!" });
+                        }
+
+                        if(join) {
+                            let UserToRoomConnection = {
+                                UserID: user.ID,
+                                GameRoomID: roomID,
+                                Score: 0
+                            };
+
+                            sql = "INSERT INTO UserToRoom SET ?";
+
+                            pool.query(sql, UserToRoomConnection, (err, none) => {
+                                res.render('game-room', { room: result, players: myPlayers, user:user });
+                            });
                         }
                     });
                 });
