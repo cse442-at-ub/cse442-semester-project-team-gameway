@@ -13,8 +13,16 @@ let roomID = "";
         let user = req.session.user;
 
         if(user) {
+
+            // Updates gameID of user if not in a game room
+            var gameID = 0;
+            var sql = 'UPDATE User SET GameID = ? WHERE Username = ?';
+            pool.query(sql,[gameID, user.Username], function(err, result) {
+                if(err) throw err;
+            });
+
             let initial = dbName;
-            let sql = "SELECT *  FROM `GameRoom` WHERE `isStarted` = 0 AND `isOver` = 0";
+            sql = "SELECT *  FROM `GameRoom` WHERE `isStarted` = 0 AND `isOver` = 0";
             pool.query(initial, (err, result) => {
                 if (err) throw err;
             });
@@ -104,7 +112,7 @@ let roomID = "";
                 isOver: 0,
             };
 
-            let sql = "INSERT INTO GameRoom SET ?";
+            sql = "INSERT INTO GameRoom SET ?";
 
             pool.query(initial, (err, result) => {
                 if (err) throw err;
@@ -210,6 +218,11 @@ let roomID = "";
 
                             pool.query(sql, UserToRoomConnection, (err, none) => {
                                 res.render('game-room', { room: result, players: myPlayers, user:user });
+                            });
+
+                            sql = 'UPDATE User SET GameID = ? WHERE Username = ?';
+                            pool.query(sql,[roomID, user.Username], function(err, result) {
+                                if(err) throw err;
                             });
                         }
                     });
