@@ -97,7 +97,7 @@ let roomID = "";
                 IsPrivate: isPrivate,
                 Password: req.body["password"],
                 GameMode: req.body["game-mode"],
-                PlayerCount: 1,
+                PlayerCount: 0,
                 PlayerCapacity: req.body["player-capacity"],
                 CurrentGame: 'Dodge',
                 isStarted: 0,

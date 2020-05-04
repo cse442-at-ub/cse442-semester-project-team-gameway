@@ -362,6 +362,12 @@ io.sockets.on('connection', function (socket) {
         socket.on('new-user', (room, name) => {
             socket.join(room, function () {
                 socket.broadcast.emit('user-connected', {name: name, room: room});
+
+                let sql = "SELECT * FROM `GameRoom` WHERE ID = ?";
+                pool.query(sql, room, (err, result) => {
+                    let sql = "UPDATE `GameRoom` SET `PlayerCount` = " + (result[0].PlayerCount + 1) + " WHERE ID = ?";
+                    pool.query(sql, room, (err, result) => {});
+                });
             });
         });
 
@@ -381,14 +387,23 @@ io.sockets.on('connection', function (socket) {
                 if(result[0]) {
                     console.log(user.Username);
                     socket.broadcast.emit('user-disconnected', {user: user.Username, room: result[0].GameRoomID});
-                    let sql = "DELETE FROM `UserToRoom` WHERE UserID = ?";
 
-                    pool.query(dbName, (err, result) => {
-                        if (err) throw err;
-                    });
+                    let sql = "SELECT * FROM `GameRoom` WHERE ID = ?";
+                    pool.query(sql, result[0].GameRoomID, (err, result) => {
+                        let sql;
+                        if(result[0].PlayerCount <= 1) {
+                            sql = "DELETE FROM `GameRoom` WHERE ID = ?";
+                        } else {
+                            sql = "UPDATE `GameRoom` SET `PlayerCount` = " + (result[0].PlayerCount-1) + " WHERE ID = ?";
+                        }
 
-                    pool.query(sql, user.ID, (err, result) => {
-                        delete SOCKET_LIST[socket.id];
+                        pool.query(sql, result[0].ID, (err, result) => {
+                            let sql = "DELETE FROM `UserToRoom` WHERE UserID = ?";
+
+                            pool.query(sql, user.ID, (err, result) => {
+                                delete SOCKET_LIST[socket.id];
+                            });
+                        });
                     });
                 }
             });
