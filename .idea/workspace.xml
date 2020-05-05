@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a691e9d-81c5-4caf-828d-257efdc24621" name="Default Changelist" comment="commented out rank.js&#10;deleted route to rank.js in app.js&#10;updated game-room.js (line 72)&#10;updated sql line in rank route for pages.js">
+    <list default="true" id="6a691e9d-81c5-4caf-828d-257efdc24621" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/pages.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/pages.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/game-room.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/game-room.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/game-room.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/game-room.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/social.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/social.ejs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -107,6 +110,12 @@
       <workItem from="1587524686497" duration="192000" />
       <workItem from="1587581942504" duration="5201000" />
       <workItem from="1587941848811" duration="9078000" />
+      <workItem from="1588018733909" duration="256000" />
+      <workItem from="1588100651876" duration="94000" />
+      <workItem from="1588100957364" duration="66000" />
+      <workItem from="1588281672593" duration="737000" />
+      <workItem from="1588533752420" duration="508000" />
+      <workItem from="1588614165904" duration="1120000" />
     </task>
     <task id="LOCAL-00001" summary="#109 Created Database File">
       <created>1583521713487</created>
@@ -185,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587524815374</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Hotfix merge issues and rank page not working">
+      <created>1587953020864</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1587953020864</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,7 +237,8 @@
     <MESSAGE value="Image Organization" />
     <MESSAGE value="commented out rank.js&#10;deleted route to rank.js in app.js&#10;updated game-room.js (line 72)&#10;updated sql line in rank route for pages.js" />
     <MESSAGE value="#167 Users can see messages they send in the game chat room&#10;#169 Users can see messages from other users, works across the whole site, need to make it work so only people in the same room can see" />
-    <option name="LAST_COMMIT_MESSAGE" value="#167 Users can see messages they send in the game chat room&#10;#169 Users can see messages from other users, works across the whole site, need to make it work so only people in the same room can see" />
+    <MESSAGE value="Hotfix merge issues and rank page not working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hotfix merge issues and rank page not working" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1010" y="452" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" />
