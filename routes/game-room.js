@@ -8,13 +8,21 @@ const dbName = "USE cse442_542_2020_spring_teamc_db; ";
 let roomPass = "";
 let roomID = "";
 
-<!--Display Room List-->
+// < !--Display Room List-- >
     router.get('/room-list', (req, res) => {
         let user = req.session.user;
 
-        if(user) {
+        if (user) {
+
+            // Updates gameID of user if not in a game room
+            var gameID = 0;
+            var sql = 'UPDATE User SET GameID = ? WHERE Username = ?';
+            pool.query(sql, [gameID, user.Username], function (err, result) {
+                if (err) throw err;
+            });
+
             let initial = dbName;
-            let sql = "SELECT *  FROM `GameRoom` WHERE `isStarted` = 0 AND `isOver` = 0";
+            sql = "SELECT *  FROM `GameRoom` WHERE `isStarted` = 0 AND `isOver` = 0";
             pool.query(initial, (err, result) => {
                 if (err) throw err;
             });
@@ -61,7 +69,7 @@ let roomID = "";
                                 return;
                             });
                         } else {
-                            res.render('room-list', {results: results, opp: req.session.opp, user: user, friends: []});
+                            res.render('room-list', { results: results, opp: req.session.opp, user: user, friends: [] });
                             return;
                         }
                     });
@@ -75,11 +83,11 @@ let roomID = "";
         }
     });
 
-    <!--Insert New Game Room-->
+    // < !--Insert New Game Room-- >
     router.post('/_create_room', urlencodedParser, (req, res) => {
         let user = req.session.user;
 
-        if(user) {
+        if (user) {
             let isPrivate;
             let hostID = user.ID;
 
@@ -104,7 +112,7 @@ let roomID = "";
                 isOver: 0,
             };
 
-            let sql = "INSERT INTO GameRoom SET ?";
+            sql = "INSERT INTO GameRoom SET ?";
 
             pool.query(initial, (err, result) => {
                 if (err) throw err;
@@ -142,12 +150,12 @@ let roomID = "";
                 });
             });
         }
-        else{
+        else {
             res.redirect('/');
         }
     });
 
-    <!--Game Room Page-->
+    // < !--Game Room Page-- >
     router.get('/game/:id', (req, res) => {
         let user = req.session.user;
         if (user) {
@@ -160,8 +168,8 @@ let roomID = "";
             });
 
             let query = pool.query(sql, roomID, (err, results) => {
-                if(results.length === 0) {
-                    res.render('error', {errorMsg: "Room Not Found"} );
+                if (results.length === 0) {
+                    res.render('error', { errorMsg: "Room Not Found" });
                     return;
                 }
                 let players = "";
@@ -199,7 +207,7 @@ let roomID = "";
                             res.render('error', { errorMsg: "The room is full!" });
                         }
 
-                        if(join) {
+                        if (join) {
                             let UserToRoomConnection = {
                                 UserID: user.ID,
                                 GameRoomID: roomID,
@@ -207,9 +215,26 @@ let roomID = "";
                             };
 
                             sql = "INSERT INTO UserToRoom SET ?";
-
                             pool.query(sql, UserToRoomConnection, (err, none) => {
-                                res.render('game-room', { room: result, players: myPlayers, user:user });
+
+                                let playerlist = "";
+                                for (let i = 0; i < results.length; i++) {
+                                    // Ideally, scraping from this table is better because it is potentially smaller `SELECT * FROM UserToRoom `
+                                    playerlist += (`SELECT * FROM User WHERE GameID = ${roomID};`);
+                                }
+                                pool.query(playerlist, (err, players) => {
+                                    console.info(playerlist);
+                                    console.info(players);
+                                    // console.info(user);
+                                    res.render('game-room', { room: result, players: myPlayers, user: user, playerlist: players });
+
+                                });
+
+                            });
+
+                            sql = 'UPDATE User SET GameID = ? WHERE Username = ?';
+                            pool.query(sql, [roomID, user.Username], function (err, result) {
+                                if (err) throw err;
                             });
                         }
                     });
@@ -221,7 +246,7 @@ let roomID = "";
         }
     });
 
-<!--Room Password Input From User-->
+// < !--Room Password Input From User-- >
     router.post('/room-password', urlencodedParser, (req, res) => {
         let path = req['path'];
         roomPass = req.body["room-password"];

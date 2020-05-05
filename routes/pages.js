@@ -63,8 +63,9 @@ router.get('/logout', (req, res, next) => {
         req.session.destroy(function() {
             // Update Database Online Status
             var onlineStatus = 0;
-            var sql = 'UPDATE User SET OnlineStatus = ? WHERE Username = ?';
-            pool.query(sql,[onlineStatus, user.Username], function(err, result) {
+            var gameID = 0;
+            var sql = 'UPDATE User SET OnlineStatus = ?, GameID = ? WHERE Username = ?';
+            pool.query(sql,[onlineStatus, gameID, user.Username], function(err, result) {
                 if(err) throw err;
             });
             res.redirect('/');
@@ -76,6 +77,14 @@ router.get('/logout', (req, res, next) => {
 router.get('/home', function (req, res) {
     let user = req.session.user;
     if(user) {
+
+        // Updates gameID of user if not in a game room
+        var gameID = 0;
+        var sql = 'UPDATE User SET GameID = ? WHERE Username = ?';
+        pool.query(sql,[gameID, user.Username], function(err, result) {
+            if(err) throw err;
+        });
+
         let userSQL = "SELECT * FROM User WHERE ID = ?";
         pool.query(userSQL, user.ID,(err, sessionUser) => {
             let sql = "SELECT * FROM Friendship WHERE UserID1 = ? OR UserID2 = ?";
@@ -137,6 +146,14 @@ router.get('/rank', function (req, res) {
         let user = req.session.user;
 
         if (user) {
+
+            // Updates gameID of user if not in a game room
+            var gameID = 0;
+            var sql = 'UPDATE User SET GameID = ? WHERE Username = ?';
+            pool.query(sql,[gameID, user.Username], function(err, result) {
+                if(err) throw err;
+            });
+
             let userSQL = "SELECT * FROM User WHERE ID = ?";
 
             pool.query(userSQL, user.ID,(err, sessionUser) => {
@@ -186,6 +203,14 @@ router.get('/store', function (req, res) {
     let user = req.session.user;
 
     if(user) {
+
+        // Updates gameID of user if not in a game room
+        var gameID = 0;
+        var sql = 'UPDATE User SET GameID = ? WHERE Username = ?';
+        pool.query(sql,[gameID, user.Username], function(err, result) {
+            if(err) throw err;
+        });
+
         let userSQL = "SELECT * FROM User WHERE ID = ?";
 
         pool.query(userSQL, user.ID,(err, sessionUser) => {
@@ -239,7 +264,15 @@ router.get('/create-room', (req, res) => {
     let user = req.session.user;
 
     if(user) {
-        let sql = "SELECT * FROM Friendship WHERE UserID1 = ? OR UserID2 = ?";
+
+        // Updates gameID of user if not in a game room
+        var gameID = 0;
+        var sql = 'UPDATE User SET GameID = ? WHERE Username = ?';
+        pool.query(sql,[gameID, user.Username], function(err, result) {
+            if(err) throw err;
+        });
+
+        sql = "SELECT * FROM Friendship WHERE UserID1 = ? OR UserID2 = ?";
 
         pool.query(dbName, (err, result) => {
             if(err) throw err;

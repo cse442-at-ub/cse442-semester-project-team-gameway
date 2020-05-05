@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a691e9d-81c5-4caf-828d-257efdc24621" name="Default Changelist" comment="">
+    <list default="true" id="6a691e9d-81c5-4caf-828d-257efdc24621" name="Default Changelist" comment="commented out rank.js&#10;deleted route to rank.js in app.js&#10;updated game-room.js (line 72)&#10;updated sql line in rank route for pages.js">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/game-room.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/game-room.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/pages.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/pages.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/game-room.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/game-room.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/partials/social.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/social.ejs" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,18 +85,6 @@
       <recent name="C:\Users\Preston\Desktop\cse442-semester-project-team-gameway\client\img\avatars" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -110,12 +115,6 @@
       <workItem from="1587524686497" duration="192000" />
       <workItem from="1587581942504" duration="5201000" />
       <workItem from="1587941848811" duration="9078000" />
-      <workItem from="1588018733909" duration="256000" />
-      <workItem from="1588100651876" duration="94000" />
-      <workItem from="1588100957364" duration="66000" />
-      <workItem from="1588281672593" duration="737000" />
-      <workItem from="1588533752420" duration="508000" />
-      <workItem from="1588614165904" duration="1120000" />
     </task>
     <task id="LOCAL-00001" summary="#109 Created Database File">
       <created>1583521713487</created>
@@ -194,14 +193,7 @@
       <option name="project" value="LOCAL" />
       <updated>1587524815374</updated>
     </task>
-    <task id="LOCAL-00012" summary="Hotfix merge issues and rank page not working">
-      <created>1587953020864</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1587953020864</updated>
-    </task>
-    <option name="localTasksCounter" value="13" />
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,13 +204,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="#109 Created Database File" />
@@ -237,30 +228,32 @@
     <MESSAGE value="Image Organization" />
     <MESSAGE value="commented out rank.js&#10;deleted route to rank.js in app.js&#10;updated game-room.js (line 72)&#10;updated sql line in rank route for pages.js" />
     <MESSAGE value="#167 Users can see messages they send in the game chat room&#10;#169 Users can see messages from other users, works across the whole site, need to make it work so only people in the same room can see" />
-    <MESSAGE value="Hotfix merge issues and rank page not working" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hotfix merge issues and rank page not working" />
+    <option name="LAST_COMMIT_MESSAGE" value="#167 Users can see messages they send in the game chat room&#10;#169 Users can see messages from other users, works across the whole site, need to make it work so only people in the same room can see" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1010" y="452" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" />
-    <state x="1010" y="452" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" />
-    <state x="364" y="0" key="CommitChangelistDialog2" />
-    <state x="364" y="0" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" />
-    <state x="364" y="31" key="CommitChangelistDialog2/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" />
-    <state x="205" y="41" key="CommitChangelistDialog2/0.23.1440.808@0.23.1440.808" />
-    <state width="1379" height="191" key="GridCell.Tab.0.bottom" />
-    <state width="1379" height="191" key="GridCell.Tab.0.bottom/0.23.1440.814@0.23.1440.814" />
-    <state width="1379" height="191" key="GridCell.Tab.0.center" />
-    <state width="1379" height="191" key="GridCell.Tab.0.center/0.23.1440.814@0.23.1440.814" />
-    <state width="1379" height="191" key="GridCell.Tab.0.left" />
-    <state width="1379" height="191" key="GridCell.Tab.0.left/0.23.1440.814@0.23.1440.814" />
-    <state width="1379" height="191" key="GridCell.Tab.0.right" />
-    <state width="1379" height="191" key="GridCell.Tab.0.right/0.23.1440.814@0.23.1440.814" />
-    <state x="1512" y="434" key="Vcs.Push.Dialog.v2" />
-    <state x="1512" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" />
-    <state x="1512" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" />
-    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog" />
-    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" />
-    <state x="1520" y="478" key="git4idea.merge.GitPullDialog" />
-    <state x="1520" y="478" key="git4idea.merge.GitPullDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" />
+    <state x="1010" y="452" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588101091676" />
+    <state x="1010" y="452" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1588101091676" />
+    <state x="364" y="0" key="CommitChangelistDialog2" timestamp="1588101091676" />
+    <state x="364" y="0" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1588101091676" />
+    <state x="364" y="31" key="CommitChangelistDialog2/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1588101091676" />
+    <state x="205" y="41" key="CommitChangelistDialog2/0.23.1440.808@0.23.1440.808" timestamp="1588101091676" />
+    <state width="1379" height="191" key="GridCell.Tab.0.bottom" timestamp="1588101091676" />
+    <state width="1379" height="191" key="GridCell.Tab.0.bottom/0.23.1440.814@0.23.1440.814" timestamp="1588101091676" />
+    <state width="1379" height="191" key="GridCell.Tab.0.center" timestamp="1588101091676" />
+    <state width="1379" height="191" key="GridCell.Tab.0.center/0.23.1440.814@0.23.1440.814" timestamp="1588101091676" />
+    <state width="1379" height="191" key="GridCell.Tab.0.left" timestamp="1588101091676" />
+    <state width="1379" height="191" key="GridCell.Tab.0.left/0.23.1440.814@0.23.1440.814" timestamp="1588101091676" />
+    <state width="1379" height="191" key="GridCell.Tab.0.right" timestamp="1588101091676" />
+    <state width="1379" height="191" key="GridCell.Tab.0.right/0.23.1440.814@0.23.1440.814" timestamp="1588101091676" />
+    <state x="1512" y="434" key="Vcs.Push.Dialog.v2" timestamp="1588101091676" />
+    <state x="1512" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1440.-517.1440.2560@0.0.2560.1410" timestamp="1588101091676" />
+    <state x="1512" y="434" key="Vcs.Push.Dialog.v2/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1588101091676" />
+    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog" timestamp="1588101091676" />
+    <state x="1685" y="336" key="git4idea.branch.GitSmartOperationDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1588101091676" />
+    <state x="1520" y="478" key="git4idea.merge.GitPullDialog" timestamp="1588101097159">
+      <screen x="0" y="0" width="2560" height="1410" />
+    </state>
+    <state x="1520" y="478" key="git4idea.merge.GitPullDialog/0.0.2560.1410/-1440.-548.1440.2560@0.0.2560.1410" timestamp="1588101097159" />
+    <state x="1520" y="478" key="git4idea.merge.GitPullDialog/0.0.2560.1410/-1440.-557.1440.2560@0.0.2560.1410" timestamp="1588101091676" />
   </component>
 </project>
