@@ -30,7 +30,9 @@
                 <div class="user-detail">
                     <h3 class="user-id"><i class="fas fa-search"></i><%=profile.Username%></h3>
                     <div class="avatar-container">
-                        <img src="/img/profile-pictures/<%=profile.AvatarID%>.jpg" alt="user-avatar">
+                        <a onclick= "showAvatars();">
+                            <img src="/img/profile-pictures/<%=profile.AvatarID%>.jpg" alt="user-avatar">
+                        </a>
                     </div>
                     <div class="level">
                         <h4 class="xp-level"><%=profile.Level%></h4>
@@ -105,6 +107,16 @@
                 <!--END RIGHT BOTTOM-->
             </div>
             <!--END RIGHT SIDE-->
+
+            <div id="avatar-list" class="avatar-list">
+                <% for(var pics in avatarList) {%>
+                <div id="small-avatars">
+                    <a href="/changepfp/<%=avatarList[pics]%>">
+                        <img src="/img/profile-pictures/<%=avatarList[pics]%>.jpg">
+                    </a>
+                </div>
+                <% }%>
+            </div>
         </div>
         <!--END PROFILE CONTAINER-->
     </main>
@@ -114,6 +126,22 @@
     <!--END FOOTER-->
     <!--BEGIN SCRIPTS-->
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/e584d861f4.js"></script>
+    <script>
+        document.getElementById('avatar-list').style.display = 'none';
+
+        function showAvatars() {
+            let image = document.getElementById("avatar-list");
+
+            if(image.style.display !== "flex"){
+                image.style.display = "flex";
+            } else {
+                image.style.display = "none";
+            }
+        }
+
+        document.getElementById('avatar-list').addEventListener('click', showAvatars);
+    </script>
+
     <!--END SCRIPTS-->
 </body>
 </html>

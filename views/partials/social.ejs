@@ -5,7 +5,7 @@
     <div class="social-me">
         <div class="social-me-pfp-bg">
             <div class="social-pfp">
-                <img src="/img/profile-pictures/<%=user.AvatarID%>.jpg" alt="#">
+            <img src="/img/profile-pictures/<%=user.AvatarID%>.jpg" alt="#">
             </div>
         </div>
         <div class="social-bio">
@@ -45,21 +45,6 @@
 
         <% for(let x = 0; x <friends.length; x++) {%>
 
-        <% if(friends[x].GameID > 0){ %>
-        <div class="social-me social-person" id="social-node" onclick="showChat()">
-            <div class="social-pfp">
-                <img src="/img/profile-pictures/<%=friends[x].AvatarID%>.jpg" alt="#">
-            </div>
-            <div class="social-bio">
-                <a class="user-name" href="/profile/<%=friends[x].Username%>"><%=friends[x].Username%></a>
-                <a><%=friends[x].Status%></a>
-                <button onclick="window.location.href='/game/<%=friends[x].GameID%>'">Join</button>
-            </div>
-            <div class="social-gift">
-                <i></i>
-            </div>
-        </div>
-        <%} else {%>
         <div class="social-me social-person" id="social-node" onclick="showChat()">
             <div class="social-pfp">
                 <img src="/img/profile-pictures/<%=friends[x].AvatarID%>.jpg" alt="#">
@@ -72,7 +57,6 @@
                 <i></i>
             </div>
         </div>
-        <% }%>
         <% }%>
 
     </div>
@@ -80,12 +64,67 @@
     <div class="social-notifications">
         <a>You have 0 notifications.</a>
     </div>
+    <div class="social-chat hidden">
+        <div class="social-chat-label">
+            <label>Username</label>
+            <button onclick="hideChat();"><i class="fas fa-window-minimize"></i></button>
+        </div>
+        <form>
+
+            <div class="social-chat-active">
+                <button id="superman">Superman</button>
+                <button id="batman">Batman</button>
+                <button id="wonderwoman">Wonderwoman</button>
+                <button id="ironman">Ironman</button>
+            </div>
+
+            <div class="social-chat-messenger">
+                <div class="all-messages">
+                    <section>
+                        <a>-- March 17, 2020 --</a>
+                        <div class="message-block send">
+                            <div class="message-content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.</p>
+                                <a>5:37 AM</a>
+                            </div>
+                            <div class="social-pfp">
+                                <img src="/img/profile-pictures/1.jpg" alt="#">
+                            </div>
+                        </div>
+                        <div class="message-block send">
+                            <div class="message-content">
+                                <p>Morbi tristique senectus et netus. Eu augue ut lectus arcu bibendum at varius
+                                    vel. Odio eu feugiat pretium nibh ipsum.</p>
+                                <a>5:37 AM</a>
+                            </div>
+                            <div class="social-pfp">
+                                <img src="/img/profile-pictures/1.jpg" alt="#">
+                            </div>
+                        </div>
+                        <div class="message-block receive">
+                            <div class="message-content">
+                                <p>tincidunt praesent semper feugiat nibh. Tristique nu</p>
+                                <a>5:37 AM</a>
+                            </div>
+                            <div class="social-pfp">
+                                <img src="/img/profile-pictures/1.jpg" alt="#">
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <input class="social-chat-input" type="text" />
+            </div>
+
+        </form>
+    </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="/js/chatbox.js"></script>
 
 <script>
-    // Search for friends on friends list
+
+    // document.getElementById('avatar-list').style.display = 'none';
+
     function searchBar() {
         var input, filter, div, social, a, i, txtValue;
         input = document.getElementById("searchInput");
@@ -104,4 +143,17 @@
             }
         }
     }
+
+    // function showAvatars() {
+    //     let image = document.getElementById("avatar-list");
+    //
+    //     if(image.style.display !== "flex"){
+    //         image.style.display = "flex";
+    //     } else {
+    //         image.style.display = "none";
+    //     }
+    //
+    // }
+    // document.getElementById('avatar-list').addEventListener('click', showAvatars);
+    
 </script>
