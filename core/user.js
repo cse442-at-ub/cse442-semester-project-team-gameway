@@ -47,7 +47,7 @@ User.prototype = {
                 var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
                 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
                 var dateTime = date + ' ' + time;
-                var rank = 'Unranked';
+                var rank = 'N/A';
                 var avatar = Math.floor(Math.random() * 5);
                 var level = 1;
                 var sql = 'UPDATE User SET OnlineStatus = ?, LastLogin = ?, Rank = ?, HighestRank = ?, AvatarID = ?, Level = ? WHERE Username = ?';

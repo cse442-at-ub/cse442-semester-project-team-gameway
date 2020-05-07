@@ -75,48 +75,69 @@ router.get('/logout', (req, res, next) => {
 // Homepage Route
 router.get('/home', function (req, res) {
     let user = req.session.user;
-
     if(user) {
-        let sql = "SELECT * FROM Friendship WHERE UserID1 = ? OR UserID2 = ?";
 
-        pool.query(dbName, (err, result) => {
-            if(err) throw err;
-        });
+        let avatarSQL = "SELECT * FROM Purchases WHERE UserID = ? AND ItemType = ?";
 
-        pool.query(sql, [user['ID'], user['ID']], (err, relationships) => {
-            let friendIDs = [];
-            for(let x = 0; x < relationships.length; x++){
-                if(relationships[x]['UserID1'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID1']) === false){
-                    friendIDs.push(relationships[x]['UserID1'])
-                }
-                else if(relationships[x]['UserID2'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID2']) === false){
-                    friendIDs.push(relationships[x]['UserID2'])
+        pool.query(avatarSQL,[user.ID, "icons"] , (err, avatars) => {
+            let avatarList = [];
+            for(let x = 0; x < avatars.length; x++){
+                if(avatarList.includes(avatars[x]['ItemID']) === false){
+                    avatarList.push(avatars[x]['ItemID'])
                 }
             }
+            console.log("Current user's avatars:");
+            console.log(avatarList);
 
-            if(friendIDs.length > 0) {
-                let sql = "SELECT * FROM User WHERE ";
-                for (let x = 0; x < friendIDs.length; x++) {
-                    sql = sql.concat("ID = ", friendIDs[x]);
-                    if (x + 1 !== friendIDs.length) {
-                        sql = sql.concat(" OR ");
+        let userSQL = "SELECT * FROM User WHERE ID = ?";
+        pool.query(userSQL, user.ID,(err, sessionUser) => {
+            let sql = "SELECT * FROM Friendship WHERE UserID1 = ? OR UserID2 = ?";
+
+            pool.query(dbName, (err, result) => {
+                if(err) throw err;
+            });
+
+            pool.query(sql, [user['ID'], user['ID']], (err, relationships) => {
+                let friendIDs = [];
+                for(let x = 0; x < relationships.length; x++){
+                    if(relationships[x]['UserID1'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID1']) === false){
+                        friendIDs.push(relationships[x]['UserID1'])
+                    }
+                    else if(relationships[x]['UserID2'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID2']) === false){
+                        friendIDs.push(relationships[x]['UserID2'])
                     }
                 }
 
-                pool.query(sql, (err, friends) => {
-                    res.render('home', {opp: req.session.opp, user: user, friends: friends});
+                console.log("Current user's friends:")
+                console.log(friendIDs);
+
+                if(friendIDs.length > 0) {
+                    let sql = "SELECT * FROM User WHERE ";
+                    for (let x = 0; x < friendIDs.length; x++) {
+                        sql = sql.concat("ID = ", friendIDs[x]);
+                        if (x + 1 !== friendIDs.length) {
+                            sql = sql.concat(" OR ");
+                        }
+                    }
+
+                    pool.query(sql, (err, friends,) => {
+                        res.render('home', {opp: req.session.opp, user: sessionUser[0], avatarList, friends: friends});
+                        return;
+                    });
+                }
+                else {
+                    res.render('home', {opp: req.session.opp, avatars: avatars, user: sessionUser[0], friends: []});
                     return;
-                });
-            }
-            else {
-                res.render('home', {opp: req.session.opp, user: user, friends: []});
-                return;
-            }
+                }
+            });
         });
+     });
 
         return;
     }
-    res.redirect('/');
+    else {
+        res.redirect('/');
+    }
 });
 
 // Rank Route
@@ -133,12 +154,115 @@ router.get('/rank', function (req, res) {
         let user = req.session.user;
 
         if (user) {
-            console.log(user);
+            let userSQL = "SELECT * FROM User WHERE ID = ?";
 
+            pool.query(userSQL, user.ID,(err, sessionUser) => {
+                let sql = "SELECT * FROM Friendship WHERE UserID1 = ? OR UserID2 = ?";
+
+                pool.query(dbName, (err, result) => {
+                    if (err) throw err;
+                });
+
+                pool.query(sql, [user['ID'], user['ID']], (err, relationships) => {
+                    let friendIDs = [];
+                    for (let x = 0; x < relationships.length; x++) {
+                        if (relationships[x]['UserID1'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID1']) === false) {
+                            friendIDs.push(relationships[x]['UserID1'])
+                        } else if (relationships[x]['UserID2'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID2']) === false) {
+                            friendIDs.push(relationships[x]['UserID2'])
+                        }
+                    }
+
+                    if (friendIDs.length > 0) {
+                        let sql = "SELECT * FROM User WHERE ";
+                        for (let x = 0; x < friendIDs.length; x++) {
+                            sql = sql.concat("ID = ", friendIDs[x]);
+                            if (x + 1 !== friendIDs.length) {
+                                sql = sql.concat(" OR ");
+                            }
+                        }
+
+                        pool.query(sql, (err, friends) => {
+                            console.log(friends);
+                            res.render('rank', {results: results, opp: req.session.opp, user: sessionUser[0], friends: friends});
+                            return;
+                        });
+                    } else {
+                        res.render('rank', {results: results, opp: req.session.opp, user: sessionUser[0], friends: []});
+                        return;
+                    }
+                });
+            });
+            return;
+        }
+        res.redirect('/');
+    });
+});
+
+// Store Route
+router.get('/store', function (req, res) {
+    let user = req.session.user;
+
+    if(user) {
+        let userSQL = "SELECT * FROM User WHERE ID = ?";
+
+        pool.query(userSQL, user.ID,(err, sessionUser) => {
+            if(err) throw err;
+            let sql = "SELECT * FROM Friendship WHERE UserID1 = ? OR UserID2 = ?";
+
+            let sqlIcons = "SELECT * FROM Icons";
+
+            pool.query(dbName, (err, result) => {
+                if(err) throw err;
+            });
+
+            pool.query(sqlIcons, (err, icons) => {
+                if(err) throw err;
+                pool.query(sql, [user['ID'], user['ID']], (err, relationships) => {
+                    let friendIDs = [];
+                    for (let x = 0; x < relationships.length; x++) {
+                        if (relationships[x]['UserID1'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID1']) === false) {
+                            friendIDs.push(relationships[x]['UserID1'])
+                        } else if (relationships[x]['UserID2'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID2']) === false) {
+                            friendIDs.push(relationships[x]['UserID2'])
+                        }
+                    }
+
+                    if (friendIDs.length > 0) {
+                        let sql = "SELECT * FROM User WHERE ";
+                        for (let x = 0; x < friendIDs.length; x++) {
+                            sql = sql.concat("ID = ", friendIDs[x]);
+                            if (x + 1 !== friendIDs.length) {
+                                sql = sql.concat(" OR ");
+                            }
+                        }
+                        pool.query(sql, (err, friends) => {
+                            res.render('store', {opp: req.session.opp, user: sessionUser[0], icons: icons, friends: friends});
+                            return;
+                        });
+                    } else {
+                        res.render('store', {opp: req.session.opp, user: sessionUser[0], icons: icons, friends: []});
+                        return;
+                    }
+                });
+            });
+        });
+        return;
+    }
+    res.redirect('/');
+});
+
+// Create Room Route
+router.get('/create-room', (req, res) => {
+    let user = req.session.user;
+
+    if(user) {
+        let userSQL = "SELECT * FROM User WHERE ID = ?";
+        pool.query(userSQL, user.ID,(err, sessionUser) => {
             let sql = "SELECT * FROM Friendship WHERE UserID1 = ? OR UserID2 = ?";
 
             pool.query(dbName, (err, result) => {
-                if (err) throw err;
+                if(err) throw err;
             });
 
             pool.query(sql, [user['ID'], user['ID']], (err, relationships) => {
@@ -159,109 +283,16 @@ router.get('/rank', function (req, res) {
                             sql = sql.concat(" OR ");
                         }
                     }
-
                     pool.query(sql, (err, friends) => {
                         console.log(friends);
-                        res.render('rank', {results: results, opp: req.session.opp, user: user, friends: friends});
+                        res.render('create-room', {opp: req.session.opp, user: sessionUser[0], friends: friends});
                         return;
                     });
                 } else {
-                    res.render('rank', {results: results, opp: req.session.opp, user: user, friends: []});
+                    res.render('create-room', {opp: req.session.opp, user: sessionUser[0], friends: []});
                     return;
                 }
             });
-            return;
-        }
-        res.redirect('/');
-    });
-});
-
-// Store Route
-router.get('/store', function (req, res) {
-    let user = req.session.user;
-
-    if(user) {
-        console.log(user);
-
-        let sql = "SELECT * FROM Friendship WHERE UserID1 = ? OR UserID2 = ?";
-
-        pool.query(dbName, (err, result) => {
-            if(err) throw err;
-        });
-
-        pool.query(sql, [user['ID'], user['ID']], (err, relationships) => {
-            let friendIDs = [];
-            for (let x = 0; x < relationships.length; x++) {
-                if (relationships[x]['UserID1'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID1']) === false) {
-                    friendIDs.push(relationships[x]['UserID1'])
-                } else if (relationships[x]['UserID2'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID2']) === false) {
-                    friendIDs.push(relationships[x]['UserID2'])
-                }
-            }
-
-            if (friendIDs.length > 0) {
-                let sql = "SELECT * FROM User WHERE ";
-                for (let x = 0; x < friendIDs.length; x++) {
-                    sql = sql.concat("ID = ", friendIDs[x]);
-                    if (x + 1 !== friendIDs.length) {
-                        sql = sql.concat(" OR ");
-                    }
-                }
-                pool.query(sql, (err, friends) => {
-                    console.log(friends);
-                    res.render('store', {opp: req.session.opp, user: user, friends: friends});
-                    return;
-                });
-            } else {
-                res.render('store', {opp: req.session.opp, user: user, friends: []});
-                return;
-            }
-        });
-        return;
-    }
-    res.redirect('/');
-});
-
-// Create Room Route
-router.get('/create-room', (req, res) => {
-    let user = req.session.user;
-
-    if(user) {
-        console.log(user);
-
-        let sql = "SELECT * FROM Friendship WHERE UserID1 = ? OR UserID2 = ?";
-
-        pool.query(dbName, (err, result) => {
-            if(err) throw err;
-        });
-
-        pool.query(sql, [user['ID'], user['ID']], (err, relationships) => {
-            let friendIDs = [];
-            for (let x = 0; x < relationships.length; x++) {
-                if (relationships[x]['UserID1'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID1']) === false) {
-                    friendIDs.push(relationships[x]['UserID1'])
-                } else if (relationships[x]['UserID2'] !== user['ID'] && friendIDs.includes(relationships[x]['UserID2']) === false) {
-                    friendIDs.push(relationships[x]['UserID2'])
-                }
-            }
-
-            if (friendIDs.length > 0) {
-                let sql = "SELECT * FROM User WHERE ";
-                for (let x = 0; x < friendIDs.length; x++) {
-                    sql = sql.concat("ID = ", friendIDs[x]);
-                    if (x + 1 !== friendIDs.length) {
-                        sql = sql.concat(" OR ");
-                    }
-                }
-                pool.query(sql, (err, friends) => {
-                    console.log(friends);
-                    res.render('create-room', {opp: req.session.opp, user: user, friends: friends});
-                    return;
-                });
-            } else {
-                res.render('create-room', {opp: req.session.opp, user: user, friends: []});
-                return;
-            }
         });
         return;
     }

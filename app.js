@@ -7,22 +7,23 @@ const fileRouter = require('./routes/files');
 const gameRoomRouter = require('./routes/game-room');
 const databaseRouter = require('./routes/database');
 const profileRouter = require('./routes/profile');
+const storeRouter = require('./routes/store');
+const chatBoxRouter = require('./client/js/chatbox');
 const rankRouter = require('./routes/rank');
+const dbName = "USE cse442_542_2020_spring_teamc_db; ";
 const pool = require('./core/pool');
 const app = express();
 var serv = require('http').Server(app);
 let io = require('socket.io')(serv);
 
 const bodyParser = require('body-parser');
-const urlencodedParser = bodyParser.urlencoded({ extended: false });
+const urlencodedParser = bodyParser.urlencoded({ extended: true });
 
 // < !--START WEBSITE-- >
 serv.listen('3000', () => {
     console.log('Server Started on Port 3000')
 });
 // < !--End Of Website-- >
-
-
 
 // < !--Database Connection-- >
 var db = mysql.createConnection({
@@ -31,8 +32,6 @@ var db = mysql.createConnection({
     password: "50227586",
     multipleStatements: true
 });
-
-
 
 // < !--Connecting To Database-- >
 db.connect((err) => {
@@ -74,6 +73,10 @@ app.use(gameRoomRouter);
 app.use(databaseRouter);
 // Serve Profile
 app.use(profileRouter);
+// Serve Store
+app.use(storeRouter);
+// Chat
+app.use(chatBoxRouter);
 // Serve Rank
 // Error Handling
 app.use((req, res, next) => {
@@ -86,8 +89,6 @@ app.use((err, req, res, next) => {
     res.render('error', { errorMsg: err.message });
 });
 // <!--End Routing-->
-
-
 
 // Game
 
@@ -114,8 +115,6 @@ function updateProfile(user) {
     if (isWon) { user.GamesWon += 1; }
 }
 
-
-
 /* logistics */
 
 var gameEnd = false;
@@ -128,19 +127,23 @@ var Entity = function () {
         spdX: 0,
         spdY: 0,
         id: "",
-    }
+    };
+
     self.update = function () {
         self.updatePosition();
-    }
+    };
+
     self.updatePosition = function () {
         self.x += self.spdX;
         self.y += self.spdY;
-    }
+    };
+
     self.getDistance = function (pt) {
         return Math.sqrt(Math.pow(self.x - pt.x, 2) + Math.pow(self.y - pt.y, 2));
-    }
+    };
+
     return self;
-}
+};
 
 var Player = function (id, user) {
     var self = Entity();
@@ -166,12 +169,13 @@ var Player = function (id, user) {
         if (self.pressingAttack) {
             self.shootBullet(self.mouseAngle);
         }
-    }
+    };
+
     self.shootBullet = function (angle) {
         var b = Bullet(self.id, angle);
         b.x = self.x;
         b.y = self.y;
-    }
+    };
 
 
     self.updateSpd = function () {
@@ -188,7 +192,7 @@ var Player = function (id, user) {
             self.spdY = self.maxSpd;
         else
             self.spdY = 0;
-    }
+    };
 
     self.getInitPack = function () {
         return {
@@ -200,7 +204,8 @@ var Player = function (id, user) {
             hpMax: self.hpMax,
             score: self.score,
         };
-    }
+    };
+
     self.getUpdatePack = function () {
         return {
             id: self.id,
@@ -209,12 +214,14 @@ var Player = function (id, user) {
             hp: self.hp,
             score: self.score,
         }
-    }
+    };
+
     Player.list[id] = self;
 
     initPack.player.push(self.getInitPack());
     return self;
-}
+};
+
 Player.list = {};
 Player.onConnect = function (socket) {
     var player = Player(socket.id, socket.request.session.user.Username);
@@ -238,17 +245,20 @@ Player.onConnect = function (socket) {
         player: Player.getAllInitPack(),
         bullet: Bullet.getAllInitPack(),
     })
-}
+};
+
 Player.getAllInitPack = function () {
     var players = [];
     for (var i in Player.list)
         players.push(Player.list[i].getInitPack());
     return players;
-}
+};
+
 Player.onDisconnect = function (socket) {
     delete Player.list[socket.id];
     removePack.player.push(socket.id);
-}
+};
+
 Player.update = function () {
     var pack = [];
     for (var i in Player.list) {
@@ -257,8 +267,7 @@ Player.update = function () {
         pack.push(player.getUpdatePack());
     }
     return pack;
-}
-
+};
 
 var Bullet = function (parent, angle) {
     var self = Entity();
@@ -296,21 +305,19 @@ var Bullet = function (parent, angle) {
                     p.hp = p.hpMax;
                     p.x = Math.random() * 500;
                     p.y = Math.random() * 500;
-
-
                 }
-
                 self.toRemove = true;
             }
         }
-    }
+    };
+
     self.getInitPack = function () {
         return {
             id: self.id,
             x: self.x,
             y: self.y,
         };
-    }
+    };
 
     self.getUpdatePack = function () {
         return {
@@ -318,12 +325,13 @@ var Bullet = function (parent, angle) {
             x: self.x,
             y: self.y,
         };
-    }
+    };
 
     Bullet.list[self.id] = self;
     initPack.bullet.push(self.getInitPack());
     return self;
-}
+};
+
 Bullet.list = {};
 Bullet.update = function () {
     var pack = [];
@@ -337,37 +345,87 @@ Bullet.update = function () {
             pack.push(bullet.getUpdatePack());
     }
     return pack;
-}
+};
+
 Bullet.getAllInitPack = function () {
     var bullets = [];
     for (var i in Bullet.list)
         bullets.push(Bullet.list[i].getInitPack());
     return bullets;
-}
-
+};
 
 io.sockets.on('connection', function (socket) {
     // console.info(`THE USERNAME: ${socket.request.session.user.Username} \n`);
-    console.log(`SESSION.USER`);
-    console.info(socket.request.session.user.Username);
+    if (socket.request.session.user) {
+        var user = socket.request.session.user;
 
+        socket.on('new-user', (room, name) => {
+            socket.join(room, function () {
+                socket.broadcast.emit('user-connected', {name: name, room: room});
 
+                let sql = "SELECT * FROM `GameRoom` WHERE ID = ?";
+                pool.query(sql, room, (err, result) => {
+                    let sql = "UPDATE `GameRoom` SET `PlayerCount` = " + (result[0].PlayerCount + 1) + " WHERE ID = ?";
+                    pool.query(sql, room, (err, result) => {});
+                });
+            });
+        });
 
-    socket.id = Math.random();
-    SOCKET_LIST[socket.id] = socket;
+        socket.on('send-chat-message', (room, message) => {
+            socket.broadcast.emit('chat-message', {message: message, username: user.Username, room: room});
+        });
 
-    Player.onConnect(socket);
+        socket.on('disconnect', () => {
+            let sql = "SELECT * FROM `UserToRoom` WHERE `UserID`=? ORDER BY `DateJoined`";
 
-    socket.on('disconnect', function () {
-        delete SOCKET_LIST[socket.id];
-        Player.onDisconnect(socket);
-    });
+            pool.query(dbName, (err, result) => {
+                if (err) throw err;
+            });
 
-    socket.on('pauseTheGame', function () {
-        startGame();
-        console.log("Game has started.");
-        console.log(gameEnd);
-    });
+            pool.query(sql, user.ID, (err, result) => {
+                if (err) throw err;
+                if(result[0]) {
+                    console.log(user.Username);
+                    socket.broadcast.emit('user-disconnected', {user: user.Username, room: result[0].GameRoomID});
+
+                    let sql = "SELECT * FROM `GameRoom` WHERE ID = ?";
+                    pool.query(sql, result[0].GameRoomID, (err, result) => {
+                        let sql;
+                        if(result[0].PlayerCount <= 1) {
+                            sql = "DELETE FROM `GameRoom` WHERE ID = ?";
+                        } else {
+                            sql = "UPDATE `GameRoom` SET `PlayerCount` = " + (result[0].PlayerCount-1) + " WHERE ID = ?";
+                        }
+
+                        pool.query(sql, result[0].ID, (err, result) => {
+                            let sql = "DELETE FROM `UserToRoom` WHERE UserID = ?";
+
+                            pool.query(sql, user.ID, (err, result) => {
+                                delete SOCKET_LIST[socket.id];
+                            });
+                        });
+                    });
+                }
+            });
+        });
+
+        socket.id = user.ID;
+        SOCKET_LIST[socket.id] = socket;
+
+        Player.onConnect(socket);
+
+        socket.on('pauseTheGame', function () {
+            startGame();
+        });
+
+        socket.on('connect_error', function(err) {
+            console.log("client connect_error: ", err);
+        });
+
+        socket.on('connect_timeout', function(err) {
+            console.log("client connect_timeout: ", err);
+        });
+    }
 
 });
 
@@ -375,7 +433,7 @@ io.sockets.on('connection', function (socket) {
 var initPack = { player: [], bullet: [] };
 var removePack = { player: [], bullet: [] };
 setInterval(function () {
-    if (gameEnd == true) {
+    if (gameEnd === true) {
         for (var i in Player.list) {
             Player.list[i].score = 0;
         }
@@ -385,7 +443,7 @@ setInterval(function () {
     var pack = {
         player: Player.update(),
         bullet: Bullet.update(),
-    }
+    };
 
     for (var i in SOCKET_LIST) {
         var socket = SOCKET_LIST[i];
@@ -405,30 +463,37 @@ function gameOver(username) {
 
         let
             socket = SOCKET_LIST[i],
-            sql = '',
-            uData = socket.request.session.user,
-            user = uData.Username,
-            isWon = calcWon(user, username),
-            coins = uData.Coins + calcCoins(20, isWon),
-            gamesPlayed = uData.GamesPlayed + 1,
-            gamesWon = uData.GamesWon + isWon,
-            level = uData.Level + calcLvl(16),
-            xp = uData.Xp + calcXp(16, isWon, uData.Xp),
-            rankPoints = uData.RankPoints + 100,
-            rank = calcRank(rankPoints),
-            status = 'Online',
-            userID = uData.ID;
+            user = socket.request.session.user,
+            userSQL = "SELECT * FROM User WHERE ID = ?";
 
-        // UPDATE USER PROFILE
-        sql = 'UPDATE User SET Coins = ?, GamesPlayed = ?, GamesWon = ?, Level = ?, Xp = ?, Rank = ?, RankPoints = ?, Status = ? WHERE Username = ?';
-        pool.query(sql, [coins, gamesPlayed, gamesWon, level, xp, rank, rankPoints, status, user], function (err, result) { if (err) throw err; });
+        pool.query(userSQL, user.ID, (err, sessionUser) => {
+            let
+                uData = sessionUser[0],
+                sql = '',
+                user = uData.Username,
+                isWon = calcWon(user, username),
+                coins = uData.Coins + calcCoins(20, isWon),
+                gamesPlayed = uData.GamesPlayed + 1,
+                gamesWon = uData.GamesWon + isWon,
+                level = uData.Level + calcLvl(16),
+                xp = uData.Xp + calcXp(16, isWon, uData.Xp),
+                rankPoints = uData.RankPoints + 100,
+                rank = calcRank(rankPoints),
+                status = 'Online',
+                userID = uData.ID;
 
-        // UPDATE USER GAME HISTORY MATCH
-        sql = 'INSERT INTO UserToMatch SET UserID = ?, isWon = ?, Xp = ?, RankPoints = ?';
-        pool.query(sql, [userID, isWon, coins, xp, rankPoints], function (err, result) { if (err) throw err; });
+            // UPDATE USER PROFILE
+            sql = 'UPDATE User SET Coins = ?, GamesPlayed = ?, GamesWon = ?, Level = ?, Xp = ?, Rank = ?, RankPoints = ?, Status = ? WHERE Username = ?';
+            pool.query(sql, [coins, gamesPlayed, gamesWon, level, xp, rank, rankPoints, status, user], function (err, result) { if (err) throw err; });
 
-        socket.emit('gameOver', username);
+            // UPDATE USER GAME HISTORY MATCH
+            sql = 'INSERT INTO UserToMatch SET UserID = ?, isWon = ?, Xp = ?, RankPoints = ?';
+            pool.query(sql, [userID, isWon, coins, xp, rankPoints], function (err, result) { if (err) throw err; });
+
+            socket.emit('gameOver', username);
+        });
     }
+
 
     //// CALCULATE STATISTICS (START) ////
     function calcWon(user, username) {
@@ -445,7 +510,7 @@ function gameOver(username) {
     }
     function calcXp(points, isWon, userXP) {
         if (isWon === 1) { points = points * 1.5; } // calculations for winner
-        if (100 <= userXP + points) { return userXP + points - 100; }
+        if (100 < userXP + points) { return userXP + points - 100; }
         else { return userXP + points; }
     }
     function calcRank(points) {
@@ -466,9 +531,7 @@ function stopGame() {
     gameEnd = true;
 }
 function endGame() {
-    if (gameEnd == true) {
+    if (gameEnd === true) {
         setTimeout(function () { }, 1000 / 33);
     }
-    console.log("Game has ended");
-    console.log(gameEnd);
 }
